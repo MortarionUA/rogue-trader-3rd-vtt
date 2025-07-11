@@ -17,7 +17,7 @@
     "module/rogue-trader-3rd.mjs"
   ],
   "styles": [
-    "scss/rogue-trader-3rd.scss"
+    "css/rogue-trader-3rd.css"
   ],
   "scripts": [],
   "packs": [
