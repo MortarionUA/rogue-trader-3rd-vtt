@@ -27,13 +27,13 @@ import { NpcSheet } from './sheets/actor/npc-sheet.mjs';
 import { VehicleSheet } from './sheets/actor/vehicle-sheet.mjs';
 import { DarkHeresyCriticalInjurySheet } from './sheets/item/critical-injury-sheet.mjs';
 import { DarkHeresyGearSheet } from './sheets/item/gear-sheet.mjs';
-import { DarkHeresySettings } from './dark-heresy-settings.mjs';
+import { RogueTraderSettings } from './rogue-trader-settings.mjs';
 import { DHTargetedActionManager } from './actions/targeted-action-manager.mjs';
 import { DHBasicActionManager } from './actions/basic-action-manager.mjs';
 import { DHCombatActionManager } from './actions/combat-action-manager.mjs';
 import { DarkHeresyCyberneticSheet } from './sheets/item/cybernetic-sheet.mjs';
 import { DarkHeresyForceFieldSheet } from './sheets/item/force-field-sheet.mjs';
-import { checkAndMigrateWorld } from './dark-heresy-migrations.mjs';
+import { checkAndMigrateWorld } from './rogue-trader-migrations.mjs';
 import { DHTourMain } from './tours/main-tour.mjs';
 
 import * as documents from './documents/_module.mjs'
@@ -117,7 +117,7 @@ Enable Debug with: game.dh.debug = true
         Items.registerSheet(SYSTEM_ID, DarkHeresyWeaponModSheet, {types: ['weaponModification'],makeDefault: true,});
         Items.registerSheet(SYSTEM_ID, DarkHeresyWeaponSheet, { types: ['weapon'], makeDefault: true });
 
-        DarkHeresySettings.registerSettings();
+        RogueTraderSettings.registerSettings();
         HandlebarManager.loadTemplates();
     }
 
@@ -127,8 +127,8 @@ Enable Debug with: game.dh.debug = true
 
         game.tours.register(SYSTEM_ID, "main-tour", new DHTourMain());
 
-        console.log('Initializing with:', game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.processActiveEffectsDuringCombat));
-        if (!game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.processActiveEffectsDuringCombat)) {
+        console.log('Initializing with:', game.settings.get(SYSTEM_ID, RogueTraderSettings.SETTINGS.processActiveEffectsDuringCombat));
+        if (!game.settings.get(SYSTEM_ID, RogueTraderSettings.SETTINGS.processActiveEffectsDuringCombat)) {
             DHCombatActionManager.disableHooks();
         }
     }

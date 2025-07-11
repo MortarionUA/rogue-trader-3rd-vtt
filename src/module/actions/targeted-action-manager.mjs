@@ -1,7 +1,7 @@
 import { prepareWeaponRoll } from '../prompts/weapon-prompt.mjs';
 import { preparePsychicPowerRoll } from '../prompts/psychic-power-prompt.mjs';
 import { PsychicActionData, WeaponActionData } from '../rolls/action-data.mjs';
-import { DarkHeresySettings } from '../dark-heresy-settings.mjs';
+import { RogueTraderSettings } from '../rogue-trader-settings.mjs';
 import { SYSTEM_ID } from '../hooks-manager.mjs';
 
 export class TargetedActionManager {
@@ -11,7 +11,7 @@ export class TargetedActionManager {
         Hooks.on('getSceneControlButtons', (controls) => {
             const bar = controls.find((c) => c.name === 'token');
             try {
-                if (!game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.simpleAttackRolls)) {
+                if (!game.settings.get(SYSTEM_ID, RogueTraderSettings.SETTINGS.simpleAttackRolls)) {
                     bar.tools.push({
                         name: 'Attack',
                         title: 'Attack',

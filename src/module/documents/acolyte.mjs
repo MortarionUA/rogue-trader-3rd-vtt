@@ -14,7 +14,7 @@ import { prepareForceFieldRoll } from '../prompts/force-field-prompt.mjs';
 import { DHBasicActionManager } from '../actions/basic-action-manager.mjs';
 import { getDegree, roll1d100 } from '../rolls/roll-helpers.mjs';
 import { SYSTEM_ID } from '../hooks-manager.mjs';
-import { DarkHeresySettings } from '../dark-heresy-settings.mjs';
+import { RogueTraderSettings } from '../rogue-trader-settings.mjs';
 
 export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
 
@@ -141,7 +141,7 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
                     ui.notifications.warn('Actor must have weapon equipped!');
                     return;
                 }
-                if(game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.simpleAttackRolls)) {
+                if(game.settings.get(SYSTEM_ID, RogueTraderSettings.SETTINGS.simpleAttackRolls)) {
                     if(item.isRanged) {
                         await this.rollCharacteristic('ballisticSkill', item.name);
                     } else {
@@ -152,7 +152,7 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
                 }
                 return;
             case 'psychicPower':
-                if(game.settings.get(SYSTEM_ID, DarkHeresySettings.SETTINGS.simplePsychicRolls)) {
+                if(game.settings.get(SYSTEM_ID, RogueTraderSettings.SETTINGS.simplePsychicRolls)) {
                     await this.rollCharacteristic('willpower',  item.name)
                 } else {
                     await DHTargetedActionManager.performPsychicAttack(this, null, item);

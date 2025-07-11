@@ -4,7 +4,7 @@ import { getDegree, getOpposedDegrees, roll1d100, sendActionDataToChat, uuid } f
 import { refundAmmo, useAmmo } from '../rules/ammo.mjs';
 import { DHBasicActionManager } from '../actions/basic-action-manager.mjs';
 import { SYSTEM_ID } from '../hooks-manager.mjs';
-import { DarkHeresySettings } from '../dark-heresy-settings.mjs';
+import { RogueTraderSettings } from '../rogue-trader-settings.mjs';
 
 export class ActionData {
     id = uuid();

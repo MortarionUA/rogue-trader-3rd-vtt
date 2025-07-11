@@ -1,6 +1,6 @@
-import { DarkHeresyTour } from './dark-heresy-tour.mjs';
+import { RogueTraderTour } from './rogue-trader-tour.mjs';
 
-export class DHTourMain extends DarkHeresyTour {
+export class DHTourMain extends RogueTraderTour {
     constructor() {
         super({
             title: "Get started with DH2",
