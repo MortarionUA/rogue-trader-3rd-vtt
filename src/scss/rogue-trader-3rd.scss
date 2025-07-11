@@ -23,25 +23,25 @@
     @import 'reset';
     @import 'abstracts';
     @import 'fonts';
-    @import 'src/scss/components/chat';
+    @import 'components/chat';
 
     // Generic Settings
-    @import 'src/scss/components/grids_templates';
-    @import 'src/scss/components/grids';
-    @import 'src/scss/components/panel';
-    @import 'src/scss/components/controls';
-    @import 'src/scss/components/form_fields';
+    @import 'components/grids_templates';
+    @import 'components/grids';
+    @import 'components/panel';
+    @import 'components/controls';
+    @import 'components/form_fields';
 
     // Components
-    @import 'src/scss/components/header';
-    @import 'src/scss/components/navigation';
-    @import 'src/scss/components/settings';
-    @import 'src/scss/components/armour';
-    @import 'src/scss/components/characteristic_roller';
-    @import 'src/scss/components/characteristics';
+    @import 'components/header';
+    @import 'components/navigation';
+    @import 'components/settings';
+    @import 'components/armour';
+    @import 'components/characteristic_roller';
+    @import 'components/characteristics';
 
     // Sheets
-    @import 'src/scss/sheets/actor';
-    @import 'src/scss/sheets/item';
-    @import 'src/scss/sheets/attack';
+    @import 'sheets/actor';
+    @import 'sheets/item';
+    @import 'sheets/attack';
 }
