@@ -1,4 +1,4 @@
-.dh {
+.rt {
     &-chartable {
         display: grid;
         grid-template-columns: 0.75fr repeat(10, 0.5fr);
@@ -7,8 +7,8 @@
 
         select,
         input[type='number'],
-        .dh-chartable__cell,
-        .dh-chartable__cell--head {
+        .rt-chartable__cell,
+        .rt-chartable__cell--head {
             height: 100%;
             text-align: center !important;
             text-align-last: center !important;
@@ -19,7 +19,7 @@
             border-top: $grid-border;
             font-family: $font-family-alt;
 
-            .dh-field__input {
+            .rt-field__input {
                 border-right: none !important;
             }
 

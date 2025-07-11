@@ -1,25 +1,25 @@
-<form class="dh-wrapper">
-    <div class="dh-panel spacer">
-        <h1 class="dh-panel__header">{{name}} Damage Roll</h1>
+<form class="rt-wrapper">
+    <div class="rt-panel spacer">
+        <h1 class="rt-panel__header">{{name}} Damage Roll</h1>
         {{#if psychicPower}}
-            <div class="dh-field__wrapper">
-                <span class="dh-field__span">Psychic Rating</span>
-                <input class="dh-field__input" type="number" data-dtype="Number" id="pr" name="pr" value="{{pr}}" />
+            <div class="rt-field__wrapper">
+                <span class="rt-field__span">Psychic Rating</span>
+                <input class="rt-field__input" type="number" data-dtype="Number" id="pr" name="pr" value="{{pr}}" />
             </div>
         {{/if}}
-        <div class="dh-field__wrapper">
-            <span class="dh-field__span">Damage</span>
-            <input class="dh-field__input" type="text" id="damage" name="damage" value="{{damage}}" />
+        <div class="rt-field__wrapper">
+            <span class="rt-field__span">Damage</span>
+            <input class="rt-field__input" type="text" id="damage" name="damage" value="{{damage}}" />
         </div>
-        <div class="dh-field__wrapper">
-            <span class="dh-field__span">Type</span>
-            <select class="dh-field__input" id="damageType" name="damageType">
-                {{selectOptions (arrayToObject dh.combat.damage_types) selected=damageType}}
+        <div class="rt-field__wrapper">
+            <span class="rt-field__span">Type</span>
+            <select class="rt-field__input" id="damageType" name="damageType">
+                {{selectOptions (arrayToObject rt.combat.damage_types) selected=damageType}}
             </select>
         </div>
-        <div class="dh-field__wrapper">
-            <span class="dh-field__span">Penetration</span>
-            <input class="dh-field__input" type="text" id="penetration" name="penetration" value="{{penetration}}" />
+        <div class="rt-field__wrapper">
+            <span class="rt-field__span">Penetration</span>
+            <input class="rt-field__input" type="text" id="penetration" name="penetration" value="{{penetration}}" />
         </div>
     </div>
 </form>

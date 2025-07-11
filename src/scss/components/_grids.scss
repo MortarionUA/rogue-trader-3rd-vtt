@@ -31,7 +31,7 @@ $grid-tables: (
     attackprompt: 2rem 1fr 3rem,
 );
 
-.dh {
+.rt {
     &-field,
     &-textarea {
         @extend %grid-row;

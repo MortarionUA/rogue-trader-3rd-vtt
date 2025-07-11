@@ -62,13 +62,13 @@ _  /_/ /_  __  / _  __/
 /_____/ /_/ /_/  /____/ 
 
 "Only in death does duty end"
-Enable Debug with: game.dh.debug = true           
+Enable Debug with: game.rt.debug = true           
 `);
 
         const consolePrefix = 'Dark Heresy | ';
-        game.dh = {
+        game.rt = {
             debug: false,
-            log: (s, o) => (!!game.dh.debug ? console.log(`${consolePrefix}${s}`, o) : undefined),
+            log: (s, o) => (!!game.rt.debug ? console.log(`${consolePrefix}${s}`, o) : undefined),
             warn: (s, o) => console.warn(`${consolePrefix}${s}`, o),
             error: (s, o) => console.error(`${consolePrefix}${s}`, o),
             rollItemMacro,
@@ -79,7 +79,7 @@ Enable Debug with: game.dh.debug = true
         //CONFIG.debug.hooks = true;
 
         // Add custom constants for configuration.
-        CONFIG.dh = DarkHeresy;
+        CONFIG.rt = DarkHeresy;
         CONFIG.Combat.initiative = { formula: '@initiative.base + @initiative.bonus', decimals: 0 };
         CONFIG.MeasuredTemplate.defaults.angle = 30.0;
 
@@ -134,7 +134,7 @@ Enable Debug with: game.dh.debug = true
     }
 
     static hotbarDrop(bar, data, slot) {
-        game.dh.log('Hotbar Drop:', data);
+        game.rt.log('Hotbar Drop:', data);
         switch (data.type) {
             case 'characteristic':
                 createCharacteristicMacro(data, slot);

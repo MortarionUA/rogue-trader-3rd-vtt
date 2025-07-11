@@ -133,7 +133,7 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
     }
 
     async rollItem(itemId) {
-        game.dh.log('RollItem', itemId);
+        game.rt.log('RollItem', itemId);
         const item = this.items.get(itemId);
         switch (item.type) {
             case 'weapon':
@@ -558,7 +558,7 @@ export class DarkHeresyAcolyte extends DarkHeresyBaseActor {
     async rollCharacteristicCheck(characteristic) {
         const char = this.getCharacteristicFuzzy(characteristic);
         if(!char) {
-            game.dh.error('Unable to perform characteristic test. Could now find provided characteristic.', char);
+            game.rt.error('Unable to perform characteristic test. Could now find provided characteristic.', char);
             return null;
         }
         return await this.rollCheck(char.total);

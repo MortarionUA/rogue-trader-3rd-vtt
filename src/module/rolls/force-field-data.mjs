@@ -48,7 +48,7 @@ export class ForceFieldData {
     }
 
     async performActionAndSendToChat() {
-        game.dh.log('performActionAndSendToChat', this)
+        game.rt.log('performActionAndSendToChat', this)
 
         // Update to overloaded if necessary
         if(this.overload) {

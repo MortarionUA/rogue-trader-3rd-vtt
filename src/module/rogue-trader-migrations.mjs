@@ -165,7 +165,7 @@ export async function checkAndMigrateWorld() {
                 content: html,
                 buttons: {
                     ok: {
-                        icon: "<i class='dh-material'>close</i>",
+                        icon: "<i class='rt-material'>close</i>",
                         label: 'Ok',
                         callback: () => {},
                     },

@@ -111,7 +111,7 @@ export class AssignDamageData {
                 }
             }
         });
-        game.dh.log('performActionAndSendToChat', this)
+        game.rt.log('performActionAndSendToChat', this)
 
         const html = await renderTemplate('systems/rogue-trader-3rd/templates/chat/assign-damage-chat.hbs', this);
         let chatData = {

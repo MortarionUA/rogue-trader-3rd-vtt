@@ -1,6 +1,6 @@
-<div class="dh-panel dh-grid-col-2 dh-grid-row-2">
-    <div class="dh-table--border dh-skilltable--border">
-        <h1 class="dh-panel__header">Specialist Skills</h1>
+<div class="rt-panel rt-grid-col-2 rt-grid-row-2">
+    <div class="rt-table--border rt-skilltable--border">
+        <h1 class="rt-panel__header">Specialist Skills</h1>
         <div class="table-row--head">
             <div class="table-cell">Name</div>
             <div class="table-cell">Adv.</div>
@@ -16,18 +16,18 @@
                     <div class="table-cell--grouped">
                         <span>{{localize this.label}}</span>
                     </div>
-                    <div class="dh-settings spec_skills_{{name}}" {{hideIfNot
+                    <div class="rt-settings spec_skills_{{name}}" {{hideIfNot
                         (isExpanded (concat 'spec_skills_' name ))}}>
                         <h2>specialisation display</h2>
                         {{#each this.specialities as | specialty skey |}}
-                            <div class="dh-settings__row--invert">
-                                <div class="dh-settings__label">{{this.label}}</div>
-                                <input class="dh-settings__checkbox" {{checked specialty.taken}} data-dtype="Boolean"
+                            <div class="rt-settings__row--invert">
+                                <div class="rt-settings__label">{{this.label}}</div>
+                                <input class="rt-settings__checkbox" {{checked specialty.taken}} data-dtype="Boolean"
                                        type="checkbox" name="system.skills.{{name}}.specialities.{{skey}}.taken" />
                             </div>
                         {{/each}}
-                        <div class="dh-settings__row--invert add-skill" data-skill="{{name}}">
-                            <button class="dh-settings__label--add">add_box</button>
+                        <div class="rt-settings__row--invert add-skill" data-skill="{{name}}">
+                            <button class="rt-settings__label--add">add_box</button>
                         </div>
                     </div>
                 </div>

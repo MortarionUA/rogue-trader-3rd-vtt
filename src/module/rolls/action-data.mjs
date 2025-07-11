@@ -306,7 +306,7 @@ export class ActionData {
             // Create Specials
             await this.createEffectData();
 
-            game.dh.log('Perform Action', this);
+            game.rt.log('Perform Action', this);
 
             // Description Text
             await this.descriptionText();

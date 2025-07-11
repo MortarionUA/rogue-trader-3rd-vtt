@@ -147,14 +147,14 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
     }
 
     _onCreate(data, options, user) {
-        game.dh.log('Determining nested items for', this);
+        game.rt.log('Determining nested items for', this);
         this._determineNestedItems();
         return super._onCreate(data, options, user);
     }
 
     async prepareData() {
         super.prepareData();
-        game.dh.log('Item prepare data', this);
+        game.rt.log('Item prepare data', this);
 
         this.convertNestedToItems();
 
@@ -186,10 +186,10 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
 
         // Check for specials
         if (this.system.special) {
-            game.dh.log('Performing first time nested item configuration for item: ' + this.name + ' with specials: ', this.system.special);
+            game.rt.log('Performing first time nested item configuration for item: ' + this.name + ' with specials: ', this.system.special);
             if (this.isWeapon) await this._updateSpecialsFromPack('rogue-trader-3rd.weapons', this.system.special);
             if (this.isAmmunition) await this._updateSpecialsFromPack('rogue-trader-3rd.ammo', this.system.special);
-            game.dh.log('Special migrated for item: ' + this.name, this.system.special);
+            game.rt.log('Special migrated for item: ' + this.name, this.system.special);
             this.system.special = undefined;
 
             await this.convertNestedToItems();

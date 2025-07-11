@@ -1,4 +1,4 @@
-.dh {
+.rt {
     &-controls {
         button {
             background: rgba($form-button-background, 0.125);
@@ -21,7 +21,7 @@
 
       //noinspection CssUnknownTarget
       &--inquisition {
-            @extend .dh-panel;
+            @extend .rt-panel;
             background: url('../images/inqu_watermark.png') center/70% no-repeat, url('../images/40k_back.png') center/cover;
             grid-column: span 1;
             grid-row: span 2;
@@ -31,13 +31,13 @@
         h1 {
             border-bottom: $grid-border;
 
-            &.dh-panel__header {
+            &.rt-panel__header {
                 font-size: $h1-size;
                 font-weight: normal;
                 text-align: center;
                 text-transform: uppercase;
 
-                .dh-trait-toggle__span {
+                .rt-trait-toggle__span {
                     font-size: $h1-size;
                     font-weight: normal;
                     text-align: center;

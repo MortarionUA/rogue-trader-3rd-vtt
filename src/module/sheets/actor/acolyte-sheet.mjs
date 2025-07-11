@@ -12,7 +12,7 @@ export class AcolyteSheet extends ActorContainerSheet {
             width: 1000,
             height: 750,
             resizable: true,
-            tabs: [{ navSelector: '.dh-navigation', contentSelector: '.dh-body', initial: 'main' }],
+            tabs: [{ navSelector: '.rt-navigation', contentSelector: '.rt-body', initial: 'main' }],
         });
     }
 
@@ -22,7 +22,7 @@ export class AcolyteSheet extends ActorContainerSheet {
 
     getData() {
         const context = super.getData();
-        context.dh = CONFIG.dh;
+        context.rt = CONFIG.rt;
         context.effects = this.actor.getEmbeddedCollection('ActiveEffect').contents;
         return context;
     }

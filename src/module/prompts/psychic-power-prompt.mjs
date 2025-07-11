@@ -16,7 +16,7 @@ export class PsychicPowerDialog extends FormApplication {
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             title: 'Psychic Power',
-            id: 'dh-psychic-power-dialog',
+            id: 'rt-psychic-power-dialog',
             template: 'systems/rogue-trader-3rd/templates/prompt/psychic-power-roll-prompt.hbs',
             width: 500,
             closeOnSubmit: false,
@@ -49,7 +49,7 @@ export class PsychicPowerDialog extends FormApplication {
     }
 
     async _updateObject(event, formData) {
-        game.dh.log('_updateObject', { event, formData });
+        game.rt.log('_updateObject', { event, formData });
         recursiveUpdate(this.data, formData);
         await this.data.update();
         this.render(true);

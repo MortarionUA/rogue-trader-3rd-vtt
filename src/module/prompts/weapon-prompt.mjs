@@ -16,7 +16,7 @@ export class WeaponAttackDialog extends FormApplication {
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             title: 'Weapon Attack',
-            id: 'dh-weapon-attack-dialog',
+            id: 'rt-weapon-attack-dialog',
             template: 'systems/rogue-trader-3rd/templates/prompt/weapon-roll-prompt.hbs',
             width: 500,
             closeOnSubmit: false,
@@ -49,9 +49,9 @@ export class WeaponAttackDialog extends FormApplication {
     }
 
     async _updateObject(event, formData) {
-        game.dh.log('_updateObject', { event, formData });
+        game.rt.log('_updateObject', { event, formData });
         recursiveUpdate(this.data, formData);
-        game.dh.log('_updateObject complete', { 'data': this.data, formData });
+        game.rt.log('_updateObject complete', { 'data': this.data, formData });
         await this.data.update();
         this.render(true);
     }

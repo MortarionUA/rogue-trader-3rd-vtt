@@ -90,7 +90,7 @@ DarkHeresy.ui = {
 };
 
 export function toggleUIExpanded(name) {
-    CONFIG.dh.ui.toggleExpanded(name);
+    CONFIG.rt.ui.toggleExpanded(name);
 }
 
 export function fieldMatch(val1, val2) {

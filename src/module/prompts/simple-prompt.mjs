@@ -13,7 +13,7 @@ export async function prepareSimpleRoll(simpleSkillData) {
             content: html,
             buttons: {
                 roll: {
-                    icon: "<i class='dh-material'>casino</i>",
+                    icon: "<i class='rt-material'>casino</i>",
                     label: 'Roll',
                     callback: async (html) => {
                         const rollData = simpleSkillData.rollData;
@@ -25,7 +25,7 @@ export async function prepareSimpleRoll(simpleSkillData) {
                     },
                 },
                 cancel: {
-                    icon: "<i class='dh-material'>close</i>",
+                    icon: "<i class='rt-material'>close</i>",
                     label: 'Cancel',
                     callback: () => {},
                 },
@@ -48,7 +48,7 @@ export async function prepareCreateSpecialistSkillPrompt(simpleSkillData) {
             content: html,
             buttons: {
                 add: {
-                    icon: "<i class='dh-material'>add</i>",
+                    icon: "<i class='rt-material'>add</i>",
                     label: 'Add',
                     callback: async (html) => {
                         const speciality = html.find('#speciality-name')[0].value;
@@ -56,7 +56,7 @@ export async function prepareCreateSpecialistSkillPrompt(simpleSkillData) {
                     },
                 },
                 cancel: {
-                    icon: "<i class='dh-material'>close</i>",
+                    icon: "<i class='rt-material'>close</i>",
                     label: 'Cancel',
                     callback: () => {},
                 },

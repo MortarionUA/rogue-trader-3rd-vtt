@@ -5,7 +5,7 @@ export class DarkHeresyItemSheet extends ItemSheet {
         return foundry.utils.mergeObject(super.defaultOptions, {
             width: 650,
             height: 500,
-            tabs: [{ navSelector: '.dh-navigation', contentSelector: '.dh-body', initial: 'description' }],
+            tabs: [{ navSelector: '.rt-navigation', contentSelector: '.rt-body', initial: 'description' }],
         });
     }
 
@@ -16,7 +16,7 @@ export class DarkHeresyItemSheet extends ItemSheet {
     getData() {
         const context = super.getData();
         context.flags = context.item.flags;
-        context.dh = CONFIG.dh;
+        context.rt = CONFIG.rt;
         context.effects = this.item.getEmbeddedCollection('ActiveEffect').contents;
         return context;
     }

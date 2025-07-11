@@ -4,13 +4,13 @@
     grid-gap: 0;
 }
 
-.dh {
+.rt {
     &-body {
         grid-column: span 6;
     }
 
     &-navigation {
-        @extend .dh-panel;
+        @extend .rt-panel;
         grid-column: span 6;
         display: flex;
         align-items: center;

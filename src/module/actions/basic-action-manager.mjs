@@ -14,7 +14,7 @@ export class BasicActionManager {
     initializeHooks() {
         // Add show/hide support for chat messages
         Hooks.on('renderChatMessage', async (message, html, data) => {
-            game.dh.log('renderChatMessage', { message, html, data });
+            game.rt.log('renderChatMessage', { message, html, data });
             html.find('.roll-control__hide-control').click(async (ev) => await this._toggleExpandChatMessage(ev));
             html.find('.roll-control__refund').click(async (ev) => await this._refundResources(ev));
             html.find('.roll-control__fate-reroll').click(async (ev) => await this._fateReroll(ev));
@@ -37,7 +37,7 @@ export class BasicActionManager {
     }
 
     async _toggleExpandChatMessage(event) {
-        game.dh.log('roll-control-toggle');
+        game.rt.log('roll-control-toggle');
         event.preventDefault();
         const displayToggle = $(event.currentTarget);
         $('span', displayToggle).toggleClass('active');

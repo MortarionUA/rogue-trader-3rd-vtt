@@ -1,4 +1,4 @@
-.dh {
+.rt {
     &-material {
         font-family: 'Material Icons';
         font-weight: normal;
@@ -49,7 +49,7 @@
         &__span {
             padding-top: 3px;
             padding-left: 2px;
-            @extend .dh-material;
+            @extend .rt-material;
             opacity: 0.5;
         }
     }
@@ -78,8 +78,8 @@ button[type='roll'] {
 }
 
 // Vocalise Button
-button.dh-vocalise[type='roll'] {
-    @extend .dh-material;
+button.rt-vocalise[type='roll'] {
+    @extend .rt-material;
     opacity: 0.5;
     text-align: center;
     padding-top: 3px;
@@ -89,7 +89,7 @@ button.dh-vocalise[type='roll'] {
     }
 }
 
-button.dh-material[type='action'] {
+button.rt-material[type='action'] {
     &:hover {
         color: red;
     }

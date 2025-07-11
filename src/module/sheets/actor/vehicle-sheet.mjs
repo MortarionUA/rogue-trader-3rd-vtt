@@ -6,7 +6,7 @@ export class VehicleSheet extends ActorContainerSheet {
             width: 1000,
             height: 750,
             resizable: true,
-            tabs: [{ navSelector: '.dh-navigation', contentSelector: '.dh-body', initial: 'main' }],
+            tabs: [{ navSelector: '.rt-navigation', contentSelector: '.rt-body', initial: 'main' }],
         });
     }
 
@@ -16,14 +16,14 @@ export class VehicleSheet extends ActorContainerSheet {
 
     getData() {
         const context = super.getData();
-        context.dh = CONFIG.dh;
+        context.rt = CONFIG.rt;
         return context;
     }
 
     async _onItemDamage(event) {
         event.preventDefault();
         const div = $(event.currentTarget);
-        game.dh.warn('Not Implemented for Vehicles Yet');
+        game.rt.warn('Not Implemented for Vehicles Yet');
     }
 
 }

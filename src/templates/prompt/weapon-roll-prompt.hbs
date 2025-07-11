@@ -1,14 +1,14 @@
 {{dhlog this}}
 <div class="dialog-content">
-    <form class="dh-wrapper" autocomplete="off">
-        <div class="dh-attack">
+    <form class="rt-wrapper" autocomplete="off">
+        <div class="rt-attack">
             <!-- Header -->
-            <div class="dh-panel dh-grid-col-6">
-                <div class="dh-header">
-                    <div class="dh-header__prompt dh-header__logo">
-                        <div class="dh-header__item-wrapper--span-4 dh-header__borderless">
-                            <img class="dh-header__logo-image-small" alt="{{this.sourceActor.name}}" src="{{this.sourceActor.img}}" />
-                            <span class="dh-header__title">Weapon Attack</span>
+            <div class="rt-panel rt-grid-col-6">
+                <div class="rt-header">
+                    <div class="rt-header__prompt rt-header__logo">
+                        <div class="rt-header__item-wrapper--span-4 rt-header__borderless">
+                            <img class="rt-header__logo-image-small" alt="{{this.sourceActor.name}}" src="{{this.sourceActor.img}}" />
+                            <span class="rt-header__title">Weapon Attack</span>
                         </div>
                     </div>
                 </div>
@@ -16,8 +16,8 @@
 
             <!-- Weapon Select -->
             {{#if weaponSelect}}
-                <div class="dh-panel dh-grid-col-6">
-                    <div class="dh-table--border dh-attackprompttable--border">
+                <div class="rt-panel rt-grid-col-6">
+                    <div class="rt-table--border rt-attackprompttable--border">
                         <div class="table-row--head">
                             <div class="table-cell"></div>
                             <div class="table-cell"></div>
@@ -41,37 +41,37 @@
                                     {{/if}}
                                 </div>
                                 <div class="table-cell">
-                                    <img class="dh-field__image" alt="{{weapon.name}}" src="{{weapon.img}}" />
+                                    <img class="rt-field__image" alt="{{weapon.name}}" src="{{weapon.img}}" />
                                 </div>
                             </div>
                         {{/each}}
                     </div>
                 </div>
             {{else}}
-                <div class="dh-panel dh-grid-col-6">
-                    <div class="dh-field__wrapper">
-                        <span class="dh-field__span">Weapon</span>
-                        <span class="dh-field__span">{{weapon.name}}</span>
+                <div class="rt-panel rt-grid-col-6">
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Weapon</span>
+                        <span class="rt-field__span">{{weapon.name}}</span>
                     </div>
                     {{#if weapon.usesAmmo}}
-                        <div class="dh-field__wrapper">
-                            <span class="dh-field__span">Ammunition</span>
-                            <span class="dh-field__span">{{ammoText}}</span>
+                        <div class="rt-field__wrapper">
+                            <span class="rt-field__span">Ammunition</span>
+                            <span class="rt-field__span">{{ammoText}}</span>
                         </div>
                     {{/if}}
                     {{#each weapon.items as |item|}}
                         {{#if item.isAttackSpecial}}
-                            <div class="dh-field__wrapper">
-                                <span class="dh-field__span">Special</span>
-                                <span class="dh-field__span">{{item.name}}</span>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__span">Special</span>
+                                <span class="rt-field__span">{{item.name}}</span>
                             </div>
                         {{/if}}
                     {{/each}}
                     {{#each weapon.items as |item|}}
                         {{#if item.isWeaponModification}}
-                            <div class="dh-field__wrapper">
-                                <span class="dh-field__span">Modification</span>
-                                <span class="dh-field__span">{{item.name}}</span>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__span">Modification</span>
+                                <span class="rt-field__span">{{item.name}}</span>
                             </div>
                         {{/if}}
                     {{/each}}
@@ -79,93 +79,93 @@
             {{/if}}
 
             <!-- Other -->
-            <div class="dh-panel dh-grid-col-6">
-                <div class="dh-header">
-                    <div class="dh-header__info">
-                        <div class="dh-header__item-wrapper--span-4 dh-header__borderless">
-                            <span class="dh-header__subtitle">Attack</span>
+            <div class="rt-panel rt-grid-col-6">
+                <div class="rt-header">
+                    <div class="rt-header__info">
+                        <div class="rt-header__item-wrapper--span-4 rt-header__borderless">
+                            <span class="rt-header__subtitle">Attack</span>
                         </div>
                     </div>
                 </div>
-                <div class="dh-field__wrapper">
-                    <span class="dh-field__span">Base ({{baseChar}})</span>
-                    <span class="dh-field__span">{{baseTarget}}</span>
+                <div class="rt-field__wrapper">
+                    <span class="rt-field__span">Base ({{baseChar}})</span>
+                    <span class="rt-field__span">{{baseTarget}}</span>
                 </div>
-                <div class="dh-field__wrapper">
-                    <span class="dh-field__span">Attack Type{{#if weapon.usesAmmo}}
+                <div class="rt-field__wrapper">
+                    <span class="rt-field__span">Attack Type{{#if weapon.usesAmmo}}
                             ({{fireRate}}
                             hit(s) max){{/if}}</span>
-                    <select class="dh-field__input" name="action" id="action">
+                    <select class="rt-field__input" name="action" id="action">
                         {{selectOptions actions selected=this.action}}
                     </select>
                 </div>
                 {{#if this.isCalledShot}}
-                    <div class="dh-field__wrapper">
-                        <span class="dh-field__span">Called Shot Location</span>
-                        <select class="dh-field__input" name="calledShotLocation" id="calledShotLocation">
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Called Shot Location</span>
+                        <select class="rt-field__input" name="calledShotLocation" id="calledShotLocation">
                             {{selectOptions locations selected=this.calledShotLocation}}
                         </select>
                     </div>
                 {{/if}}
                 {{#if this.isLasWeapon}}
-                    <div class="dh-field__wrapper">
-                        <span class="dh-field__span">Las Firing Mode</span>
-                        <select class="dh-field__input" name="lasMode" id="lasMode">
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Las Firing Mode</span>
+                        <select class="rt-field__input" name="lasMode" id="lasMode">
                             {{selectOptions (arrayToObject lasModes) selected=this.lasMode}}
                         </select>
                     </div>
                 {{/if}}
                 {{#if this.hasEyeOfVengeanceAvailable}}
-                    <div class="dh-field__wrapper">
-                        <span class="dh-field__span">Use Eye of Vengeance</span>
-                        <span class="dh-field__input check">
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Use Eye of Vengeance</span>
+                        <span class="rt-field__input check">
                             <input data-dtype="Boolean" type="checkbox" name="eyeOfVengeance" {{checked this.eyeOfVengeance}} />
                         </span>
                     </div>
                 {{/if}}
                 {{#if this.modifiers.attack}}
-                    <div class="dh-field__wrapper">
-                        <span class="dh-field__span">Attack Modifier</span>
-                        <span class="dh-field__span">{{modifiers.attack}}</span>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Attack Modifier</span>
+                        <span class="rt-field__span">{{modifiers.attack}}</span>
                     </div>
                 {{/if}}
             </div>
-            <div class="dh-panel spacer dh-grid-col-6">
-                <div class="dh-header">
-                    <div class="dh-header__info">
-                        <div class="dh-header__item-wrapper--span-4 dh-header__borderless">
-                            <span class="dh-header__subtitle">Modifiers</span>
+            <div class="rt-panel spacer rt-grid-col-6">
+                <div class="rt-header">
+                    <div class="rt-header__info">
+                        <div class="rt-header__item-wrapper--span-4 rt-header__borderless">
+                            <span class="rt-header__subtitle">Modifiers</span>
                         </div>
                     </div>
                 </div>
                 {{#with this.modifiers}}
-                    <div class="dh-field__wrapper">
-                        <span class="dh-field__span">Difficulty</span>
-                        <select class="dh-field__input" data-dtype="Number" name="modifiers.difficulty">
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Difficulty</span>
+                        <select class="rt-field__input" data-dtype="Number" name="modifiers.difficulty">
                             {{selectOptions @root.difficulties selected=difficulty}}
                         </select>
                     </div>
                     {{#if @root.canAim}}
-                        <div class="dh-field__wrapper">
-                            <span class="dh-field__span">Aim</span>
-                            <select class="dh-field__input" data-dtype="Number" name="modifiers.aim">
+                        <div class="rt-field__wrapper">
+                            <span class="rt-field__span">Aim</span>
+                            <select class="rt-field__input" data-dtype="Number" name="modifiers.aim">
                                 {{selectOptions @root.aims selected=aim}}
                             </select>
                         </div>
                     {{/if}}
-                    <div class="dh-field__wrapper">
-                        <span class="dh-field__span">Modifier</span>
-                        <input class="dh-field__input" type="number" data-dtype="Number" name="modifiers.modifier" value="{{modifier}}" />
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Modifier</span>
+                        <input class="rt-field__input" type="number" data-dtype="Number" name="modifiers.modifier" value="{{modifier}}" />
                     </div>
                 {{/with}}
                 {{#if this.weapon.isRanged}}
-                    <div class="dh-field__wrapper">
-                        <span class="dh-field__span">Distance</span>
-                        <input class="dh-field__input" type="number" data-dtype="Number" name="distance" id="distance" value="{{this.distance}}" />
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Distance</span>
+                        <input class="rt-field__input" type="number" data-dtype="Number" name="distance" id="distance" value="{{this.distance}}" />
                     </div>
-                    <div class="dh-field__wrapper">
-                        <span class="dh-field__span">{{rangeName}}</span>
-                        <span class="dh-field__span">{{rangeBonus}}</span>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">{{rangeName}}</span>
+                        <span class="rt-field__span">{{rangeBonus}}</span>
                     </div>
                 {{/if}}
             </div>
@@ -176,11 +176,11 @@
 <!-- Buttons -->
 <div class="dialog-buttons">
     <button class="dialog-button roll default" data-button="roll" id="attack-roll">
-        <i class="dh-material">casino</i>
+        <i class="rt-material">casino</i>
         Roll
     </button>
     <button class="dialog-button cancel" data-button="cancel" id="attack-cancel">
-        <i class="dh-material">close</i>
+        <i class="rt-material">close</i>
         Cancel
     </button>
 </div>

@@ -1,4 +1,4 @@
-.dh {
+.rt {
     &-armour {
       //noinspection CssUnknownTarget
       &__wrapper {
@@ -24,7 +24,7 @@
             &--leftleg,
             &--toughness,
             &--trait {
-                @extend .dh-armour__block;
+                @extend .rt-armour__block;
             }
 
             &--toughness,

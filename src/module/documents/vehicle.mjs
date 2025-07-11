@@ -67,7 +67,7 @@ export class DarkHeresyVehicle extends DarkHeresyBaseActor {
             return;
         }
 
-        game.dh.log(`Vehicle ${this.name} is rolling ${item.name} for character ${character.name}`);
+        game.rt.log(`Vehicle ${this.name} is rolling ${item.name} for character ${character.name}`);
         switch (item.type) {
             case 'weapon':
                 await DHTargetedActionManager.performWeaponAttack(character, null, item);

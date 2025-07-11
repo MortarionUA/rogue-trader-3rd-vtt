@@ -1,44 +1,44 @@
-<div class="dh-wrapper">
-    <div class="dh-chat">
-        <div class="dh-roll">
+<div class="rt-wrapper">
+    <div class="rt-chat">
+        <div class="rt-roll">
             <h1>{{actor.name}}</h1>
             <h2>On Fire!</h2>
-            <div class="dh-roll__divider"></div>
+            <div class="rt-roll__divider"></div>
 
-            <div class="dh-roll__row dh-roll__row--number">
-                <div class="dh-roll__label">Energy Damage</div>
-                <div class="dh-roll__value">{{damage}}</div>
+            <div class="rt-roll__row rt-roll__row--number">
+                <div class="rt-roll__label">Energy Damage</div>
+                <div class="rt-roll__value">{{damage}}</div>
             </div>
-            <div class="dh-roll__row dh-roll__row--number">
-                <div class="dh-roll__label">Fatigue</div>
-                <div class="dh-roll__value">1</div>
+            <div class="rt-roll__row rt-roll__row--number">
+                <div class="rt-roll__label">Fatigue</div>
+                <div class="rt-roll__value">1</div>
             </div>
 
-            <div class="dh-roll__label">On Fire damage ignores Armour.</div>
+            <div class="rt-roll__label">On Fire damage ignores Armour.</div>
 
             {{#if success}}
-                <div class="dh-roll__success">
+                <div class="rt-roll__success">
                     <span>WP Success</span>
                     <span>{{roll.total}}</span>
                 </div>
-                <div class="dh-roll__label">You make take actions as normal.</div>
+                <div class="rt-roll__label">You make take actions as normal.</div>
             {{else}}
-                <div class="dh-roll__fail">
+                <div class="rt-roll__fail">
                     <span>WP Fail</span>
                     <span>{{roll.total}}</span>
                 </div>
-                <div class="dh-roll__label">You can only flail in agony and scream.</div>
+                <div class="rt-roll__label">You can only flail in agony and scream.</div>
             {{/if}}
 
-            <div class='dh-roll__controls-1'>
-                <div class="dh-control-button roll-control__apply-damage"
+            <div class='rt-roll__controls-1'>
+                <div class="rt-control-button roll-control__apply-damage"
                      data-type="Energy"
                      data-ignore-armour="true"
                      data-uuid="{{actor.uuid}}"
                      data-damage="{{damage}}"
                      data-fatigue="1">
-                    <span class="dh-control-button__span material-icons">api</span>
-                    <span class="dh-control-button__label">Apply Damage</span>
+                    <span class="rt-control-button__span material-icons">api</span>
+                    <span class="rt-control-button__label">Apply Damage</span>
                 </div>
             </div>
         </div>

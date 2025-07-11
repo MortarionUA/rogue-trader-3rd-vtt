@@ -1,48 +1,48 @@
 {{dhlog this}}
-<div class="dh-wrapper">
-    <form class="dh-actor" autocomplete="off">
-        <div class="dh-header dh-grid-col-6 dh-panel">
-            <div class="dh-header__info">
-                <div class="dh-header__logo dh-header__item-wrapper--span-4">
-                    <img class="dh-header__logo-image" src="{{actor.img}}" data-edit="img" alt="{{actor.name}}" title="{{actor.name}}" />
+<div class="rt-wrapper">
+    <form class="rt-actor" autocomplete="off">
+        <div class="rt-header rt-grid-col-6 rt-panel">
+            <div class="rt-header__info">
+                <div class="rt-header__logo rt-header__item-wrapper--span-4">
+                    <img class="rt-header__logo-image" src="{{actor.img}}" data-edit="img" alt="{{actor.name}}" title="{{actor.name}}" />
                 </div>
-                <div class="dh-header__item-wrapper--span-2">
-                    <span class="dh-header__title">Name</span>
-                    <input class="dh-header__input" name="name" type="text" value="{{actor.name}}" />
+                <div class="rt-header__item-wrapper--span-2">
+                    <span class="rt-header__title">Name</span>
+                    <input class="rt-header__input" name="name" type="text" value="{{actor.name}}" />
                 </div>
                 {{#each actor.bio}}
-                    {{#if (arrayIncludes @key @root.dh.bio.primary)}}
+                    {{#if (arrayIncludes @key @root.rt.bio.primary)}}
                         {{> systems/rogue-trader-3rd/templates/actor/partial/character-field.hbs key=@key value=this options=(getBioOptions @key)}}
                     {{/if}}
                 {{/each}}
             </div>
         </div>
 
-        <div class="dh-navigation" data-group="primary">
-            <label class="dh-navigation__item dh-navigation__item-left">
+        <div class="rt-navigation" data-group="primary">
+            <label class="rt-navigation__item rt-navigation__item-left">
                 <a class="item" data-tab="combat" data-group="primary">combat</a>
             </label>
-            <label class="dh-navigation__item">
+            <label class="rt-navigation__item">
                 <a class="item" data-tab="main" data-group="primary">main</a>
             </label>
-            <label class="dh-navigation__item">
+            <label class="rt-navigation__item">
                 <a class="item" data-tab="bio" data-group="primary">bio</a>
             </label>
-            <label class="dh-navigation__item">
+            <label class="rt-navigation__item">
                 <a class="item" data-tab="gear" data-group="primary">gear</a>
             </label>
-            <label class="dh-navigation__item">
+            <label class="rt-navigation__item">
                 <a class="item" data-tab="psychic" data-group="primary">psychic powers</a>
             </label>
-            <label class="dh-navigation__item">
+            <label class="rt-navigation__item">
                 <a class="item" data-tab="advances" data-group="primary">advances</a>
             </label>
-            <label class="dh-navigation__item">
+            <label class="rt-navigation__item">
                 <a class="item" data-tab="social" data-group="primary">social</a>
             </label>
         </div>
 
-        <section class="dh-body">
+        <section class="rt-body">
             <div class="tab" data-group="primary" data-tab="combat">
                 {{> systems/rogue-trader-3rd/templates/actor/panel/wounds-panel.hbs}}
                 {{> systems/rogue-trader-3rd/templates/actor/panel/fatigue-panel.hbs}}
@@ -64,11 +64,11 @@
                 {{> systems/rogue-trader-3rd/templates/actor/panel/talent-panel.hbs}}
             </div>
             <div class="tab" data-group="primary" data-tab="bio">
-                <div class="dh-panel dh-grid-col-6">
-                    <div class="dh-header__info">
-                        <h1 class="dh-panel__header dh-grid-col-4">Biography</h1>
+                <div class="rt-panel rt-grid-col-6">
+                    <div class="rt-header__info">
+                        <h1 class="rt-panel__header rt-grid-col-4">Biography</h1>
                         {{#each actor.bio}}
-                            {{#unless (arrayIncludes @key @root.dh.bio.primary)}}
+                            {{#unless (arrayIncludes @key @root.rt.bio.primary)}}
                                 {{> systems/rogue-trader-3rd/templates/actor/partial/character-field.hbs key=@key value=this options=(getBioOptions @key)}}
                             {{/unless}}
                         {{/each}}

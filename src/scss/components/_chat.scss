@@ -1,4 +1,4 @@
-.dh-chat {
+.rt-chat {
   font-family: $font-family-alt;
   color: black;
 
@@ -65,7 +65,7 @@
   }
 
   //noinspection CssUnknownTarget
-  .dh-roll {
+  .rt-roll {
     display: grid;
     gap: 0.25rem;
     padding: 1rem 1.5rem;
@@ -191,7 +191,7 @@
       }
 
       &--full {
-        @extend .dh-roll__row;
+        @extend .rt-roll__row;
         display: block;
       }
     }
