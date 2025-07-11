@@ -11,6 +11,6 @@ export class NpcSheet extends AcolyteSheet {
     }
 
     get template() {
-        return `systems/dark-heresy-2nd/templates/actor/actor-npc-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/actor/actor-npc-sheet.hbs`;
     }
 }

@@ -10,6 +10,6 @@ export class DarkHeresyPeerEnemySheet extends DarkHeresyItemSheet {
     }
 
     get template() {
-        return `systems/dark-heresy-2nd/templates/item/item-peer-enemy-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/item/item-peer-enemy-sheet.hbs`;
     }
 }

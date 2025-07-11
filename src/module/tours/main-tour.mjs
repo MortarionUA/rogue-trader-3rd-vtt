@@ -17,9 +17,9 @@ export class DHTourMain extends DarkHeresyTour {
                 },
                 {
                     id: "import-compendium",
-                    selector: "[data-pack=\"dark-heresy-2nd.ammo\"]",
+                    selector: "[data-pack=\"rogue-trader-3rd.ammo\"]",
                     title: 'Import Compendiums',
-                    content: 'Import the dark-heresy-2nd compendiums for the item and data lists.',
+                    content: 'Import the rogue-trader-3rd compendiums for the item and data lists.',
                 },
                 {
                     id: "goto-actors",

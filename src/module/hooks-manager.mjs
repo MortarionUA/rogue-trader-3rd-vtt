@@ -38,7 +38,7 @@ import { DHTourMain } from './tours/main-tour.mjs';
 
 import * as documents from './documents/_module.mjs'
 
-export const SYSTEM_ID = 'dark-heresy-2nd';
+export const SYSTEM_ID = 'rogue-trader-3rd';
 
 export class HooksManager {
     static registerHooks() {

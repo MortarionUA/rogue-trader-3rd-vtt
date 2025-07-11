@@ -13,7 +13,7 @@ export class AssignDamageDialog extends FormApplication {
         return foundry.utils.mergeObject(super.defaultOptions, {
             title: 'Assign Damage',
             id: 'dh-assign-damage-dialog',
-            template: 'systems/dark-heresy-2nd/templates/prompt/assign-damage-prompt.hbs',
+            template: 'systems/rogue-trader-3rd/templates/prompt/assign-damage-prompt.hbs',
             width: 500,
             closeOnSubmit: false,
             submitOnChange: true,

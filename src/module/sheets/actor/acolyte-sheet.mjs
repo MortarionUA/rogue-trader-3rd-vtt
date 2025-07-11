@@ -17,7 +17,7 @@ export class AcolyteSheet extends ActorContainerSheet {
     }
 
     get template() {
-        return `systems/dark-heresy-2nd/templates/actor/actor-acolyte-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/actor/actor-acolyte-sheet.hbs`;
     }
 
     getData() {

@@ -10,6 +10,6 @@ export class DarkHeresyArmourSheet extends DarkHeresyItemContainerSheet {
     }
 
     get template() {
-        return `systems/dark-heresy-2nd/templates/item/item-armour-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/item/item-armour-sheet.hbs`;
     }
 }

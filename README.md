@@ -1,8 +1,10 @@
 # Dark Heresy 2nd Edition
 
-This is an _unofficial_ system for playing Dark Heresy 2nd Edition on [Foundry VTT](https://foundryvtt.com/). This requires >= Foundry 12.
+This is my _unofficial_ system for playing mine Rogue Trader 3rd Edition on [Foundry VTT](https://foundryvtt.com/). This requires >= Foundry 12.
 
 It offers extensive support for character sheets, compendium packs, and automated management to save you time and allow you to focus on role playing. The existing system listed on Foundry was character sheet only and thus this system was created to facilitate the automation features I desired.
+
+
 
 ## Features
 
@@ -17,8 +19,8 @@ It offers extensive support for character sheets, compendium packs, and automate
 
 ## Install
  - Go to the setup page and choose _Game Systems_.
- - Click the _Install System_ button, and paste in this [manifest link](https://s3-keathley.nyc3.digitaloceanspaces.com/dark-heresy-2nd/system.json)
- - Create a Game World using the "Dark Heresy 2nd Edition" system.
+ - Click the _Install System_ button, and paste in this [manifest link](https://github.com/MortarionUA/rogue-trader-3rd-vtt/system.json)
+ - Create a Game World using the "Rogue Trader 3rd Edition" system.
 
 ## Links
   - [Foundry VTT](https://foundryvtt.com/)
@@ -32,9 +34,8 @@ It offers extensive support for character sheets, compendium packs, and automate
 
 
 ### Thanks
-- I liked the layout of the WH4e sheet on Roll20 and tried to mimic that where possible. Thanks to the authors for that inspiration.
-- I studied the original DH2e Foundry VTT project by moo-man. I ended up not using much from there but learned a lot about Foundry. I appreciate the head start!
-- My tabletop group for play testing and feedback.
+- First and foremost author of the original [Dark Heresy 2](https://github.com/mrkeathley/dark-heresy-2nd-vtt/tree/main) system by mrkeathley
+- Also author of [Rogue Trader 2](https://drive.google.com/drive/folders/1jzXQay3PSbPVBAATmuqPLHBvrghhq3bQ?usp=drive_link) unofficial update 
 
 ## License
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)

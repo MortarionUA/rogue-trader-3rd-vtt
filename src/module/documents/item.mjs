@@ -187,8 +187,8 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
         // Check for specials
         if (this.system.special) {
             game.dh.log('Performing first time nested item configuration for item: ' + this.name + ' with specials: ', this.system.special);
-            if (this.isWeapon) await this._updateSpecialsFromPack('dark-heresy-2nd.weapons', this.system.special);
-            if (this.isAmmunition) await this._updateSpecialsFromPack('dark-heresy-2nd.ammo', this.system.special);
+            if (this.isWeapon) await this._updateSpecialsFromPack('rogue-trader-3rd.weapons', this.system.special);
+            if (this.isAmmunition) await this._updateSpecialsFromPack('rogue-trader-3rd.ammo', this.system.special);
             game.dh.log('Special migrated for item: ' + this.name, this.system.special);
             this.system.special = undefined;
 
@@ -208,7 +208,7 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
     }
 
     async _getAttackSpecials(specialData) {
-        const attackSpecialPack = game.packs.find((p) => p.collection === 'dark-heresy-2nd.attack-specials');
+        const attackSpecialPack = game.packs.find((p) => p.collection === 'rogue-trader-3rd.attack-specials');
         if (!attackSpecialPack) return;
         const index = await attackSpecialPack.getIndex({ fields: ['name', 'img', 'type', 'system'] });
         const specials = [];

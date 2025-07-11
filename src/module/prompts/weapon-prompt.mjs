@@ -17,7 +17,7 @@ export class WeaponAttackDialog extends FormApplication {
         return foundry.utils.mergeObject(super.defaultOptions, {
             title: 'Weapon Attack',
             id: 'dh-weapon-attack-dialog',
-            template: 'systems/dark-heresy-2nd/templates/prompt/weapon-roll-prompt.hbs',
+            template: 'systems/rogue-trader-3rd/templates/prompt/weapon-roll-prompt.hbs',
             width: 500,
             closeOnSubmit: false,
             submitOnChange: true,

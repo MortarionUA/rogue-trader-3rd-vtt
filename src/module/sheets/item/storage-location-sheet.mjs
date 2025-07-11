@@ -10,6 +10,6 @@ export class DarkHeresyStorageLocationSheet extends DarkHeresyItemContainerSheet
     }
 
     get template() {
-        return `systems/dark-heresy-2nd/templates/item/item-storage-location-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/item/item-storage-location-sheet.hbs`;
     }
 }

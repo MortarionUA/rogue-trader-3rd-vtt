@@ -376,14 +376,14 @@ export class Hit {
 export class WeaponDamageData extends DamageData {
     constructor() {
         super();
-        this.template = 'systems/dark-heresy-2nd/templates/chat/weapon-roll-chat.hbs';
+        this.template = 'systems/rogue-trader-3rd/templates/chat/weapon-roll-chat.hbs';
     }
 }
 
 export class PsychicDamageData extends DamageData {
     constructor() {
         super();
-        this.template = 'systems/dark-heresy-2nd/templates/chat/weapon-roll-chat.hbs';
+        this.template = 'systems/rogue-trader-3rd/templates/chat/weapon-roll-chat.hbs';
     }
 }
 

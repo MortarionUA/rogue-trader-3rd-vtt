@@ -10,6 +10,6 @@ export class DarkHeresyForceFieldSheet extends DarkHeresyItemSheet {
     }
 
     get template() {
-        return `systems/dark-heresy-2nd/templates/item/item-force-field-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/item/item-force-field-sheet.hbs`;
     }
 }

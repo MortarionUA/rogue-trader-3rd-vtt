@@ -10,7 +10,7 @@ export class DarkHeresyItemSheet extends ItemSheet {
     }
 
     get template() {
-        return `systems/dark-heresy-2nd/templates/item/item-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/item/item-sheet.hbs`;
     }
 
     getData() {

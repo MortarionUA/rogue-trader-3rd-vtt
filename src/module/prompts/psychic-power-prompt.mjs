@@ -17,7 +17,7 @@ export class PsychicPowerDialog extends FormApplication {
         return foundry.utils.mergeObject(super.defaultOptions, {
             title: 'Psychic Power',
             id: 'dh-psychic-power-dialog',
-            template: 'systems/dark-heresy-2nd/templates/prompt/psychic-power-roll-prompt.hbs',
+            template: 'systems/rogue-trader-3rd/templates/prompt/psychic-power-roll-prompt.hbs',
             width: 500,
             closeOnSubmit: false,
             submitOnChange: true,

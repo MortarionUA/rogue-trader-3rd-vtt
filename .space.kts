@@ -86,7 +86,7 @@ job("Build and Deploy") {
                 scp -o StrictHostKeyChecking=no -i id_rsa ${'$'}SOURCE_PATH root@foundry.darkheresy.co:/home/foundry/foundryuserdata/Data/systems
                 
                 echo Inflate Archive
-                ssh -o StrictHostKeyChecking=no -i id_rsa root@foundry.darkheresy.co "cd /home/foundry/foundryuserdata/Data/systems; unzip -o ${'$'}ARCHIVE_NAME -d dark-heresy-2nd/; rm -f ${'$'}ARCHIVE_NAME"
+                ssh -o StrictHostKeyChecking=no -i id_rsa root@foundry.darkheresy.co "cd /home/foundry/foundryuserdata/Data/systems; unzip -o ${'$'}ARCHIVE_NAME -d rogue-trader-3rd/; rm -f ${'$'}ARCHIVE_NAME"
                 
                 echo Deployed
             """.trimIndent()

@@ -13,7 +13,7 @@ export class ForceFieldDialog extends FormApplication {
         return foundry.utils.mergeObject(super.defaultOptions, {
             title: 'Force Field',
             id: 'dh-force-field-dialog',
-            template: 'systems/dark-heresy-2nd/templates/prompt/force-field-prompt.hbs',
+            template: 'systems/rogue-trader-3rd/templates/prompt/force-field-prompt.hbs',
             width: 500,
             closeOnSubmit: false,
             submitOnChange: true,

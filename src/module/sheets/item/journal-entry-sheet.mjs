@@ -10,6 +10,6 @@ export class DarkHeresyJournalEntrySheet extends DarkHeresyItemSheet {
     }
 
     get template() {
-        return `systems/dark-heresy-2nd/templates/item/item-journal-entry-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/item/item-journal-entry-sheet.hbs`;
     }
 }

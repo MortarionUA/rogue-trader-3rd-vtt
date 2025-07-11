@@ -200,7 +200,7 @@ export class WeaponRollData extends RollData {
 
     constructor() {
         super();
-        this.template = 'systems/dark-heresy-2nd/templates/chat/action-roll-chat.hbs';
+        this.template = 'systems/rogue-trader-3rd/templates/chat/action-roll-chat.hbs';
     }
 
     hasWeaponModification(special) {
@@ -347,7 +347,7 @@ export class PsychicRollData extends RollData {
 
     constructor() {
         super();
-        this.template = 'systems/dark-heresy-2nd/templates/chat/action-roll-chat.hbs';
+        this.template = 'systems/rogue-trader-3rd/templates/chat/action-roll-chat.hbs';
     }
 
     initialize() {

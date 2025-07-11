@@ -10,6 +10,6 @@ export class DarkHeresyCyberneticSheet extends DarkHeresyItemSheet {
     }
 
     get template() {
-        return `systems/dark-heresy-2nd/templates/item/item-cybernetic-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/item/item-cybernetic-sheet.hbs`;
     }
 }

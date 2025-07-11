@@ -10,7 +10,7 @@ export class DarkHeresyAmmoSheet extends DarkHeresyItemContainerSheet {
     }
 
     get template() {
-        return `systems/dark-heresy-2nd/templates/item/item-ammo-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/item/item-ammo-sheet.hbs`;
     }
 
     canAdd(itemData) {

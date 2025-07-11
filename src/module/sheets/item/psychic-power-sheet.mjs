@@ -10,6 +10,6 @@ export class DarkHeresyPsychicPowerSheet extends DarkHeresyItemContainerSheet {
     }
 
     get template() {
-        return `systems/dark-heresy-2nd/templates/item/item-psychic-power-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/item/item-psychic-power-sheet.hbs`;
     }
 }

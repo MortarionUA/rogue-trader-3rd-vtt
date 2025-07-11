@@ -29,7 +29,7 @@ const STATIC_FILES = [
   "src/packs/*.db"
 ];
 const PACK_SRC = "src/packs";
-const BUILD_DIR = "build/dark-heresy-2nd";
+const BUILD_DIR = "build/rogue-trader-3rd";
 
 /* ----------------------------------------- */
 /*  Compile Packs
@@ -118,7 +118,7 @@ function watchCopy() {
 
 function createArchive() {
   return gulp.src(`${BUILD_DIR}/**`)
-      .pipe(zip(`dark-heresy-2nd-${SYSTEM.version}.zip`))
+      .pipe(zip(`rogue-trader-3rd-${SYSTEM.version}.zip`))
       .pipe(gulp.dest('./archive'));
 }
 
