@@ -1,7 +1,7 @@
-import { DarkHeresyItemContainer } from './item-container.mjs';
+import { RogueTraderItemContainer } from './item-container.mjs';
 import { capitalize } from '../handlebars/handlebars-helpers.mjs';
 
-export class DarkHeresyItem extends DarkHeresyItemContainer {
+export class RogueTraderItem extends RogueTraderItemContainer {
     get totalWeight() {
         let weight = this.system.weight || 0;
         if (this.items && this.items.size > 0) {
@@ -144,6 +144,10 @@ export class DarkHeresyItem extends DarkHeresyItemContainer {
 
     get isPeer() {
         return this.type === 'peer';
+    }
+
+    get isShipWeapon() {
+        return this.type === 'shipWeapon';
     }
 
     _onCreate(data, options, user) {

@@ -2,7 +2,7 @@ import { SYSTEM_ID } from '../hooks-manager.mjs';
 
 export const DH_CONTAINER_ID = 'nested';
 
-export class DarkHeresyItemContainer extends Item {
+export class RogueTraderItemContainer extends Item {
     get actor() {
         if (this.parent instanceof Item) return null;
         return this.parent;

@@ -1,7 +1,8 @@
-import { DarkHeresyItem } from './documents/item.mjs';
+import { RogueTraderItem } from './documents/item.mjs';
 import { DarkHeresy } from './rules/config.mjs';
 import { AcolyteSheet } from './sheets/actor/acolyte-sheet.mjs';
 import { DarkHeresyItemSheet } from './sheets/item/item-sheet.mjs';
+import { DarkHeresyShipWeaponSheet } from './sheets/item/ship-weapon-sheet.mjs';
 import { DarkHeresyWeaponSheet } from './sheets/item/weapon-sheet.mjs';
 import { DarkHeresyArmourSheet } from './sheets/item/armour-sheet.mjs';
 import { DarkHeresyTalentSheet } from './sheets/item/talent-sheet.mjs';
@@ -22,7 +23,7 @@ import { DarkHeresyAmmoSheet } from './sheets/item/ammo-sheet.mjs';
 import { DarkHeresyPsychicPowerSheet } from './sheets/item/psychic-power-sheet.mjs';
 import { DarkHeresyStorageLocationSheet } from './sheets/item/storage-location-sheet.mjs';
 import { DarkHeresyTraitSheet } from './sheets/item/trait-sheet.mjs';
-import { DarkHeresyActorProxy } from './documents/actor-proxy.mjs';
+import { RogueTraderActorProxy } from './documents/actor-proxy.mjs';
 import { NpcSheet } from './sheets/actor/npc-sheet.mjs';
 import { VehicleSheet } from './sheets/actor/vehicle-sheet.mjs';
 import { DarkHeresyCriticalInjurySheet } from './sheets/item/critical-injury-sheet.mjs';
@@ -84,14 +85,14 @@ Enable Debug with: game.rt.debug = true
         CONFIG.MeasuredTemplate.defaults.angle = 30.0;
 
         // Define custom Document classes
-        CONFIG.Actor.documentClass = DarkHeresyActorProxy;
+        CONFIG.Actor.documentClass = RogueTraderActorProxy;
         CONFIG.Actor.documentClasses = {
-            acolyte: documents.DarkHeresyAcolyte,
-            npc: documents.DarkHeresyNPC,
-            vehicle: documents.DarkHeresyVehicle,
+            acolyte: documents.RogueTraderAcolyte,
+            npc: documents.RogueTraderNPC,
+            vehicle: documents.RogueTraderVehicle,
 
         };
-        CONFIG.Item.documentClass = DarkHeresyItem;
+        CONFIG.Item.documentClass = RogueTraderItem;
 
         // Register sheet application classes
         Actors.unregisterSheet('core', ActorSheet);
@@ -115,6 +116,7 @@ Enable Debug with: game.rt.debug = true
         Items.registerSheet(SYSTEM_ID, DarkHeresyTalentSheet, { types: ['talent'], makeDefault: true });
         Items.registerSheet(SYSTEM_ID, DarkHeresyTraitSheet, {types: ['trait'],makeDefault: true,});
         Items.registerSheet(SYSTEM_ID, DarkHeresyWeaponModSheet, {types: ['weaponModification'],makeDefault: true,});
+        Items.registerSheet(SYSTEM_ID, DarkHeresyShipWeaponSheet, { types: ['shipWeapon'], makeDefault: true });
         Items.registerSheet(SYSTEM_ID, DarkHeresyWeaponSheet, { types: ['weapon'], makeDefault: true });
 
         RogueTraderSettings.registerSettings();

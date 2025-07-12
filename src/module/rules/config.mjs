@@ -42,6 +42,8 @@ DarkHeresy.combat = {
     sustained_speeds: ['No', 'Free Action', 'Half Action', 'Full Action'],
     psychic_subtypes: ['Concentration', 'Attack', 'Attack, Concentration'],
     special: attackSpecialsNames(),
+    ship_weapon_class: ['Turret', 'Broadside', 'Artillery', 'Keel', 'Special'],
+    ship_weapon_type: ['Macrocannon', 'Lance', 'Nova Cannon', 'Torpedoes', 'Launch Bays', 'Special'],
     weapon_class: ['Pistol', 'Basic', 'Heavy', 'Thrown', 'Melee'],
     weapon_type: [
         'Bolt',

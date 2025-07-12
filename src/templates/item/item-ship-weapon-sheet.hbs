@@ -1,0 +1,239 @@
+<div class="rt-wrapper">
+    <form class="rt-item" autocomplete="off">
+        <div class="rt-panel rt-grid-col-6">
+            <div class="rt-header">
+                <div class="rt-header__info">
+                    <div class="rt-header__logo rt-header__item-wrapper--span-4">
+                        <img class="rt-header__logo-image" src="{{item.img}}" data-edit="img" alt="{{item.name}}"
+                             title="{{item.name}}" />
+                    </div>
+                    <div class="rt-header__item-wrapper--span-4">
+                        <span class="rt-header__title">Name</span>
+                        <input class="rt-header__input" name="name" type="text" value="{{item.name}}" />
+                    </div>
+                    <div class="rt-header__item-wrapper--span-2">
+                        <span class="rt-header__title">Class</span>
+                        <select class="rt-header__select" name="system.class">
+                            {{selectOptions (arrayToObject rt.combat.ship_weapon_class) selected=item.system.class}}
+                        </select>
+                    </div>
+                    <div class="rt-header__item-wrapper--span-2">
+                        <span class="rt-header__title">Type</span>
+                        <select class="rt-header__select" name="system.type">
+                            {{selectOptions (arrayToObject rt.combat.ship_weapon_type) selected=item.system.type}}
+                        </select>
+                    </div>
+                    <div class="rt-header__item-wrapper">
+                        <span class="rt-header__title">Equipped</span>
+                        <input name="system.onFire" type="checkbox" data-dtype="Boolean" {{checked
+                            item.system.onFire}}/>
+                    </div>
+                    <div class="rt-header__item-wrapper">
+                        <span class="rt-header__title">Equipped</span>
+                        <input name="system.depressurised" type="checkbox" data-dtype="Boolean" {{checked
+                            item.system.depressurised}}/>
+                    </div>
+                    <div class="rt-header__item-wrapper">
+                        <span class="rt-header__title">Equipped</span>
+                        <input name="system.unpowered" type="checkbox" data-dtype="Boolean" {{checked
+                            item.system.unpowered}}/>
+                    </div>
+                    <div class="rt-header__item-wrapper">
+                        <span class="rt-header__title">Equipped</span>
+                        <input name="system.destroyed" type="checkbox" data-dtype="Boolean" {{checked
+                            item.system.destroyed}}/>
+                    </div>
+                    <div class="rt-header__item-wrapper--span-2">
+                        <span class="rt-header__title">Availability</span>
+                        <select class="rt-header__select" name="system.availability">
+                            {{selectOptions (arrayToObject rt.items.availability) selected=item.system.availability}}
+                        </select>
+                    </div>
+                    <div class="rt-header__item-wrapper--span-2">
+                        <span class="rt-header__title">Craftsmanship</span>
+                        <select class="rt-header__select" name="system.craftsmanship">
+                            {{selectOptions (arrayToObject rt.items.craftsmanship) selected=item.system.craftsmanship}}
+                        </select>
+                    </div>
+                </div>
+                <div class="rt-navigation" data-group="primary">
+                    <label class="rt-navigation__item rt-navigation__item-left">
+                        <a class="item" data-tab="active-effects" data-group="primary">active effects</a>
+                    </label>
+                    <label class="rt-navigation__item">
+                        <a class="item" data-tab="stats" data-group="primary">stats</a>
+                    </label>
+                    <label class="rt-navigation__item">
+                        <a class="item" data-tab="description" data-group="primary">description</a>
+                    </label>
+                </div>
+                <section class="rt-body">
+                    <div class="tab" data-group="primary" data-tab="active-effects">
+                        {{> systems/rogue-trader-3rd/templates/item/panel/active-effects-panel.hbs}}
+                    </div>
+
+                    <div class="tab" data-group="primary" data-tab="stats">
+                        <div class="rt-panel rt-grid-col-2 rt-grid-row-1">
+                            <h1 class="rt-panel__header">Combat Stats</h1>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">Strength</span>
+                                <input class="rt-field__input" type="text" name="system.strength"
+                                       value="{{item.system.strength}}" />
+                            </div>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">Damage</span>
+                                <input class="rt-field__input" type="text" name="system.damage"
+                                       value="{{item.system.damage}}" />
+                            </div>
+
+                            <h1 class="rt-panel__header">Attack</h1>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">Bonus</span>
+                                <input class="rt-field__input" type="text" name="system.attackBonus"
+                                       value="{{item.system.attackBonus}}" />
+                            </div>
+                        </div>
+
+                        <div class="rt-panel rt-grid-col-2 rt-grid-row-1">
+                            <h1 class="rt-panel__header">Range</h1>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">Short</span>
+                                <input class="rt-field__input" type="number" data-dtype="Number"
+                                       name="system.shipWeaponRange.short" value="{{item.system.shipWeaponRange.short}}" />
+                            </div>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">Medium</span>
+                                <input class="rt-field__input" type="number" data-dtype="Number"
+                                       name="system.shipWeaponRange.medium" value="{{item.system.shipWeaponRange.medium}}" />
+                            </div>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">Long</span>
+                                <input class="rt-field__input" type="number" data-dtype="Number"
+                                       name="system.shipWeaponRange.long" value="{{item.system.shipWeaponRange.long}}" />
+                            </div>
+                        </div>
+                        <div class="rt-panel rt-grid-col-2 rt-grid-row-1">
+                            <h1 class="rt-panel__header">Utility</h1>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">Power</span>
+                                <input class="rt-field__input" type="text" name="system.strength"
+                                       value="{{item.system.power}}" />
+                            </div>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">Space</span>
+                                <input class="rt-field__input" type="text" name="system.space"
+                                       value="{{item.system.space}}" />
+                            </div>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">HP</span>
+                                <input class="rt-field__input" type="text" name="system.hp"
+                                       value="{{item.system.hp}}" />
+                            </div>
+                        </div>
+
+                        <div class="rt-panel rt-grid-col-3">
+                            <h1 class="rt-panel__header">Weapon Mods</h1>
+                            <div class="rt-table--border rt-weaponmodtable--border">
+                                <div class="table-row--head">
+                                    <div class="table-cell--span2">Name</div>
+                                    <div class="table-cell">Craftsmanship</div>
+                                    <div class="table-cell">Installed</div>
+                                    <div class="table-cell--last"></div>
+                                </div>
+                                {{#each item.items as | embedded |}}
+                                    {{#if embedded.isWeaponModification}}
+                                        <div class="table-row">
+                                            <div class="table-cell--settingstoggle">
+                                                <label class="rt-control-button item-edit"
+                                                       data-item-id="{{embedded.id}}">
+                                                    <span class="rt-control-button__span material-icons">{{defaultVal
+                                                        icon 'settings'}}</span>
+                                                </label>
+                                            </div>
+                                            <div class="table-cell--left">
+                                                {{> systems/rogue-trader-3rd/templates/actor/partial/trait-toggle.hbs toggle=(concat 'description_' embedded.id) text=embedded.name}}
+                                            </div>
+                                            <div class="table-cell">
+                                                <span>{{embedded.system.craftsmanship}}</span>
+                                            </div>
+                                            <div class="table-cell">
+                                                <span>{{embedded.system.equipped}}</span>
+                                            </div>
+                                            <div class="table-cell--last">
+                                                <label class="rt-control-button item-delete"
+                                                       data-item-id="{{embedded.id}}">
+                                                    <span class="rt-control-button__span material-icons">{{defaultVal
+                                                        icon 'delete'}}</span>
+                                                </label>
+                                            </div>
+                                            <div class="table-cell--description description_{{embedded.id}}" {{hideIfNot
+                                                (isExpanded (concat 'description_' embedded.id ))}}>
+                                                <span>{{embedded.system.description}}</span>
+                                            </div>
+                                        </div>
+                                    {{/if}}
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class="rt-panel rt-grid-col-3">
+                            <h1 class="rt-panel__header">Weapon Special</h1>
+                            <div class="rt-table--border rt-attackspecialtable--border">
+                                <div class="table-row--head">
+                                    <div class="table-cell--span2">Name</div>
+                                    <div class="table-cell">Enabled</div>
+                                    <div class="table-cell">Level</div>
+                                    <div class="table-cell--last"></div>
+                                </div>
+                                {{#each item.items as | embedded |}}
+                                    {{#if embedded.isAttackSpecial}}
+                                        <div class="table-row">
+                                            <div class="table-cell--settingstoggle">
+                                                <label class="rt-control-button item-edit"
+                                                       data-item-id="{{embedded.id}}">
+                                                    <span class="rt-control-button__span material-icons">{{defaultVal
+                                                        icon 'settings'}}</span>
+                                                </label>
+                                            </div>
+                                            <div class="table-cell--left">
+                                                {{> systems/rogue-trader-3rd/templates/actor/partial/trait-toggle.hbs toggle=(concat 'description_' embedded.id) text=embedded.name}}
+                                            </div>
+                                            <div class="table-cell">
+                                                <span class="display">{{embedded.system.enabled}}</span>
+                                            </div>
+                                            <div class="table-cell">
+                                                <span class="display">{{defaultVal embedded.system.level
+                                                                                   'N/A'}}</span>
+                                            </div>
+                                            <div class="table-cell--last">
+                                                <label class="rt-control-button item-delete"
+                                                       data-item-id="{{embedded.id}}">
+                                                    <span class="rt-control-button__span material-icons">{{defaultVal
+                                                        icon 'delete'}}</span>
+                                                </label>
+                                            </div>
+                                            <div class="table-cell--description description_{{embedded.id}}" {{hideIfNot
+                                                (isExpanded (concat 'description_' embedded.id ))}}>
+                                                <span>{{embedded.system.description}}</span>
+                                            </div>
+                                        </div>
+                                    {{/if}}
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab" data-group="primary" data-tab="description">
+                        <div class="rt-header__info rt-grid-col-6">
+                            <div class="rt-header__item-wrapper--text-area">
+                                <span class="rt-header__title">Description</span>
+                                <textarea class="rt-header__textarea"
+                                          name="system.description">{{item.system.description}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </form>
+</div>
+
+

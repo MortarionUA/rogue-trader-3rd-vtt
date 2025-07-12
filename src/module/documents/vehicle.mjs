@@ -1,7 +1,7 @@
-import { DarkHeresyBaseActor } from './base-actor.mjs';
+import { RogueTraderBaseActor } from './base-actor.mjs';
 import { DHTargetedActionManager } from '../actions/targeted-action-manager.mjs';
 
-export class DarkHeresyVehicle extends DarkHeresyBaseActor {
+export class RogueTraderVehicle extends RogueTraderBaseActor {
 
     async _preCreate(data, options, user) {
         await super._preCreate(data, options, user);
