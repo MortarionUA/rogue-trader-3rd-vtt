@@ -2,6 +2,7 @@ import { RogueTraderItem } from './documents/item.mjs';
 import { DarkHeresy } from './rules/config.mjs';
 import { AcolyteSheet } from './sheets/actor/acolyte-sheet.mjs';
 import { DarkHeresyItemSheet } from './sheets/item/item-sheet.mjs';
+import { DarkHeresyShipComponentSheet } from './sheets/item/ship-component-sheet.mjs';
 import { DarkHeresyShipWeaponSheet } from './sheets/item/ship-weapon-sheet.mjs';
 import { DarkHeresyWeaponSheet } from './sheets/item/weapon-sheet.mjs';
 import { DarkHeresyArmourSheet } from './sheets/item/armour-sheet.mjs';
@@ -116,8 +117,9 @@ Enable Debug with: game.rt.debug = true
         Items.registerSheet(SYSTEM_ID, DarkHeresyTalentSheet, { types: ['talent'], makeDefault: true });
         Items.registerSheet(SYSTEM_ID, DarkHeresyTraitSheet, {types: ['trait'],makeDefault: true,});
         Items.registerSheet(SYSTEM_ID, DarkHeresyWeaponModSheet, {types: ['weaponModification'],makeDefault: true,});
-        Items.registerSheet(SYSTEM_ID, DarkHeresyShipWeaponSheet, { types: ['shipWeapon'], makeDefault: true });
         Items.registerSheet(SYSTEM_ID, DarkHeresyWeaponSheet, { types: ['weapon'], makeDefault: true });
+        Items.registerSheet(SYSTEM_ID, DarkHeresyShipComponentSheet, { types: ['shipComponent'], makeDefault: true });
+        Items.registerSheet(SYSTEM_ID, DarkHeresyShipWeaponSheet, { types: ['shipWeapon'], makeDefault: true });
 
         RogueTraderSettings.registerSettings();
         HandlebarManager.loadTemplates();

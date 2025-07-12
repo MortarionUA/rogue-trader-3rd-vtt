@@ -89,8 +89,9 @@ export async function checkAndMigrateWorld() {
                             'gear',
                             'tool',
                             'weapon',
-                            'shipWeapon',
                             'weaponModification',
+                            'shipComponent',
+                            'shipWeapon',
                         ],
                     },
                 });

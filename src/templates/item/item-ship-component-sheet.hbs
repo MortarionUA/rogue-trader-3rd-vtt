@@ -1,0 +1,82 @@
+<div class="rt-wrapper">
+    <form class="rt-item" autocomplete="off">
+        <div class="rt-panel rt-grid-col-6">
+            <div class="rt-header">
+                <div class="rt-header__info">
+                    <div class="rt-header__logo rt-header__item-wrapper--span-4">
+                        <img class="rt-header__logo-image" src="{{item.img}}" data-edit="img" alt="{{item.name}}"
+                             title="{{item.name}}" />
+                    </div>
+                    <div class="rt-header__item-wrapper--span-4">
+                        <span class="rt-header__title">Name</span>
+                        <input class="rt-header__input" name="name" type="text" value="{{item.name}}" />
+                    </div>
+                    <div class="rt-header__item-wrapper--span-2">
+                        <span class="rt-header__title">Type</span>
+                        <select class="rt-header__select" name="system.componentType">
+                            {{selectOptions (arrayToObject rt.combat.componentType) selected=item.system.componentType}}
+                        </select>
+                    </div>
+                    <div class="rt-header__item-wrapper--span-2">
+                    </div>
+                    <div class="rt-header__item-wrapper">
+                        <span class="rt-header__title">Power</span>
+                        <input class="rt-header__input" name="system.power" type="number" data-dtype="Number"
+                               value="{{item.system.power}}" />
+                    </div>
+                    <div class="rt-header__item-wrapper">
+                        <span class="rt-header__title">Space</span>
+                        <input class="rt-header__input" name="system.space" type="number" data-dtype="Number"
+                               value="{{item.system.space}}" />
+                    </div>
+                    <div class="rt-header__item-wrapper">
+                        <span class="rt-header__title">Hit Point</span>
+                        <input class="rt-header__input" name="system.hitPoints" type="number" data-dtype="Number"
+                               value="{{item.system.hitPoints}}" />
+                    </div>
+                    <div class="rt-header__item-wrapper">
+                        <span class="rt-header__title">Ship Points</span>
+                        <input class="rt-header__input" name="system.shipPoints" type="number" data-dtype="Number"
+                               value="{{item.system.shipPoints}}" />
+                    </div>
+                    <div class="rt-header__item-wrapper">
+                        <span class="rt-header__title">On Fire!</span>
+                        <input name="system.isOnFire" type="checkbox" data-dtype="Boolean" {{checked
+                            item.system.isOnFire}}/>
+                    </div>
+                    <div class="rt-header__item-wrapper">
+                        <span class="rt-header__title">Depressurised</span>
+                        <input name="system.isDepressurized" type="checkbox" data-dtype="Boolean" {{checked
+                            item.system.isDepressurized}}/>
+                    </div>
+                    <div class="rt-header__item-wrapper">
+                        <span class="rt-header__title">Unpowered</span>
+                        <input name="system.isUnpowered" type="checkbox" data-dtype="Boolean" {{checked
+                            item.system.isUnpowered}}/>
+                    </div>
+                    <div class="rt-header__item-wrapper">
+                        <span class="rt-header__title">Destroyed</span>
+                        <input name="system.isDestroyed" type="checkbox" data-dtype="Boolean" {{checked
+                            item.system.isDestroyed}}/>
+                    </div>
+                    <div class="rt-header__item-wrapper--span-2">
+                        <span class="rt-header__title">Availability</span>
+                        <select class="rt-header__select" name="system.availability">
+                            {{selectOptions (arrayToObject rt.items.availability) selected=item.system.availability}}
+                        </select>
+                    </div>
+                    <div class="rt-header__item-wrapper--span-2">
+                        <span class="rt-header__title">Craftsmanship</span>
+                        <select class="rt-header__select" name="system.craftsmanship">
+                            {{selectOptions (arrayToObject rt.items.craftsmanship) selected=item.system.craftsmanship}}
+                        </select>
+                    </div>
+                    <div class="rt-header__item-wrapper--text-area">
+                        <span class="rt-header__title">Description</span>
+                        <textarea class="rt-header__textarea" name="system.description">{{item.system.description}}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

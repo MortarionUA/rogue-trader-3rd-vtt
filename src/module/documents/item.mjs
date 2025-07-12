@@ -146,6 +146,10 @@ export class RogueTraderItem extends RogueTraderItemContainer {
         return this.type === 'peer';
     }
 
+    get isShipComponent() {
+        return this.type === 'shipComponent';
+    }
+
     get isShipWeapon() {
         return this.type === 'shipWeapon';
     }

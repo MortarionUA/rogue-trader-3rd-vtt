@@ -990,8 +990,9 @@
             "talent",
             "tool",
             "trait",
-            "weapon",
+            "shipComponent",
             "shipWeapon",
+            "weapon",
             "weaponModification"
         ],
         "templates": {
@@ -1041,6 +1042,34 @@
                 "backpack": {
                     "inBackpack": false
                 }
+            },
+            "shipComponent": {
+                "craftsmanship": "common",
+                "availability": "common",
+                "isOnFire" : false,
+                "isDepressurized": false,
+                "isUnpowered": false,
+                "isDestroyed": false,
+                "power": 0,
+                "space": 0,
+                "hitPoints": 0,
+                "shipPoints": 0,
+                "description" : ""
+            },
+            "shipGear": {
+                "componentType": "Plasma Drive"
+            },
+            "shipAttack": {
+                "class": "Turret",
+                "type": "Macrocannon",
+                "size": "Super Light",
+                "slot": "Dorsal",
+                "rangeSmall": 0,
+                "rangeMedium": 0,
+                "rangeLong": 0,
+                "strength": 0,
+                "damage": 0,
+                "attackBonus": 0
             }
         },
         "ammunition": {
@@ -1173,8 +1202,11 @@
             },
             "modifications": []
         },
+        "shipComponent": {
+            "templates": ["shipComponent", "shipGear", "action", "backpack"]
+        },
         "shipWeapon": {
-            "templates": ["physicalItem", "itemDescription", "damage", "attack", "action", "container", "backpack"],
+            "templates": ["shipComponent", "shipAttack", "action", "container", "backpack"],
             "container": true,
             "containerTypes": ["weaponModification", "attackSpecial"],
             "class": "",
@@ -1193,7 +1225,7 @@
             "templates": ["itemDescription"],
             "location": "",
             "container": true,
-            "containerTypes": ["ammunition", "armour", "armourModification", "cybernetic", "consumable", "drug", "forceField", "gear", "tool", "weapon", "shipWeapon", "weaponModification"]
+            "containerTypes": ["ammunition", "armour", "armourModification", "cybernetic", "consumable", "drug", "forceField", "gear", "shipComponent", "tool", "weapon", "shipWeapon", "weaponModification"]
         }
     }
 }
