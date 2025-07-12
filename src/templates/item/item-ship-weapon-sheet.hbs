@@ -129,6 +129,13 @@
                                 <input class="rt-field__input" type="text" name="system.hp"
                                        value="{{item.system.hp}}" />
                             </div>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">Size</span>
+                                <select class="rt-field__input" name="system.ship_weapon_size">
+                                    {{selectOptions (arrayToObject rt.combat.ship_weapon_size)
+                                                    selected=item.system.ship_weapon_size}}
+                                </select>
+                            </div>
                         </div>
 
                         <div class="rt-panel rt-grid-col-3">
