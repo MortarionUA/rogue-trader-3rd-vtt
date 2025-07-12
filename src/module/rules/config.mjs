@@ -45,6 +45,8 @@ DarkHeresy.combat = {
     ship_weapon_class: ['Turret', 'Broadside', 'Artillery', 'Keel', 'Special'],
     ship_weapon_size: ['Super Light', 'Light', 'Medium', 'Heavy', 'Super Heavy'],
     ship_weapon_slot: ['Dorsal', 'Prow', 'Port', 'Starboard', 'Keel', 'Special'],
+    component_type: ['Plasma Drive', 'Warp Engine', 'Gellar Field', 'Void Shield', 'Ship`s Bridge', 'Life Sustainer',
+        'Crew Quarters', 'Augur Array', 'Gravitic Array', 'Cargo Hold', 'Enhancement', 'Facility', 'Special'],
     ship_weapon_type: ['Macrocannon', 'Lance', 'Nova Cannon', 'Torpedoes', 'Launch Bays', 'Special'],
     weapon_class: ['Pistol', 'Basic', 'Heavy', 'Thrown', 'Melee'],
     weapon_type: [
