@@ -991,6 +991,7 @@
             "tool",
             "trait",
             "weapon",
+            "shipWeapon",
             "weaponModification"
         ],
         "templates": {
@@ -1172,6 +1173,19 @@
             },
             "modifications": []
         },
+        "shipWeapon": {
+            "templates": ["physicalItem", "itemDescription", "damage", "attack", "action", "container", "backpack"],
+            "container": true,
+            "containerTypes": ["weaponModification", "attackSpecial"],
+            "class": "",
+            "type": "",
+            "reload": "",
+            "clip": {
+                "max": 0,
+                "value": 0
+            },
+            "modifications": []
+        },
         "weaponModification": {
             "templates": ["physicalItem", "itemDescription", "damage", "attack", "backpack"]
         },
@@ -1179,7 +1193,7 @@
             "templates": ["itemDescription"],
             "location": "",
             "container": true,
-            "containerTypes": ["ammunition", "armour", "armourModification", "cybernetic", "consumable", "drug", "forceField", "gear", "tool", "weapon", "weaponModification"]
+            "containerTypes": ["ammunition", "armour", "armourModification", "cybernetic", "consumable", "drug", "forceField", "gear", "tool", "weapon", "shipWeapon", "weaponModification"]
         }
     }
 }
