@@ -44,6 +44,7 @@ DarkHeresy.combat = {
     special: attackSpecialsNames(),
     ship_weapon_class: ['Turret', 'Broadside', 'Artillery', 'Keel', 'Special'],
     ship_weapon_size: ['Super Light', 'Light', 'Medium', 'Heavy', 'Super Heavy'],
+    ship_weapon_slot: ['Dorsal', 'Prow', 'Port', 'Starboard', 'Keel', 'Special'],
     ship_weapon_type: ['Macrocannon', 'Lance', 'Nova Cannon', 'Torpedoes', 'Launch Bays', 'Special'],
     weapon_class: ['Pistol', 'Basic', 'Heavy', 'Thrown', 'Melee'],
     weapon_type: [
