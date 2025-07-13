@@ -112,15 +112,6 @@ $grid-tables: (
         }
     }
 
-    &-shipweaponsslotstable--border {
-        .table-row--head .table-cell:first-child,
-        .table-row .table-cell:first-child {
-            text-align: center !important;
-            justify-content: center !important;
-            align-items: center !important;
-        }
-    }
-
     &-table {
         h1 {
             grid-column: 1 / -1;
