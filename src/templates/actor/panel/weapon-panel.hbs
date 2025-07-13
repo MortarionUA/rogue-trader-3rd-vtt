@@ -12,7 +12,8 @@
                 </label>
             </div>
         </div>
-        {{#each weapons as | item |}}
+        {{#each items as | item |}}
+            {{#if item.isWeapon}}
                 <div class="table-row item-drag" data-item-id="{{item.id}}" data-item-type="weapon">
                     <div class="table-cell--settingstoggle">
                         <label class="rt-control-button item-edit" data-item-id="{{item.id}}">
@@ -60,6 +61,7 @@
                         </div>
                     </div>
                 </div>
+            {{/if}}
         {{/each}}
     </div>
 </div>
