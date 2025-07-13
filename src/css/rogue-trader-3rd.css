@@ -1117,12 +1117,12 @@
 .rt-wrapper .rt-shipweaponsslotstable--border .table-row--unknown {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
-.rt-wrapper .rt-shipweaponsslotstable--border .table-cell:first-child {
+.rt-wrapper .rt-shipweaponsslotstable .table-cell:first-child {
   text-align: center !important;
   justify-content: center !important;
   align-items: center !important;
 }
-.rt-wrapper .rt-shipweaponsslotstable--border .table-row--head .table-cell:first-child {
+.rt-wrapper .rt-shipweaponsslotstable .table-row .table-cell:first-child {
   text-align: center !important;
   justify-content: center !important;
 }
