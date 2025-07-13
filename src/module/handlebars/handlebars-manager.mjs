@@ -56,6 +56,11 @@ export class HandlebarManager {
             'systems/rogue-trader-3rd/templates/actor/panel/voidship-movement-panel.hbs',
             'systems/rogue-trader-3rd/templates/actor/panel/voidship-utility-panel.hbs',
 
+            'systems/rogue-trader-3rd/templates/actor/panel/voidship-weapon-panel.hbs',
+            'systems/rogue-trader-3rd/templates/actor/panel/voidship-weapon-slots-panel.hbs',
+            'systems/rogue-trader-3rd/templates/actor/panel/voidship-components.hbs',
+            'systems/rogue-trader-3rd/templates/actor/panel/voidship-traits-panel.hbs',
+
             'systems/rogue-trader-3rd/templates/actor/partial/character-field.hbs',
             'systems/rogue-trader-3rd/templates/actor/partial/display-toggle.hbs',
             'systems/rogue-trader-3rd/templates/actor/partial/trait-toggle.hbs',

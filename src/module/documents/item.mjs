@@ -62,6 +62,10 @@ export class RogueTraderItem extends RogueTraderItemContainer {
         return this.type === 'weapon';
     }
 
+    get isShipWeapon() {
+        return this.type === 'shipWeapon';
+    }
+
     get isRanged() {
         return this.type === 'weapon' && this.system.class.toLowerCase() !== 'melee';
     }
