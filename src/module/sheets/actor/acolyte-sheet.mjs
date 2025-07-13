@@ -1,10 +1,10 @@
+import { toggleUIExpanded } from '../../rules/config.mjs';
 import { ActorContainerSheet } from './actor-container-sheet.mjs';
 import { DHBasicActionManager } from '../../actions/basic-action-manager.mjs';
 import { DHTargetedActionManager } from '../../actions/targeted-action-manager.mjs';
 import { Hit } from '../../rolls/damage-data.mjs';
 import { AssignDamageData } from '../../rolls/assign-damage-data.mjs';
 import { prepareAssignDamageRoll } from '../../prompts/assign-damage-prompt.mjs';
-import foundry from 'nedb/browser-version/test/mocha.js';
 
 export class AcolyteSheet extends ActorContainerSheet {
     static get defaultOptions() {
@@ -43,7 +43,7 @@ export class AcolyteSheet extends ActorContainerSheet {
         event.preventDefault();
         const target = event.currentTarget;
 
-        switch (target.dataset.action) {
+        switch(target.dataset.action) {
             case 'attack':
                 await DHTargetedActionManager.performWeaponAttack(this.actor);
                 break;
@@ -58,6 +58,7 @@ export class AcolyteSheet extends ActorContainerSheet {
             case 'parry':
                 await this.actor.rollSkill('parry');
                 break;
+
         }
     }
 
@@ -95,7 +96,7 @@ export class AcolyteSheet extends ActorContainerSheet {
             content: '<p>Would you like to roll Wounds and Fate for this homeworld?</p>',
             yes: async () => {
                 // Something is probably wrong -- we will skip this
-                if (!this.actor.backgroundEffects?.homeworld) return;
+                if(!this.actor.backgroundEffects?.homeworld) return;
 
                 // Roll Wounds
                 let woundRoll = new Roll(this.actor.backgroundEffects.homeworld.wounds);

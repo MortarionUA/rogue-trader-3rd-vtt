@@ -12,8 +12,7 @@
                 </label>
             </div>
         </div>
-        {{#each actor.weapons as | item |}}
-
+        {{#each actor.items as | item |}}
                 <div class="table-row item-drag" data-item-id="{{item.id}}" data-item-type="weapon">
                     <div class="table-cell--settingstoggle">
                         <label class="rt-control-button item-edit" data-item-id="{{item.id}}">
@@ -61,7 +60,6 @@
                         </div>
                     </div>
                 </div>
-
         {{/each}}
     </div>
 </div>
