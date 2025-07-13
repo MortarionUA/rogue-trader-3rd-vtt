@@ -55,7 +55,6 @@ export class ActorContainerSheet extends ActorSheet {
                 if (!sourceId || !targetId || sourceId === targetId) return false;
 
                 const items = this.actor.items
-                    .filter(i => i.type === "weapon")
                     .sort((a, b) => a.sort - b.sort);
 
                 const sourceIndex = items.findIndex(i => i.id === sourceId);
