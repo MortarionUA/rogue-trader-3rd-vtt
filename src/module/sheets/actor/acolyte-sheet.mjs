@@ -24,7 +24,9 @@ export class AcolyteSheet extends ActorContainerSheet {
         const context = super.getData();
         context.rt = CONFIG.rt;
         context.effects = this.actor.getEmbeddedCollection('ActiveEffect').contents;
-        context.weapons = this.actor.items.filter((i) => i.type === 'weapon').sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0));
+        const weapons = this.actor.items.filter(i => i.type === "weapon");
+        const sortedWeapons = Array.from(weapons).sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0));
+        context.weapons = sortedWeapons;
         return context;
     }
 
