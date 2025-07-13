@@ -1055,6 +1055,7 @@
             "tool",
             "trait",
             "shipComponent",
+            "shipTrait",
             "shipWeapon",
             "weapon",
             "weaponModification"
