@@ -1476,9 +1476,6 @@
 .rt-wrapper .rt-textarea__textarea {
   flex-grow: 1;
 }
-.rt-wrapper .rt-wrapper .rt-table--border.rt-shipweaponsslotstable--border .table-cell:first-child input[type=text] {
-  text-align: center !important;
-}
 .rt-wrapper .rt-header {
   padding: 0;
   font-size: 12pt;
