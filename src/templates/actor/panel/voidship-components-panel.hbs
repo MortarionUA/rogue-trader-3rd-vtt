@@ -38,7 +38,7 @@
                         {{/if}}
                     </div>
                     <div class="table-cell">
-                        <select class="rt-field__input" name="system.location">
+                        <select class="rt-field__input" name="items.{{item.id}}.system.location">
                             {{selectOptions (arrayToObject rt.combat.component_location)
                                             selected=item.system.location}}
                         </select>
@@ -50,26 +50,26 @@
                         <span class="display">{{item.system.space}}</span>
                     </div>
                     <div class="table-cell">
-                        <input class="rt-field__input" type="number" name="system.hitPoints"
+                        <input class="rt-field__input" type="number" name="items.{{item.id}}.system.hitPoints"
                                value="{{item.system.hitPoints}}" />
                     </div>
                     <div class="table-cell">
                         <span class="display">{{item.system.shipPoints}}</span>
                     </div>
                     <div class="table-cell">
-                        <input name="system.isOnFire" type="checkbox" data-dtype="Boolean" {{checked
+                        <input name="items.{{item.id}}.system.isOnFire" type="checkbox" data-dtype="Boolean" {{checked
                             item.system.isOnFire}}/>
                     </div>
                     <div class="table-cell">
-                        <input name="system.isDepressurized" type="checkbox" data-dtype="Boolean" {{checked
+                        <input name="items.{{item.id}}.system.isDepressurized" type="checkbox" data-dtype="Boolean" {{checked
                             item.system.isDepressurized}}/>
                     </div>
                     <div class="table-cell">
-                        <input name="system.isUnpowered" type="checkbox" data-dtype="Boolean" {{checked
+                        <input name="items.{{item.id}}.system.isUnpowered" type="checkbox" data-dtype="Boolean" {{checked
                             item.system.isUnpowered}}/>
                     </div>
                     <div class="table-cell">
-                        <input name="system.isDestroyed" type="checkbox" data-dtype="Boolean" {{checked
+                        <input name="items.{{item.id}}.system.isDestroyed" type="checkbox" data-dtype="Boolean" {{checked
                             item.system.isDestroyed}}/>
                     </div>
                     <div class="table-cell--last">
