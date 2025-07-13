@@ -1,6 +1,6 @@
-import { ActorContainerSheet } from './actor-container-sheet.mjs';
+import { AcolyteSheet } from './acolyte-sheet.mjs';
 
-export class VoidshipSheet extends ActorContainerSheet {
+export class VoidshipSheet extends AcolyteSheet {
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             width: 1000,
@@ -11,19 +11,6 @@ export class VoidshipSheet extends ActorContainerSheet {
     }
 
     get template() {
-        return `systems/rogue-trader-3rd/templates/actor/actor-voidship-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/actor/actor-npc-sheet.hbs`;
     }
-
-    getData() {
-        const context = super.getData();
-        context.rt = CONFIG.rt;
-        return context;
-    }
-
-    async _onItemDamage(event) {
-        event.preventDefault();
-        const div = $(event.currentTarget);
-        game.rt.warn('Not Implemented for Vehicles Yet');
-    }
-
 }
