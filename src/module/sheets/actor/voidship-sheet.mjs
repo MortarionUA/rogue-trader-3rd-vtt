@@ -11,6 +11,6 @@ export class VoidshipSheet extends AcolyteSheet {
     }
 
     get template() {
-        return `systems/rogue-trader-3rd/templates/actor/actor-npc-sheet.hbs`;
+        return `systems/rogue-trader-3rd/templates/actor/actor-voidship-sheet.hbs`;
     }
 }
