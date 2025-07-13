@@ -29,4 +29,19 @@ export class VoidshipSheet extends ActorContainerSheet {
         game.rt.warn('Not Implemented for Vehicles Yet');
     }
 
+    activateListeners(html) {
+        super.activateListeners(html);
+
+        html.find("input[type='checkbox'][name^='items.']").on("change", async (event) => {
+            const input = event.currentTarget;
+            const itemId = input.name.split(".")[1];
+            const path = input.name.split(".").slice(2).join(".");
+            const checked = input.checked;
+
+            const item = this.actor.items.get(itemId);
+            if (!item) return;
+
+            await item.update({ [`system.${path.split("system.")[1]}`]: checked });
+        });
+    }
 }
