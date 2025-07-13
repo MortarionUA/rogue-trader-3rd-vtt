@@ -47,36 +47,36 @@ export class ActorContainerSheet extends ActorSheet {
 
         const targetElement = event.target.closest('.item-drag');
         const targetId = targetElement?.dataset?.itemId;
-
-        if (dragData.type === 'Item' && dragData.action === 'reorder') {
-            const sourceId = dragData.itemId;
-            if (!sourceId || !targetId || sourceId === targetId) return false;
-
-            const items = this.actor.items
-                .filter(i => i.type === "weapon")
-                .sort((a, b) => a.sort - b.sort);
-
-            const sourceIndex = items.findIndex(i => i.id === sourceId);
-            const targetIndex = items.findIndex(i => i.id === targetId);
-            if (sourceIndex === -1 || targetIndex === -1) return false;
-
-            // Move item
-            const moved = items[sourceIndex];
-            items.splice(sourceIndex, 1);
-            items.splice(targetIndex, 0, moved);
-
-            // Reassign sort order
-            const updates = items.map((item, i) => ({
-                _id: item.id,
-                sort: i * 10
-            }));
-
-            await this.actor.updateEmbeddedDocuments("Item", updates);
-            return true;
-        }
-
         try {
             const data = JSON.parse(event.dataTransfer.getData('text/plain'));
+
+            if (data.type === 'Item' && data.action === 'reorder') {
+                const sourceId = data.itemId;
+                if (!sourceId || !targetId || sourceId === targetId) return false;
+
+                const items = this.actor.items
+                    .filter(i => i.type === "weapon")
+                    .sort((a, b) => a.sort - b.sort);
+
+                const sourceIndex = items.findIndex(i => i.id === sourceId);
+                const targetIndex = items.findIndex(i => i.id === targetId);
+                if (sourceIndex === -1 || targetIndex === -1) return false;
+
+                // Move item
+                const moved = items[sourceIndex];
+                items.splice(sourceIndex, 1);
+                items.splice(targetIndex, 0, moved);
+
+                // Reassign sort order
+                const updates = items.map((item, i) => ({
+                    _id: item.id,
+                    sort: i * 10
+                }));
+
+                await this.actor.updateEmbeddedDocuments("Item", updates);
+                return true;
+            }
+
             if (data.type === 'Item' || data.type === 'item') {
                 game.rt.log('Checking if item already exists', data);
                 // Check if Item already Exists
