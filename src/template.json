@@ -945,6 +945,7 @@
                     "max": 0,
                     "value": 0
                 },
+                "crewRating": 0,
                 "crew": {
                     "max": 0,
                     "value": 0
@@ -975,6 +976,12 @@
                     "starboard": "",
                     "keel": "",
                     "special": ""
+                },
+                "operator": {
+                    "weapons": "",
+                    "helm": "",
+                    "boarding": "",
+                    "augurs": ""
                 }
             }
         },
@@ -1111,7 +1118,8 @@
                 "space": 0,
                 "hitPoints": 0,
                 "shipPoints": 0,
-                "description" : ""
+                "description": "",
+                "location": "Main"
             },
             "shipGear": {
                 "componentClass": "Essential",

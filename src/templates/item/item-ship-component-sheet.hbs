@@ -7,9 +7,15 @@
                         <img class="rt-header__logo-image" src="{{item.img}}" data-edit="img" alt="{{item.name}}"
                              title="{{item.name}}" />
                     </div>
-                    <div class="rt-header__item-wrapper--span-4">
+                    <div class="rt-header__item-wrapper--span-2">
                         <span class="rt-header__title">Name</span>
                         <input class="rt-header__input" name="name" type="text" value="{{item.name}}" />
+                    </div>
+                    <div class="rt-header__item-wrapper--span-2">
+                        <span class="rt-header__title">Location</span>
+                        <select class="rt-header__select" name="system.location">
+                            {{selectOptions (arrayToObject rt.combat.component_location) selected=item.system.location}}
+                        </select>
                     </div>
                     <div class="rt-header__item-wrapper--span-2">
                         <span class="rt-header__title">Class</span>
