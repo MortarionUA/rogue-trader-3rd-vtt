@@ -55,15 +55,6 @@
                             <span class="rt-control-button__span material-icons">{{defaultVal icon 'delete'}}</span>
                         </label>
                     </div>
-                    <div class="table-cell--description description_{{item.id}}" {{hideIfNot
-                        (isExpanded (concat 'description_' item.id ))}}>
-                        <div class="rt-settings">
-                            <div class="rt-field__wrapper">
-                                <span class="rt-field__header">Description</span>
-                                <span class="rt-field__span">{{item.system.description}}</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             {{/if}}
         {{/each}}

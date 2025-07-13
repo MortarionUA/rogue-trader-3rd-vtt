@@ -1275,13 +1275,6 @@
             "templates": ["shipComponent", "shipAttack", "action", "container", "backpack"],
             "container": true,
             "containerTypes": ["weaponModification", "attackSpecial"],
-            "class": "",
-            "type": "",
-            "reload": "",
-            "clip": {
-                "max": 0,
-                "value": 0
-            },
             "modifications": []
         },
         "weaponModification": {
