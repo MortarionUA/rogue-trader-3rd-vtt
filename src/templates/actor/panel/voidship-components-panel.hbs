@@ -32,7 +32,7 @@
                     </div>
                     <div class="table-cell">
                         {{#if (or item.isShipWeapon)}}
-                        <span class="display">Weapon</span>
+                        <span class="display">{{item.system.type}}</span>
                         {{else}}
                         <span class="display">{{item.system.componentType}}</span>
                         {{/if}}
