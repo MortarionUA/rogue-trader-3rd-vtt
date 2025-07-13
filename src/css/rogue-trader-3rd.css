@@ -1082,22 +1082,22 @@
   grid-template-columns: 2rem 1fr 3rem;
 }
 .rt-wrapper .rt-shipweaponstable--no-border .table-row {
-  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 0.75fr 4rem;
+  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 1fr 4rem;
 }
 .rt-wrapper .rt-shipweaponstable--no-border .table-row--head {
-  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 0.75fr 4rem;
+  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 1fr 4rem;
 }
 .rt-wrapper .rt-shipweaponstable--no-border .table-row--highlight {
-  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 0.75fr 4rem;
+  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 1fr 4rem;
 }
 .rt-wrapper .rt-shipweaponstable--border .table-row {
-  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 0.75fr 4rem;
+  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 1fr 4rem;
 }
 .rt-wrapper .rt-shipweaponstable--border .table-row--head {
-  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 0.75fr 4rem;
+  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 1fr 4rem;
 }
 .rt-wrapper .rt-shipweaponstable--border .table-row--unknown {
-  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 0.75fr 4rem;
+  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 1fr 4rem;
 }
 .rt-wrapper .rt-shipweaponsslotstable--no-border .table-row {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -1116,6 +1116,24 @@
 }
 .rt-wrapper .rt-shipweaponsslotstable--border .table-row--unknown {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.rt-wrapper .rt-shipcomponentstable--no-border .table-row {
+  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 4rem;
+}
+.rt-wrapper .rt-shipcomponentstable--no-border .table-row--head {
+  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 4rem;
+}
+.rt-wrapper .rt-shipcomponentstable--no-border .table-row--highlight {
+  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 4rem;
+}
+.rt-wrapper .rt-shipcomponentstable--border .table-row {
+  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 4rem;
+}
+.rt-wrapper .rt-shipcomponentstable--border .table-row--head {
+  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 4rem;
+}
+.rt-wrapper .rt-shipcomponentstable--border .table-row--unknown {
+  grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 4rem;
 }
 .rt-wrapper .rt-shipweaponsslotstable--border {
   min-height: 0 !important;

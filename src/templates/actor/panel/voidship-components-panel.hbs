@@ -1,0 +1,97 @@
+<div class="rt-panel rt-grid-col-6">
+    <h1 class="rt-panel__header">Weapons</h1>
+    <div class="rt-table--border rt-shipweaponstable--border">
+        <div class="table-row--head">
+            <div class="table-cell--span2">Name</div>
+            <div class="table-cell">Type</div>
+            <div class="table-cell">Location</div>
+            <div class="table-cell">Power</div>
+            <div class="table-cell">Space</div>
+            <div class="table-cell">Hit Points</div>
+            <div class="table-cell">Ship Points</div>
+            <div class="table-cell">On Fire</div>
+            <div class="table-cell">Depressurized</div>
+            <div class="table-cell">Unpowered</div>
+            <div class="table-cell">Destroyed</div>
+            <div class="table-cell--last">
+                <label class="rt-control-button item-create" data-type="shipWeapon">
+                    <span class="rt-control-button__span material-icons">{{defaultVal icon 'add_circle'}}</span>
+                </label>
+            </div>
+        </div>
+        {{#each items as | item |}}
+            {{#if (or item.isShipWeapon item.isShipComponent)}}
+                <div class="table-row item-drag" data-item-id="{{item.id}}" data-item-type="shipWeapon">
+                    <div class="table-cell--settingstoggle">
+                        <label class="rt-control-button item-edit" data-item-id="{{item.id}}">
+                            <span class="rt-control-button__span material-icons">{{defaultVal icon 'settings'}}</span>
+                        </label>
+                    </div>
+                    <div class="table-cell--left">
+                        {{> systems/rogue-trader-3rd/templates/actor/partial/trait-toggle.hbs toggle=(concat 'description_' item.id) text=item.name}}
+                    </div>
+                    <div class="table-cell">
+                        <span class="display">{{item.system.componentType}}</span>
+                    </div>
+                    <div class="table-cell">
+                        <select class="rt-field__input" name="system.location">
+                            {{selectOptions (arrayToObject rt.combat.component_location)
+                                            selected=item.system.location}}
+                        </select>
+                    </div>
+                    <div class="table-cell">
+                        <span class="display">{{item.system.power}}</span>
+                    </div>
+                    <div class="table-cell">
+                        <span class="display">{{item.system.space}}</span>
+                    </div>
+                    <div class="table-cell">
+                        <input class="rt-field__input" type="number" name="system.hitPoints"
+                               value="{{item.system.hitPoints}}" />
+                    </div>
+                    <div class="table-cell">
+                        <span class="display">{{item.system.shipPoints}}</span>
+                    </div>
+                    <div class="table-cell">
+                        <input name="system.isOnFire" type="checkbox" data-dtype="Boolean" {{checked
+                            item.system.isOnFire}}/>
+                    </div>
+                    <div class="table-cell">
+                        <input name="system.isDepressurized" type="checkbox" data-dtype="Boolean" {{checked
+                            item.system.isDepressurized}}/>
+                    </div>
+                    <div class="table-cell">
+                        <input name="system.isUnpowered" type="checkbox" data-dtype="Boolean" {{checked
+                            item.system.isUnpowered}}/>
+                    </div>
+                    <div class="table-cell">
+                        <input name="system.isDestroyed" type="checkbox" data-dtype="Boolean" {{checked
+                            item.system.isDestroyed}}/>
+                    </div>
+                    <div class="table-cell--last">
+                        <label class="rt-control-button item-delete" data-item-id="{{item.id}}">
+                            <span class="rt-control-button__span material-icons">{{defaultVal icon 'delete'}}</span>
+                        </label>
+                    </div>
+                    <div class="table-cell--description description_{{item.id}}" {{hideIfNot
+                        (isExpanded (concat 'description_' item.id ))}}>
+                        <div class="rt-settings">
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">Craftsmanship</span>
+                                <span class="rt-field__span">{{item.system.craftsmanship}}</span>
+                            </div>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">Availability</span>
+                                <span class="rt-field__span">{{item.system.availability}}</span>
+                            </div>
+                            <div class="rt-field__wrapper">
+                                <span class="rt-field__header">Description</span>
+                                <span class="rt-field__span">{{item.system.description}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        {{/each}}
+    </div>
+</div>
