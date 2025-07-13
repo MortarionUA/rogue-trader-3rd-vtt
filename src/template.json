@@ -1271,6 +1271,9 @@
         "shipComponent": {
             "templates": ["shipComponent", "shipGear", "action", "backpack"]
         },
+        "shipTrait": {
+            "templates": ["itemDescription"]
+        },
         "shipWeapon": {
             "templates": ["shipComponent", "shipAttack", "action", "container", "backpack"],
             "container": true,

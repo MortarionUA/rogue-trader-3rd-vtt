@@ -1,0 +1,21 @@
+<div class="rt-wrapper">
+    <form class="rt-item" autocomplete="off">
+        <div class="rt-panel rt-grid-col-6">
+            <div class="rt-header">
+                <div class="rt-header__info">
+                    <div class="rt-header__logo rt-header__item-wrapper--span-4">
+                        <img class="rt-header__logo-image" src="{{item.img}}" data-edit="img" alt="{{item.name}}" title="{{item.name}}" />
+                    </div>
+                    <div class="rt-header__item-wrapper--span-4">
+                        <span class="rt-header__title">Name</span>
+                        <input class="rt-header__input" name="name" type="text" value="{{item.name}}" />
+                    </div>
+                    <div class="rt-header__item-wrapper--text-area">
+                        <span class="rt-header__title">Description</span>
+                        <textarea class="rt-header__textarea" name="system.description">{{item.system.description}}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,9 +1,9 @@
 <div class="rt-panel rt-grid-col-6">
     <h1 class="rt-panel__header">Traits</h1>
-    <div class="rt-table--border rt-traittable--border">
+    <div class="rt-table--border rt-shiptraitstable--border">
         <div class="table-row--head">
-            <div class="table-cell--span2">Name</div>
-            <div class="table-cell">Level</div>
+            <div class="table-cell--span1">Name</div>
+            <div class="table-cell--span3">Description</div>
             <div class="table-cell--last">
                 <label class="rt-control-button item-create" data-type="trait">
                     <span class="rt-control-button__span material-icons">{{defaultVal icon 'add_circle'}}</span>
@@ -19,10 +19,10 @@
                         </label>
                     </div>
                     <div class="table-cell">
-                        {{> systems/rogue-trader-3rd/templates/actor/partial/trait-toggle.hbs toggle=(concat 'description_' item.id) text=item.name}}
+                        <span>{{item.name}}</span>
                     </div>
                     <div class="table-cell">
-                        <span>{{item.system.level}}</span>
+                        <span>{{item.system.description}}</span>
                     </div>
                     <div class="table-cell">
                         <label class="rt-control-button item-vocalize" data-item-id="{{item.id}}">
@@ -31,10 +31,6 @@
                         <label class="rt-control-button item-delete" data-item-id="{{item.id}}">
                             <span class="rt-control-button__span material-icons">{{defaultVal icon 'delete'}}</span>
                         </label>
-                    </div>
-                    <div class="table-cell--description description_{{item.id}}" {{hideIfNot
-                        (isExpanded (concat 'description_' item.id ))}}>
-                        <span>{{item.system.description}}</span>
                     </div>
                 </div>
             {{/if}}
