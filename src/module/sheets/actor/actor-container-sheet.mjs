@@ -40,10 +40,40 @@ export class ActorContainerSheet extends ActorSheet {
         html.find('.add-skill').click(async (ev) => await this._addSpecialistSkill(ev));
     }
 
-    _onDrop(event) {
+    async _onDrop(event) {
         event.preventDefault();
         event.stopPropagation();
         game.rt.log('Actor _onDrop', event);
+
+        const targetElement = event.target.closest('.item-drag');
+        const targetId = targetElement?.dataset?.itemId;
+
+        if (dragData.type === 'Item' && dragData.action === 'reorder') {
+            const sourceId = dragData.itemId;
+            if (!sourceId || !targetId || sourceId === targetId) return false;
+
+            const items = this.actor.items
+                .filter(i => i.type === "weapon")
+                .sort((a, b) => a.sort - b.sort);
+
+            const sourceIndex = items.findIndex(i => i.id === sourceId);
+            const targetIndex = items.findIndex(i => i.id === targetId);
+            if (sourceIndex === -1 || targetIndex === -1) return false;
+
+            // Move item
+            const moved = items[sourceIndex];
+            items.splice(sourceIndex, 1);
+            items.splice(targetIndex, 0, moved);
+
+            // Reassign sort order
+            const updates = items.map((item, i) => ({
+                _id: item.id,
+                sort: i * 10
+            }));
+
+            await this.actor.updateEmbeddedDocuments("Item", updates);
+            return true;
+        }
 
         try {
             const data = JSON.parse(event.dataTransfer.getData('text/plain'));
@@ -174,6 +204,8 @@ export class ActorContainerSheet extends ActorSheet {
             tokenId: this.actor.isToken ? this.actor.token?.id : null,
             type: 'Item',
             data: item,
+            itemId: itemId,
+            action: 'reorder',
         };
         event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
     }
