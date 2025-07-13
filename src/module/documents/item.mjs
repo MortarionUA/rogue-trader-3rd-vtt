@@ -70,6 +70,10 @@ export class RogueTraderItem extends RogueTraderItemContainer {
         return this.type === 'shipComponent';
     }
 
+    get isShipTrait() {
+        return this.type === 'shipTrait';
+    }
+
     get isRanged() {
         return this.type === 'weapon' && this.system.class.toLowerCase() !== 'melee';
     }
