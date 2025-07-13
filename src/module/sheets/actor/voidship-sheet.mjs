@@ -32,16 +32,28 @@ export class VoidshipSheet extends ActorContainerSheet {
     activateListeners(html) {
         super.activateListeners(html);
 
-        html.find("input[type='checkbox'][name^='items.']").on("change", async (event) => {
+        html.find("[name^='items.']").on("change", async (event) => {
             const input = event.currentTarget;
-            const itemId = input.name.split(".")[1];
-            const path = input.name.split(".").slice(2).join(".");
-            const checked = input.checked;
+            const name = input.name; // e.g. items.abc123.system.isOnFire
+            const itemId = name.split(".")[1];
+            const path = name.split(".").slice(2).join("."); // system.isOnFire, system.hitPoints, etc.
+            const dtype = input.dataset.dtype || "String";
 
             const item = this.actor.items.get(itemId);
             if (!item) return;
 
-            await item.update({ [`system.${path.split("system.")[1]}`]: checked });
+            let value;
+            if (input.type === "checkbox") {
+                value = input.checked;
+            } else if (dtype === "Number") {
+                value = parseFloat(input.value) || 0;
+            } else if (dtype === "Boolean") {
+                value = input.checked;
+            } else {
+                value = input.value;
+            }
+
+            await item.update({ [path]: value });
         });
     }
 }
