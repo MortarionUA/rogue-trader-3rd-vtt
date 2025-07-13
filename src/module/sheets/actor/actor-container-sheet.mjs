@@ -54,8 +54,7 @@ export class ActorContainerSheet extends ActorSheet {
                 const sourceId = data.itemId;
                 if (!sourceId || !targetId || sourceId === targetId) return false;
 
-                const items = this.actor.items
-                    .sort((a, b) => a.sort - b.sort);
+                const items = Array.from(this.actor.items).sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0));
 
                 const sourceIndex = items.findIndex(i => i.id === sourceId);
                 const targetIndex = items.findIndex(i => i.id === targetId);
