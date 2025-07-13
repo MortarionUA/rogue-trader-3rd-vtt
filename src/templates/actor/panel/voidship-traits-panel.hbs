@@ -5,13 +5,13 @@
             <div class="table-cell--span2">Name</div>
             <div class="table-cell">Description</div>
             <div class="table-cell--last">
-                <label class="rt-control-button item-create" data-type="trait">
+                <label class="rt-control-button item-create" data-type="shipTrait">
                     <span class="rt-control-button__span material-icons">{{defaultVal icon 'add_circle'}}</span>
                 </label>
             </div>
         </div>
         {{#each items as | item |}}
-            {{#if item.isTrait}}
+            {{#if item.isShipTrait}}
                 <div class="table-row">
                     <div class="table-cell--settingstoggle">
                         <label class="rt-control-button item-edit" data-item-id="{{item.id}}">
