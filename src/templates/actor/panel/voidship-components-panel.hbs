@@ -38,10 +38,7 @@
                         {{/if}}
                     </div>
                     <div class="table-cell">
-                        <select class="rt-field__input" name="items.{{item.id}}.system.location">
-                            {{selectOptions (arrayToObject rt.combat.component_location)
-                                            selected=item.system.location}}
-                        </select>
+                        <span class="display">{{item.system.location}}</span>
                     </div>
                     <div class="table-cell">
                         <span class="display">{{item.system.power}}</span>
