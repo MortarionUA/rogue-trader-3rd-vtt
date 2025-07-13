@@ -31,7 +31,11 @@
                         {{> systems/rogue-trader-3rd/templates/actor/partial/trait-toggle.hbs toggle=(concat 'description_' item.id) text=item.name}}
                     </div>
                     <div class="table-cell">
+                        {{#if (or item.isShipWeapon)}}
+                        <span class="display">Weapon</span>
+                        {{else}}
                         <span class="display">{{item.system.componentType}}</span>
+                        {{/if}}
                     </div>
                     <div class="table-cell">
                         <select class="rt-field__input" name="system.location">
