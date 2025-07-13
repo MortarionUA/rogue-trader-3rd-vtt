@@ -17,6 +17,9 @@ export class VehicleSheet extends ActorContainerSheet {
     getData() {
         const context = super.getData();
         context.rt = CONFIG.rt;
+        const items = this.actor.items;
+        const sortedItems = Array.from(items).sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0));
+        context.items = sortedItems;
         return context;
     }
 
