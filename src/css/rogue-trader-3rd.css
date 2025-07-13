@@ -1099,6 +1099,24 @@
 .rt-wrapper .rt-shipweaponstable--border .table-row--unknown {
   grid-template-columns: 1.5rem 2fr 1fr 1fr 1fr 1fr 1fr 0.75fr 4rem;
 }
+.rt-wrapper .rt-shipweaponsslotstable--no-border .table-row {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.rt-wrapper .rt-shipweaponsslotstable--no-border .table-row--head {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.rt-wrapper .rt-shipweaponsslotstable--no-border .table-row--highlight {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.rt-wrapper .rt-shipweaponsslotstable--border .table-row {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.rt-wrapper .rt-shipweaponsslotstable--border .table-row--head {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.rt-wrapper .rt-shipweaponsslotstable--border .table-row--unknown {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
 .rt-wrapper .rt-table h1 {
   grid-column: 1/-1;
 }

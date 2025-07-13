@@ -978,10 +978,10 @@
                     "special": ""
                 },
                 "operator": {
-                    "weapons": "",
-                    "helm": "",
-                    "boarding": "",
-                    "augurs": ""
+                    "weapons": 0,
+                    "helm": 0,
+                    "boarding": 0,
+                    "augurs": 0
                 }
             }
         },
