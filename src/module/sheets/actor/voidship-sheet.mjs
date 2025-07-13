@@ -1,0 +1,29 @@
+import { ActorContainerSheet } from './actor-container-sheet.mjs';
+
+export class VoidshipSheet extends ActorContainerSheet {
+    static get defaultOptions() {
+        return foundry.utils.mergeObject(super.defaultOptions, {
+            width: 1000,
+            height: 750,
+            resizable: true,
+            tabs: [{ navSelector: '.rt-navigation', contentSelector: '.rt-body', initial: 'main' }],
+        });
+    }
+
+    get template() {
+        return `systems/rogue-trader-3rd/templates/actor/actor-voidship-sheet.hbs`;
+    }
+
+    getData() {
+        const context = super.getData();
+        context.rt = CONFIG.rt;
+        return context;
+    }
+
+    async _onItemDamage(event) {
+        event.preventDefault();
+        const div = $(event.currentTarget);
+        game.rt.warn('Not Implemented for Vehicles Yet');
+    }
+
+}

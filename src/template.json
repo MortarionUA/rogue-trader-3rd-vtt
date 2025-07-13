@@ -1,6 +1,6 @@
 {
     "Actor": {
-        "types": ["acolyte", "npc", "vehicle"],
+        "types": ["acolyte", "npc", "vehicle", "voidship"],
         "templates": {
             "base": {
                 "wounds": {
@@ -922,6 +922,61 @@
                     "value": 0,
                     "critical": 0
                 }
+            },
+            "voidship": {
+                "shipName": "",
+                "shipClass": "",
+                "shipType": "",
+                "shields": 0,
+                "armour": {
+                    "prow": 0,
+                    "side": 0,
+                    "rear": 0
+                },
+                "hull": {
+                    "max": 0,
+                    "value": 0
+                },
+                "turrets": 0,
+                "space": {
+                    "max": 0,
+                    "value": 0
+                },
+                "power": {
+                    "max": 0,
+                    "value": 0
+                },
+                "crew": {
+                    "max": 0,
+                    "value": 0
+                },
+                "morale": {
+                    "max": 0,
+                    "value": 0
+                },
+                "speed": 0,
+                "turnRadius": 0,
+                "maneuverability": 0,
+                "troops": {
+                    "max": 0,
+                    "value": 0
+                },
+                "boarding": {
+                    "actions": 0,
+                    "damage": 0
+                },
+                "signature": 0,
+                "detection": 0,
+                "radar": 0,
+                "gravitics": 0,
+                "weaponSlots": {
+                    "dorsal": "",
+                    "prow": "",
+                    "port": "",
+                    "starboard": "",
+                    "keel": "",
+                    "special": ""
+                }
             }
         },
         "acolyte": {
@@ -962,6 +1017,9 @@
         },
         "vehicle": {
             "templates": ["base", "vehicle", "npc"]
+        },
+        "voidship": {
+            "templates": ["base", "voidship", "npc"]
         }
     },
     "Item": {

@@ -1,0 +1,26 @@
+{{rtlog this}}
+<div class="rt-wrapper">
+    <form class="rt-actor" autocomplete="off">
+        <div class="rt-header rt-grid-col-6 rt-panel">
+            <div class="rt-header__info">
+                <div class="rt-header__logo rt-header__item-wrapper--span-4">
+                    <img class="rt-header__logo-image" src="{{actor.img}}" data-edit="img" alt="{{actor.name}}" title="{{actor.name}}" />
+                </div>
+                <div class="rt-header__item-wrapper--span-2">
+                    <span class="rt-header__title">Ship Name</span>
+                    <input class="rt-header__input" name="name" type="text" value="{{actor.shipName}}" />
+                </div>
+                <div class="rt-header__item-wrapper--span-1">
+                    <span class="rt-header__title">Class</span>
+                    <input class="rt-header__input" name="system.class" type="text" value="{{actor.system.shipClass}}" />
+                </div>
+                <div class="rt-header__item-wrapper--span-1">
+                    <span class="rt-header__title">Type</span>
+                    <input class="rt-header__input" name="system.type" type="text" value="{{actor.system.shipType}}" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+

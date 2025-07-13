@@ -27,6 +27,7 @@ import { DarkHeresyTraitSheet } from './sheets/item/trait-sheet.mjs';
 import { RogueTraderActorProxy } from './documents/actor-proxy.mjs';
 import { NpcSheet } from './sheets/actor/npc-sheet.mjs';
 import { VehicleSheet } from './sheets/actor/vehicle-sheet.mjs';
+import { VoidshipSheet } from './sheets/actor/voidship-sheet.mjs';
 import { DarkHeresyCriticalInjurySheet } from './sheets/item/critical-injury-sheet.mjs';
 import { DarkHeresyGearSheet } from './sheets/item/gear-sheet.mjs';
 import { RogueTraderSettings } from './rogue-trader-settings.mjs';
@@ -100,6 +101,7 @@ Enable Debug with: game.rt.debug = true
         Actors.registerSheet(SYSTEM_ID, AcolyteSheet, {types: ["acolyte"], makeDefault: true });
         Actors.registerSheet(SYSTEM_ID, NpcSheet, {types: ['npc'], makeDefault: true });
         Actors.registerSheet(SYSTEM_ID, VehicleSheet, {types: ['vehicle'], makeDefault: true });
+        Actors.registerSheet(SYSTEM_ID, VoidshipSheet, {types: ['voidship'], makeDefault: true });
 
         Items.unregisterSheet('core', ItemSheet);
         Items.registerSheet(SYSTEM_ID, DarkHeresyItemSheet, { makeDefault: true });

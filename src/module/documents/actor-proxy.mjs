@@ -1,5 +1,6 @@
 import { RogueTraderAcolyte } from './acolyte.mjs';
 import { RogueTraderVehicle } from './vehicle.mjs';
+import { RogueTraderVoidship } from './voidship.mjs';
 import { RogueTraderNPC } from './npc.mjs';
 import { RogueTraderBaseActor } from './base-actor.mjs';
 

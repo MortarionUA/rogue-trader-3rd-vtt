@@ -18,6 +18,10 @@ export class RogueTraderBaseActor extends Actor {
             initData['token.bar1'] = { 'attribute': 'integrity' };
             initData['token.bar2'] = undefined;
         }
+        if (data.type === 'voidship') {
+            initData['token.bar1'] = { 'attribute': 'hull' };
+            initData['token.bar2'] = undefined;
+        }
         if (data.type === 'acolyte') {
             initData['token.vision'] = true;
             initData['token.actorLink'] = true;
