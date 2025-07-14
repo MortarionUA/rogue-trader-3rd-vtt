@@ -270,7 +270,7 @@
   background: #535538;
   background: url("../images/notice.png") no-repeat center/100% 100%;
 }
-.rt-wrapper .rt-chat .rt-roll__flawless {
+.rt-wrapper .rt-chat .rt-roll__flawed {
   background: #ffbb16;
   background: url("../images/flawless.png") no-repeat center/100% 100%;
 }
@@ -278,7 +278,7 @@
   background: #073;
   background: url("../images/success.png") no-repeat center/100% 100%;
 }
-.rt-wrapper .rt-chat .rt-roll__flawed {
+.rt-wrapper .rt-chat .rt-roll__flawless {
   background: #1c9c52;
   background: url("../images/flawed.png") no-repeat center/100% 100%;
 }

@@ -173,7 +173,7 @@
     }
 
     //noinspection CssUnknownTarget
-    &__flawless {
+    &__flawed {
       background: #ffbb16;
       background: url('../images/flawless.png') no-repeat center/100% 100%;
     }
@@ -185,7 +185,7 @@
     }
 
     //noinspection CssUnknownTarget
-    &__flawed {
+    &__flawless {
       background: #1c9c52;
       background: url('../images/flawed.png') no-repeat center/100% 100%;
     }
