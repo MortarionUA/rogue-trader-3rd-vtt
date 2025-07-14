@@ -72,13 +72,13 @@ export class VoidshipSheet extends ActorContainerSheet {
                 break;
             case 'movement':
                 console.log(this.actor);
-                await this.actor.rollManeuver("Maneuver", this.actor.system.operator.helm);
+                await this.actor.rollCrew("Maneuver", this.actor.system.operator.helm);
                 break;
             case 'boarding':
                 await this.actor.prepareBoarding(this.actor);
                 break;
             case 'detection':
-                await this.actor.rollDetection("Detection", this.actor.system.operator.augurs);
+                await this.actor.rollCrew("Detection", this.actor.system.operator.augurs);
                 break;
             case 'crew':
                 await this.actor.rollCrew("Crew", 0);
