@@ -61,4 +61,27 @@ export class VoidshipSheet extends ActorContainerSheet {
         });
         html.find('.combat-control').click(async (ev) => await this._combatControls(ev));
     }
+
+    async _combatControls(event) {
+        event.preventDefault();
+        const target = event.currentTarget;
+
+        switch(target.dataset.action) {
+            case 'turrets':
+                await prepareTurretFire(this.actor);
+                break;
+            case 'movement':
+                await rollCrew("Maneuver", this.actor.system.operator.helm);
+                break;
+            case 'boarding':
+                await prepareBoarding(this.actor);
+                break;
+            case 'detection':
+                await rollCrew("Detection", this.actor.system.operator.augurs);
+                break;
+            case 'crew':
+                await rollCrew("Crew", 0);
+                break;
+        }
+    }
 }
