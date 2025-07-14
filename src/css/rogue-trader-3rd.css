@@ -103,6 +103,11 @@
   font-family: "Lusitana", serif;
   font-size: 10pt;
 }
+.rt-wrapper button[type=roll-header] {
+  font-family: "Lusitana", serif;
+  font-size: 12pt;
+  text-transform: uppercase;
+}
 .rt-wrapper h1,
 .rt-wrapper h2,
 .rt-wrapper h3 {
@@ -1338,10 +1343,6 @@
   padding-top: 3px;
   padding-left: 2px;
   opacity: 0.5;
-}
-.rt-wrapper .rt-control-button-header {
-  font-size: 12pt !important;
-  text-transform: uppercase !important;
 }
 .rt-wrapper .rt-trait-toggle {
   cursor: pointer;

@@ -31,6 +31,12 @@ span.display {
     font-size: 10pt;
 }
 
+button[type='roll-header'] {
+    font-family: $font-family-alt;
+    font-size: 12pt;
+    text-transform: uppercase;
+}
+
 h1,
 h2,
 h3 {
