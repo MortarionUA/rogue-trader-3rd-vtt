@@ -34,7 +34,7 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         return this.system.threatLevel;
     }
 
-    async rollCrew(crewActionName, opBonus) {
+    async rollManeuver(crewActionName, operator) {
         const simpleSkillData = new SimpleSkillData();
         const rollData = simpleSkillData.rollData;
         rollData.actor = this;
@@ -42,7 +42,31 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         rollData.type = 'Skill';
         rollData.baseTarget = this.system.crewRating;
         rollData.modifiers.modifier = 0;
-        rollData.modifiers.opBonus = opBonus ? opBonus : 0;
+        rollData.modifiers.operator = operator ? operator : 0;
+        await prepareCrewRoll(simpleSkillData);
+    }
+
+    async rollDetection(crewActionName, operator) {
+        const simpleSkillData = new SimpleSkillData();
+        const rollData = simpleSkillData.rollData;
+        rollData.actor = this;
+        rollData.nameOverride = crewActionName;
+        rollData.type = 'Skill';
+        rollData.baseTarget = this.system.crewRating;
+        rollData.modifiers.modifier = 0;
+        rollData.modifiers.operator = operator ? operator : 0;
+        await prepareCrewRoll(simpleSkillData);
+    }
+
+    async rollCrew(crewActionName, operator) {
+        const simpleSkillData = new SimpleSkillData();
+        const rollData = simpleSkillData.rollData;
+        rollData.actor = this;
+        rollData.nameOverride = crewActionName;
+        rollData.type = 'Skill';
+        rollData.baseTarget = this.system.crewRating;
+        rollData.modifiers.modifier = 0;
+        rollData.modifiers.operator = operator ? operator : 0;
         await prepareCrewRoll(simpleSkillData);
     }
 }
