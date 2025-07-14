@@ -42,6 +42,7 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         rollData.type = 'Check';
         rollData.baseTarget = this.system.crewRating;
         rollData.modifiers.modifier = 0;
+        rollData.modifiers.maneuverability = this.system.maneuverability ? this.system.maneuverability : 0;
         rollData.modifiers.operator = operator ? operator : 0;
         await prepareManeuverRoll(simpleSkillData);
     }
@@ -54,6 +55,7 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         rollData.type = 'Check';
         rollData.baseTarget = this.system.crewRating;
         rollData.modifiers.modifier = 0;
+        rollData.modifiers.detection = this.system.detection ? this.system.detection : 0;
         rollData.modifiers.operator = operator ? operator : 0;
         await prepareDetectionRoll(simpleSkillData);
     }
