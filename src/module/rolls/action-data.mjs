@@ -231,7 +231,7 @@ export class ActionData {
             this.rollData.voidshipSuccess = true;
         } else if (rollTotal <= (target + 10) && rollTotal !== 100) {
             this.rollData.voidshipFlawedSuccess = true;
-        } else if (rollTotal <= (100 - target/10) && rollTotal !== 100) {
+        } else if (rollTotal <= (100 - (10 - target/10)) && rollTotal !== 100) {
             this.rollData.voidshipFailure = true;
         } else {
             this.rollData.voidshipFumble = true;
