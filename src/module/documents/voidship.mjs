@@ -1,7 +1,7 @@
 import { RogueTraderBaseActor } from './base-actor.mjs';
 import { DHTargetedActionManager } from '../actions/targeted-action-manager.mjs';
 import { SimpleSkillData } from '../rolls/action-data.mjs';
-import { prepareCrewRoll } from '../prompts/crew-prompt.mjs';
+import { prepareCrewRoll, prepareDetectionRoll, prepareManeuverRoll } from '../prompts/crew-prompt.mjs';
 
 export class RogueTraderVoidship extends RogueTraderBaseActor {
 
@@ -39,11 +39,11 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         const rollData = simpleSkillData.rollData;
         rollData.actor = this;
         rollData.nameOverride = crewActionName;
-        rollData.type = 'Skill';
+        rollData.type = 'Check';
         rollData.baseTarget = this.system.crewRating;
         rollData.modifiers.modifier = 0;
         rollData.modifiers.operator = operator ? operator : 0;
-        await prepareCrewRoll(simpleSkillData);
+        await prepareManeuverRoll(simpleSkillData);
     }
 
     async rollDetection(crewActionName, operator) {
@@ -51,11 +51,11 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         const rollData = simpleSkillData.rollData;
         rollData.actor = this;
         rollData.nameOverride = crewActionName;
-        rollData.type = 'Skill';
+        rollData.type = 'Check';
         rollData.baseTarget = this.system.crewRating;
         rollData.modifiers.modifier = 0;
         rollData.modifiers.operator = operator ? operator : 0;
-        await prepareCrewRoll(simpleSkillData);
+        await prepareDetectionRoll(simpleSkillData);
     }
 
     async rollCrew(crewActionName, operator) {
@@ -63,7 +63,7 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         const rollData = simpleSkillData.rollData;
         rollData.actor = this;
         rollData.nameOverride = crewActionName;
-        rollData.type = 'Skill';
+        rollData.type = 'Check';
         rollData.baseTarget = this.system.crewRating;
         rollData.modifiers.modifier = 0;
         rollData.modifiers.operator = operator ? operator : 0;
