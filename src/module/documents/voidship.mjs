@@ -34,32 +34,6 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         return this.system.threatLevel;
     }
 
-    async rollManeuver(crewActionName, operator) {
-        const simpleSkillData = new SimpleSkillData();
-        const rollData = simpleSkillData.rollData;
-        rollData.actor = this;
-        rollData.nameOverride = crewActionName;
-        rollData.type = 'Check';
-        rollData.baseTarget = this.system.crewRating;
-        rollData.modifiers.modifier = 0;
-        rollData.modifiers.maneuverability = this.system.maneuverability ? this.system.maneuverability : 0;
-        rollData.modifiers.operator = operator ? operator : 0;
-        await prepareManeuverRoll(simpleSkillData);
-    }
-
-    async rollDetection(crewActionName, operator) {
-        const simpleSkillData = new SimpleSkillData();
-        const rollData = simpleSkillData.rollData;
-        rollData.actor = this;
-        rollData.nameOverride = crewActionName;
-        rollData.type = 'Check';
-        rollData.baseTarget = this.system.crewRating;
-        rollData.modifiers.modifier = 0;
-        rollData.modifiers.detection = this.system.detection ? this.system.detection : 0;
-        rollData.modifiers.operator = operator ? operator : 0;
-        await prepareDetectionRoll(simpleSkillData);
-    }
-
     async rollCrew(crewActionName, operator) {
         const simpleSkillData = new SimpleSkillData();
         const rollData = simpleSkillData.rollData;
@@ -67,6 +41,16 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         rollData.nameOverride = crewActionName;
         rollData.type = 'Check';
         rollData.baseTarget = this.system.crewRating;
+        switch (crewActionName){
+            case "Maneuver": {
+                rollData.baseTarget = rollData.baseTarget + this.system.maneuverability ? this.system.maneuverability : 0;
+                break;
+            }
+            case "Detection": {
+                rollData.baseTarget = rollData.baseTarget + this.system.detection ? this.system.detection : 0;
+                break;
+            }
+        }
         rollData.modifiers.modifier = 0;
         rollData.modifiers.operator = operator ? operator : 0;
         await prepareCrewRoll(simpleSkillData);
