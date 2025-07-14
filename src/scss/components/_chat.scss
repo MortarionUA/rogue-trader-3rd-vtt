@@ -145,8 +145,11 @@
       }
     }
 
+    &__flawless,
     &__success,
-    &__fail {
+    &__flawed,
+    &__fail,
+    &__fumble {
       grid-column: 1 / -1;
       padding: 0.3rem;
 

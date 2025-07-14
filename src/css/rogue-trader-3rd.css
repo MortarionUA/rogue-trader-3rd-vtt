@@ -253,7 +253,7 @@
 .rt-wrapper .rt-chat .rt-roll__notice > span:not(:last-child) {
   margin-right: 0.5rem;
 }
-.rt-wrapper .rt-chat .rt-roll__success, .rt-wrapper .rt-chat .rt-roll__fail {
+.rt-wrapper .rt-chat .rt-roll__flawless, .rt-wrapper .rt-chat .rt-roll__success, .rt-wrapper .rt-chat .rt-roll__flawed, .rt-wrapper .rt-chat .rt-roll__fail, .rt-wrapper .rt-chat .rt-roll__fumble {
   grid-column: 1/-1;
   padding: 0.3rem;
   color: white;
@@ -263,7 +263,7 @@
   text-align: center;
   text-transform: uppercase;
 }
-.rt-wrapper .rt-chat .rt-roll__success > span:not(:last-child), .rt-wrapper .rt-chat .rt-roll__fail > span:not(:last-child) {
+.rt-wrapper .rt-chat .rt-roll__flawless > span:not(:last-child), .rt-wrapper .rt-chat .rt-roll__success > span:not(:last-child), .rt-wrapper .rt-chat .rt-roll__flawed > span:not(:last-child), .rt-wrapper .rt-chat .rt-roll__fail > span:not(:last-child), .rt-wrapper .rt-chat .rt-roll__fumble > span:not(:last-child) {
   margin-right: 0.5rem;
 }
 .rt-wrapper .rt-chat .rt-roll__notice {
