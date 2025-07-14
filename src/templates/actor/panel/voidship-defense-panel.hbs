@@ -1,5 +1,5 @@
 <div class="rt-panel spacer rt-grid-col-2">
-    <h1 class="rt-panel__header">Defense</h1>
+    <h1 class="rt-panel__header"><button type="roll" class='combat-control' data-action='attack'>Defense</button></h1>
     <div class="rt-field__wrapper">
         <span class="rt-field__header">Shield Layers</span>
         <input type="number" data-dtype="Number" class="rt-field__input" name="system.shields" value="{{actor.system.shields}}" />
@@ -17,7 +17,7 @@
         <input type="number" data-dtype="Number" class="rt-field__input" name="system.armour.rear" value="{{actor.system.armour.rear}}" />
     </div>
     <div class="rt-field__wrapper">
-        <button type="roll" class='combat-control' data-action='attack'>Turrets</button>>
+        <span class="rt-field__header">Turrets</span>
         <input type="number" data-dtype="Number" class="rt-field__input" name="system.turrets" value="{{actor.system.turrets}}" />
     </div>
     <div class="rt-field__wrapper">
