@@ -92,6 +92,7 @@ Enable Debug with: game.rt.debug = true
             acolyte: documents.RogueTraderAcolyte,
             npc: documents.RogueTraderNPC,
             vehicle: documents.RogueTraderVehicle,
+            voidship: documents.RogueTraderVoidship,
 
         };
         CONFIG.Item.documentClass = RogueTraderItem;

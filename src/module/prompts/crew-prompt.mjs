@@ -1,10 +1,5 @@
 import { sendActionDataToChat } from '../rolls/roll-helpers.mjs';
 
-/**
- *
- * @param simpleSkillData {SimpleSkillData}
- * @returns {Promise<void>}
- */
 export async function prepareCrewRoll(crewData) {
     const html = await renderTemplate('systems/rogue-trader-3rd/templates/prompt/crew-roll-prompt.hbs', crewData);
     let dialog = new Dialog(
