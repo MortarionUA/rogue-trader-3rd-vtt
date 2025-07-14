@@ -34,24 +34,6 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         return this.system.threatLevel;
     }
 
-    async rollItem(itemId) {
-        const item = this.items.get(itemId);
-        const character = game.user.character;
-        if(!character) {
-            ui.notifications.warn('Vehicle items are rolled using the current users\' character. However, no character found.');
-            return;
-        }
-
-        game.rt.log(`Vehicle ${this.name} is rolling ${item.name} for character ${character.name}`);
-        switch (item.type) {
-            case 'weapon':
-                await DHTargetedActionManager.performWeaponAttack(character, null, item);
-                return;
-            default:
-                return ui.notifications.warn(`No actions implemented for item type: ${item.type}`);
-        }
-    }
-
     async rollCrew(crewActionName, opBonus) {
         const simpleSkillData = new SimpleSkillData();
         const rollData = simpleSkillData.rollData;
