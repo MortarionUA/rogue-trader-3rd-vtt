@@ -11,7 +11,7 @@ export async function prepareCrewRoll(crewData) {
                     icon: "<i class='rt-material'>casino</i>",
                     label: 'Roll',
                     callback: async (html) => {
-                        const rollData = simpleSkillData.rollData;
+                        const rollData = crewData.rollData;
                         rollData.modifiers['difficulty'] = parseInt(html.find('[id=difficulty] :selected').val());
                         rollData.modifiers['opBonus'] = html.find('#opBonus')[0].value;
                         rollData.modifiers['modifier'] = html.find('#modifier')[0].value;
