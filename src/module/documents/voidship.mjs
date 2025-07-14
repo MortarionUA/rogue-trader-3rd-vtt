@@ -43,11 +43,11 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         rollData.baseTarget = this.system.crewRating;
         switch (crewActionName){
             case "Maneuver": {
-                rollData.baseTarget = rollData.baseTarget + this.system.maneuverability ? this.system.maneuverability : 0;
+                rollData.baseTarget = rollData.baseTarget + (this.system.maneuverability ? this.system.maneuverability : 0);
                 break;
             }
             case "Detection": {
-                rollData.baseTarget = rollData.baseTarget + this.system.detection ? this.system.detection : 0;
+                rollData.baseTarget = rollData.baseTarget + (this.system.detection ? this.system.detection : 0);
                 break;
             }
         }
