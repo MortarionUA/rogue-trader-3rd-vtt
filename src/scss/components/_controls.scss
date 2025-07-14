@@ -52,6 +52,11 @@
             @extend .rt-material;
             opacity: 0.5;
         }
+
+        &-header {
+            font-size: $h1-size !important;
+            text-transform: uppercase !important;
+        }
     }
 
     &-trait-toggle {

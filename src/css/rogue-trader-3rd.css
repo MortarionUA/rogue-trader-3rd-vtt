@@ -1339,6 +1339,10 @@
   padding-left: 2px;
   opacity: 0.5;
 }
+.rt-wrapper .rt-control-button-header {
+  font-size: 12pt !important;
+  text-transform: uppercase !important;
+}
 .rt-wrapper .rt-trait-toggle {
   cursor: pointer;
   opacity: 1;
