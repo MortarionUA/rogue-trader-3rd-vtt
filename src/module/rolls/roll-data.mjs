@@ -48,6 +48,7 @@ export class RollData {
     modifiers = {
         difficulty: 0,
         modifier: 0,
+        opBonus: 0,
         aim: 0,
     };
     specialModifiers = {};

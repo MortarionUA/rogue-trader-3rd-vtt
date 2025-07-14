@@ -1,4 +1,8 @@
 import { ActorContainerSheet } from './actor-container-sheet.mjs';
+import { DHTargetedActionManager } from '../../actions/targeted-action-manager.mjs';
+import { Hit } from '../../rolls/damage-data.mjs';
+import { AssignDamageData } from '../../rolls/assign-damage-data.mjs';
+import { prepareAssignDamageRoll } from '../../prompts/assign-damage-prompt.mjs';
 
 export class VoidshipSheet extends ActorContainerSheet {
     static get defaultOptions() {
@@ -55,5 +59,6 @@ export class VoidshipSheet extends ActorContainerSheet {
 
             await item.update({ [path]: value });
         });
+        html.find('.combat-control').click(async (ev) => await this._combatControls(ev));
     }
 }
