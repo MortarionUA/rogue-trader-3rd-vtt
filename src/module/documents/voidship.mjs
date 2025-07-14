@@ -1,7 +1,7 @@
 import { RogueTraderBaseActor } from './base-actor.mjs';
 import { DHTargetedActionManager } from '../actions/targeted-action-manager.mjs';
 import { SimpleSkillData } from '../rolls/action-data.mjs';
-import { prepareCrewRoll, prepareDetectionRoll, prepareManeuverRoll } from '../prompts/crew-prompt.mjs';
+import { prepareCrewRoll} from '../prompts/crew-prompt.mjs';
 
 export class RogueTraderVoidship extends RogueTraderBaseActor {
 
