@@ -61,6 +61,7 @@
 .rt-wrapper select,
 .rt-wrapper button,
 .rt-wrapper button[type=roll],
+.rt-wrapper button[type=roll-header],
 .rt-wrapper label {
   display: unset;
   width: 100%;
@@ -80,7 +81,8 @@
   text-align: unset;
   line-height: unset;
 }
-.rt-wrapper button[type=roll]:before {
+.rt-wrapper button[type=roll]:before,
+.rt-wrapper button[type=roll-header]:before {
   display: none;
 }
 .rt-wrapper * {
@@ -1354,11 +1356,13 @@
 .rt-wrapper .rt-trait-toggle__span {
   text-align: left;
 }
-.rt-wrapper button[type=roll] {
+.rt-wrapper button[type=roll],
+.rt-wrapper button[type=roll-header] {
   margin: 0;
   cursor: pointer;
 }
-.rt-wrapper button[type=roll]:hover {
+.rt-wrapper button[type=roll]:hover,
+.rt-wrapper button[type=roll-header]:hover {
   color: red;
 }
 .rt-wrapper button.rt-vocalise[type=roll] {

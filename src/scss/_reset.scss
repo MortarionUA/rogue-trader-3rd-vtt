@@ -50,6 +50,7 @@ textarea,
 select,
 button,
 button[type='roll'],
+button[type='roll-header'],
 label {
     display: unset;
     width: 100%;
@@ -70,7 +71,8 @@ label {
     line-height: unset;
 }
 
-button[type='roll'] {
+button[type='roll'],
+button[type='roll-header'] {
     &:before {
         display: none;
     }
