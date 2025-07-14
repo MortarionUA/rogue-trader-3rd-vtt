@@ -220,6 +220,28 @@ export class ActionData {
         }
     }
 
+    async _calculateVoidshipHit() {
+        this.rollData.roll = await roll1d100();
+        let rollTotal = this.rollData.roll.total;
+        const target = this.rollData.modifiedTarget;
+        // this.rollData.success = rollTotal === 1 || (rollTotal <= target && rollTotal !== 100);
+        if (rollTotal <= target/10 && rollTotal !== 100) {
+            this.rollData.voidshipFlawless = true;
+        } else if (rollTotal <= target && rollTotal !== 100) {
+            this.rollData.voidshipSuccess = true;
+        } else if (rollTotal <= (target + 10) && rollTotal !== 100) {
+            this.rollData.voidshipFlawedSuccess = true;
+        } else if (rollTotal <= (100 - target/10) && rollTotal !== 100) {
+            this.rollData.voidshipFailure = true;
+        } else {
+            this.rollData.voidshipFumble = true;
+        }
+    }
+
+    async calculateResultVoidship() {
+        await this._calculateVoidshipHit();
+    }
+
     async calculateHits() {
         if (this.rollData.success || this.rollData.isThrown) {
             let hit = await Hit.createHit(this, 0);

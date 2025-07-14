@@ -16,7 +16,7 @@ export async function prepareCrewRoll(crewData) {
                         rollData.modifiers['operator'] = html.find('#operator')[0].value;
                         rollData.modifiers['modifier'] = html.find('#modifier')[0].value;
                         await rollData.calculateTotalModifiers();
-                        await crewData.calculateSuccessOrFailure();
+                        await crewData.calculateResultVoidship();
                         await sendActionDataToChat(crewData);
                     },
                 },

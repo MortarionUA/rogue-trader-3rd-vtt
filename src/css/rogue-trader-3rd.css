@@ -270,12 +270,24 @@
   background: #535538;
   background: url("../images/notice.png") no-repeat center/100% 100%;
 }
+.rt-wrapper .rt-chat .rt-roll__flawless {
+  background: #ffbb16;
+  background: url("../images/success.png") no-repeat center/100% 100%;
+}
 .rt-wrapper .rt-chat .rt-roll__success {
   background: #073;
   background: url("../images/success.png") no-repeat center/100% 100%;
 }
+.rt-wrapper .rt-chat .rt-roll__flawed {
+  background: #1c9c52;
+  background: url("../images/success.png") no-repeat center/100% 100%;
+}
 .rt-wrapper .rt-chat .rt-roll__fail {
   background: #900;
+  background: url("../images/fail.png") no-repeat center/100% 100%;
+}
+.rt-wrapper .rt-chat .rt-roll__fumble {
+  background: #420000;
   background: url("../images/fail.png") no-repeat center/100% 100%;
 }
 .rt-wrapper .rt-chat .rt-roll__row, .rt-wrapper .rt-chat .rt-roll__row--full {

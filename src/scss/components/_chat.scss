@@ -170,14 +170,32 @@
     }
 
     //noinspection CssUnknownTarget
+    &__flawless {
+      background: #ffbb16;
+      background: url('../images/success.png') no-repeat center/100% 100%;
+    }
+
+    //noinspection CssUnknownTarget
     &__success {
       background: #073;
       background: url('../images/success.png') no-repeat center/100% 100%;
     }
 
     //noinspection CssUnknownTarget
+    &__flawed {
+      background: #1c9c52;
+      background: url('../images/success.png') no-repeat center/100% 100%;
+    }
+
+    //noinspection CssUnknownTarget
     &__fail {
       background: #900;
+      background: url('../images/fail.png') no-repeat center/100% 100%;
+    }
+
+    //noinspection CssUnknownTarget
+    &__fumble {
+      background: #420000;
       background: url('../images/fail.png') no-repeat center/100% 100%;
     }
 

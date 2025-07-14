@@ -22,25 +22,59 @@
                     <div class="rt-roll__label">Target</div>
                     <div class="rt-roll__value">{{modifiedTarget}}</div>
                 </div>
-
-                {{#if success}}
-                    <div class="rt-roll__success">
-                        <span>Success</span>
+                {{#if voidshipFlawless}}
+                    <div class="rt-roll__flawless">
+                        <span>Flawless</span>
                         <span>{{roll.total}}</span>
-                    </div>
-                    <div class="rt-roll__row rt-roll__row--number">
-                        <div class="rt-roll__label">Degrees of Success</div>
-                        <div class="rt-roll__value">{{dos}}</div>
                     </div>
                 {{else}}
-                    <div class="rt-roll__fail">
-                        <span>Fail</span>
-                        <span>{{roll.total}}</span>
-                    </div>
-                    <div class="rt-roll__row rt-roll__row--number">
-                        <div class="rt-roll__label">Degrees of Failure</div>
-                        <div class="rt-roll__value">{{dof}}</div>
-                    </div>
+                    {{#if voidshipSuccess}}
+                        <div class="rt-roll__success">
+                            <span>Success</span>
+                            <span>{{roll.total}}</span>
+                        </div>
+                    {{else}}
+                        {{#if voidshipFlawedSuccess}}
+                            <div class="rt-roll__flawed">
+                                <span>Flawed Success</span>
+                                <span>{{roll.total}}</span>
+                            </div>
+                        {{else}}
+                            {{#if voidshipFailure}}
+                                <div class="rt-roll__fail">
+                                    <span>Failure</span>
+                                    <span>{{roll.total}}</span>
+                                </div>
+                            {{else}}
+                                {{#if voidshipFumble}}
+                                    <div class="rt-roll__fumble">
+                                        <span>FUMBLE!</span>
+                                        <span>{{roll.total}}</span>
+                                    </div>
+                                {{else}}
+                                    {{#if success}}
+                                        <div class="rt-roll__success">
+                                            <span>Success</span>
+                                            <span>{{roll.total}}</span>
+                                        </div>
+                                        <div class="rt-roll__row rt-roll__row--number">
+                                            <div class="rt-roll__label">Degrees of Success</div>
+                                            <div class="rt-roll__value">{{dos}}</div>
+                                        </div>
+                                    {{else}}
+                                        <div class="rt-roll__fail">
+                                            <span>Fail</span>
+                                            <span>{{roll.total}}</span>
+                                        </div>
+                                        <div class="rt-roll__row rt-roll__row--number">
+                                            <div class="rt-roll__label">Degrees of Failure</div>
+                                            <div class="rt-roll__value">{{dof}}</div>
+                                        </div>
+                                    {{/if}}
+                                {{/if}}
+                            {{/if}}
+                        {{/if}}
+                    {{/if}}
                 {{/if}}
             </div>
             <div class="dice-rolls" style="display:none">
