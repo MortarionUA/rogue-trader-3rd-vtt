@@ -68,19 +68,19 @@ export class VoidshipSheet extends ActorContainerSheet {
 
         switch(target.dataset.action) {
             case 'turrets':
-                await prepareTurretFire(this.actor);
+                await this.actor.prepareTurretFire(this.actor);
                 break;
             case 'movement':
-                await rollCrew("Maneuver", this.actor.system.operator.helm);
+                await this.actor.rollCrew("Maneuver", this.actor.system.operator.helm);
                 break;
             case 'boarding':
-                await prepareBoarding(this.actor);
+                await this.actor.prepareBoarding(this.actor);
                 break;
             case 'detection':
-                await rollCrew("Detection", this.actor.system.operator.augurs);
+                await this.actor.rollCrew("Detection", this.actor.system.operator.augurs);
                 break;
             case 'crew':
-                await rollCrew("Crew", 0);
+                await this.actor.rollCrew("Crew", 0);
                 break;
         }
     }
