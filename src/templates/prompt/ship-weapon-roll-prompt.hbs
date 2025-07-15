@@ -29,6 +29,12 @@
                     </div>
                 </div>
                 <div class="rt-field__wrapper">
+                    <span class="rt-field__span">Target Facing</span>
+                    <select class="rt-field__input" name="voidshipFacing" id="voidshipFacing">
+                        {{selectOptions @root.shipFacings selected=voidshipFacing}}
+                    </select>
+                </div>
+                <div class="rt-field__wrapper">
                     <span class="rt-field__span">Crew Rating</span>
                     <span class="rt-field__span">{{crewRating}}</span>
                 </div>

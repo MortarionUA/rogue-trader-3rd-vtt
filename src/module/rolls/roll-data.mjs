@@ -7,10 +7,12 @@ import { calculateAmmoAttackBonuses, calculateAmmoInformation } from '../rules/a
 import { calculateWeaponModifiersAttackBonuses, updateWeaponModifiers } from '../rules/weapon-modifiers.mjs';
 import { hitDropdown } from '../rules/hit-locations.mjs';
 import { DarkHeresy } from '../rules/config.mjs';
+import { shipFacings } from '../rules/ship-facings.mjs';
 
 export class RollData {
     difficulties = rollDifficulties();
     aims = aimModifiers();
+    shipFacings = shipFacings();
     locations = hitDropdown();
     lasModes = DarkHeresy.combat.las_fire_modes;
 
@@ -64,6 +66,7 @@ export class RollData {
     success = false;
     turretsShot = 0;
     turretsHit = 0;
+    voidshipFacing = 0;
     voidshipResults = [];
     voidshipTurrets = false;
     voidshipFlawless = false;
