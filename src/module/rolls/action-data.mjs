@@ -222,7 +222,7 @@ export class ActionData {
 
     async _calculateVoidshipHits(type, amount) {
         if (type === "Turrets") {
-            for (i = 0; i < amount; i++) {
+            for (let i = 0; i < amount; i++) {
                 this.rollData.roll = await roll1d100();
                 let rollTotal = this.rollData.roll.total;
                 this.rollData.voidshipResults += rollTotal;
