@@ -36,19 +36,17 @@
                 </div>
                 <div class="rt-field__wrapper">
                     <span class="rt-field__span">Crew Rating</span>
-                    <span class="rt-field__span">{{crewRating}}</span>
+                    <span class="rt-field__span">{{baseTarget}}</span>
                 </div>
                 <div class="rt-field__wrapper">
                     <span class="rt-field__span">Shots Amount</span>
                     <span class="rt-field__span">{{crewRating}}</span>
                 </div>
-                {{#if this.modifiers.attack}}
-                    <div class="rt-field__wrapper">
-                        <span class="rt-field__span">Operator Bonus</span>
-                        <input class="rt-field__input" type="number" data-dtype="Number" name="weapons"
-                               value="{{operator.weapons}}" />
-                    </div>
-                {{/if}}
+                <div class="rt-field__wrapper">
+                    <span class="rt-field__span">Operator Bonus</span>
+                    <input class="rt-field__input" type="number" data-dtype="Number" name="operator"
+                           value="{{operator}}" />
+                </div>
             </div>
             <div class="rt-panel spacer rt-grid-col-6">
                 <div class="rt-header">

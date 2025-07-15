@@ -35,6 +35,19 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         return this.system.threatLevel;
     }
 
+    get crewRating() {
+        return this.system.crewRating;
+    }
+
+    get operators() {
+        return {
+            weapons: this.system.operator.weapons,
+            helm: this.system.operator.helm,
+            boarding: this.system.operator.boarding,
+            augurs: this.system.operator.augurs
+        }
+    }
+
     hasTalent(talent) {
         return !!this.items.filter((i) => i.type === 'talent').find((t) => t.name === talent);
     }

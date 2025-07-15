@@ -175,6 +175,10 @@ export class RogueTraderItem extends RogueTraderItemContainer {
         return ranges;
     }
 
+    get shipShots() {
+        return this.system.strength;
+    }
+
     _onCreate(data, options, user) {
         game.rt.log('Determining nested items for', this);
         this._determineNestedItems();

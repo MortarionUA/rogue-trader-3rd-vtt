@@ -66,6 +66,7 @@ export class RollData {
     success = false;
     turretsShot = 0;
     turretsHit = 0;
+    voidshipShotsAmount = 0;
     voidshipFacing = 0;
     voidshipResults = [];
     voidshipTurrets = false;
@@ -265,6 +266,10 @@ export class WeaponRollData extends RollData {
         }
         await calculateWeaponRange(this);
         this.updateBaseTarget();
+        if (this.weapon.isShipWeapon) {
+            this.updateOperatorBonus();
+            this.updateShotsAmount();
+        }
     }
 
     initialize() {
@@ -272,6 +277,7 @@ export class WeaponRollData extends RollData {
         this.modifiers['attack'] = 0;
         this.modifiers['difficulty'] = 0;
         this.modifiers['aim'] = 0;
+        this.modifiers['operator'] = 0;
         this.modifiers['modifier'] = 0;
 
         // Size Bonus should not change after initial targeting
@@ -301,8 +307,14 @@ export class WeaponRollData extends RollData {
         this.weapon.isSelected = true;
     }
 
+    updateOperatorBonus() {
+        this.modifiers.operator = this.sourceActor?.operators.weapons ?? 0;
+    }
+
     updateBaseTarget() {
-        if (this.weapon.isRanged) {
+        if (this.weapon.isShipWeapon) {
+            this.baseTarget = this.sourceActor?.crewRating ?? 0;
+        } else if (this.weapon.isRanged) {
             this.baseTarget = this.sourceActor?.characteristics?.ballisticSkill?.total ?? 0;
             this.baseChar = 'BS';
         } else {
@@ -314,6 +326,10 @@ export class WeaponRollData extends RollData {
             this.baseTarget = this.sourceActor?.characteristics?.strength?.total ?? 0;
             this.baseChar = 'S';
         }
+    }
+
+    updateShotsAmount() {
+        this.voidshipShotsAmount = this.weapon.shipShots();
     }
 
     async finalize() {
