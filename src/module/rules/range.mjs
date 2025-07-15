@@ -90,6 +90,24 @@ function calculateRangeNameAndBonus(rollData) {
     const targetDistance = rollData.distance ?? 0;
     const maxRange = rollData.maxRange ?? 0;
 
+    if(rollData.weapon && rollData.weapon.isShipWeapon) {
+        let ranges = rollData.weapon.shipWeaponRanges;
+        if (targetDistance <= ranges.short) {
+            rollData.rangeName = 'Short Range';
+            rollData.rangeBonus = 30;
+        } else if (targetDistance <= ranges.medium) {
+            rollData.rangeName = 'Medium Range';
+            rollData.rangeBonus = 10;
+        } else if (targetDistance <= ranges.long) {
+            rollData.rangeName = 'Long Range';
+            rollData.rangeBonus = -20;
+        } else {
+            rollData.rangeName = 'Can`t Shoot';
+            rollData.rangeBonus = 0;
+        }
+        return;
+    }
+
     if (targetDistance === 0) {
         rollData.rangeName = 'Self';
         rollData.rangeBonus = 0;
@@ -115,7 +133,9 @@ function calculateRangeNameAndBonus(rollData) {
  * @param rollData {WeaponRollData}
  */
 export async function calculateWeaponRange(rollData) {
-    await calculateWeaponMaxRange(rollData);
+    if (!rollData.weapon.isShipWeapon) {
+        await calculateWeaponMaxRange(rollData);
+    }
     calculateRangeNameAndBonus(rollData);
 
     // Ignore Negative Range Bonus for certain modifications

@@ -166,6 +166,15 @@ export class RogueTraderItem extends RogueTraderItemContainer {
         return this.type === 'shipWeapon';
     }
 
+    get shipWeaponRanges() {
+        let ranges = {
+            short: this.system.rangeSmall,
+            medium: this.system.rangeMedium,
+            long: this.system.rangeLong
+        }
+        return ranges;
+    }
+
     _onCreate(data, options, user) {
         game.rt.log('Determining nested items for', this);
         this._determineNestedItems();

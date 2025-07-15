@@ -1,0 +1,92 @@
+{{rtlog this}}
+<div class="dialog-content">
+    <form class="rt-wrapper" autocomplete="off">
+        <div class="rt-attack">
+            <!-- Header -->
+            <div class="rt-panel rt-grid-col-6">
+                <div class="rt-header">
+                    <div class="rt-header__prompt rt-header__logo">
+                        <div class="rt-header__item-wrapper--span-4 rt-header__borderless">
+                            <img class="rt-header__logo-image-small" alt="{{this.sourceActor.name}}"
+                                 src="{{this.sourceActor.img}}" />
+                            <span class="rt-header__title">Ship Weapon Attack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rt-panel rt-grid-col-6">
+                <div class="rt-field__wrapper">
+                    <span class="rt-field__span">Weapon</span>
+                    <span class="rt-field__span">{{weapon.name}}</span>
+                </div>
+            </div>
+            <div class="rt-panel rt-grid-col-6">
+                <div class="rt-header">
+                    <div class="rt-header__info">
+                        <div class="rt-header__item-wrapper--span-4 rt-header__borderless">
+                            <span class="rt-header__subtitle">Attack</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rt-field__wrapper">
+                    <span class="rt-field__span">Crew Rating</span>
+                    <span class="rt-field__span">{{crewRating}}</span>
+                </div>
+                <div class="rt-field__wrapper">
+                    <span class="rt-field__span">Shots Amount</span>
+                    <span class="rt-field__span">{{crewRating}}</span>
+                </div>
+                {{#if this.modifiers.attack}}
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Operator Bonus</span>
+                        <input class="rt-field__input" type="number" data-dtype="Number" name="weapons"
+                               value="{{operator.weapons}}" />
+                    </div>
+                {{/if}}
+            </div>
+            <div class="rt-panel spacer rt-grid-col-6">
+                <div class="rt-header">
+                    <div class="rt-header__info">
+                        <div class="rt-header__item-wrapper--span-4 rt-header__borderless">
+                            <span class="rt-header__subtitle">Modifiers</span>
+                        </div>
+                    </div>
+                </div>
+                {{#with this.modifiers}}
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Difficulty</span>
+                        <select class="rt-field__input" data-dtype="Number" name="modifiers.difficulty">
+                            {{selectOptions @root.difficulties selected=difficulty}}
+                        </select>
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Modifier</span>
+                        <input class="rt-field__input" type="number" data-dtype="Number" name="modifiers.modifier"
+                               value="{{modifier}}" />
+                    </div>
+                {{/with}}
+                <div class="rt-field__wrapper">
+                    <span class="rt-field__span">Distance</span>
+                    <input class="rt-field__input" type="number" data-dtype="Number" name="distance" id="distance"
+                           value="{{this.distance}}" />
+                </div>
+                <div class="rt-field__wrapper">
+                    <span class="rt-field__span">{{rangeName}}</span>
+                    <span class="rt-field__span">{{rangeBonus}}</span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Buttons -->
+<div class="dialog-buttons">
+    <button class="dialog-button roll default" data-button="roll" id="attack-roll">
+        <i class="rt-material">casino</i>
+        Roll
+    </button>
+    <button class="dialog-button cancel" data-button="cancel" id="attack-cancel">
+        <i class="rt-material">close</i>
+        Cancel
+    </button>
+</div>
