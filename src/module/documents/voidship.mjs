@@ -96,8 +96,4 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
                 });
         }
     }
-
-    hasTalent(talent) {
-        return !!this.items.filter((i) => i.type === 'talent').find((t) => t.name === talent);
-    }
 }
