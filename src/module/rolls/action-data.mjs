@@ -5,7 +5,6 @@ import { refundAmmo, useAmmo } from '../rules/ammo.mjs';
 import { DHBasicActionManager } from '../actions/basic-action-manager.mjs';
 import { SYSTEM_ID } from '../hooks-manager.mjs';
 import { RogueTraderSettings } from '../rogue-trader-settings.mjs';
-import { forEach } from 'underscore';
 
 export class ActionData {
     id = uuid();
