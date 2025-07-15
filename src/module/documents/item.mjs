@@ -62,10 +62,6 @@ export class RogueTraderItem extends RogueTraderItemContainer {
         return this.type === 'weapon';
     }
 
-    get isDestroyed() {
-        return this.system.isDestroyed;
-    }
-
     get isShipWeapon() {
         return this.type === 'shipWeapon';
     }
