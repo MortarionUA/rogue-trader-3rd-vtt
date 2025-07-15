@@ -1,7 +1,7 @@
 import { RogueTraderBaseActor } from './base-actor.mjs';
 import { DHTargetedActionManager } from '../actions/targeted-action-manager.mjs';
 import { SimpleSkillData } from '../rolls/action-data.mjs';
-import { prepareCrewRoll} from '../prompts/crew-prompt.mjs';
+import { prepareCrewRoll, prepareTurretsRoll} from '../prompts/crew-prompt.mjs';
 
 export class RogueTraderVoidship extends RogueTraderBaseActor {
 
@@ -66,7 +66,6 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         rollData.baseTarget = this.system.crewRating;
         rollData.turretsShot = this.system.turrets;
         rollData.modifiers.modifier = 0;
-        rollData.modifiers.operator = operator ? operator : 0;
         await prepareTurretsRoll(simpleSkillData);
     }
 }
