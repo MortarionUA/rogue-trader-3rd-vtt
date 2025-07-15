@@ -27,6 +27,10 @@ export class TargetedActionManager {
         });
     }
 
+    truncateTo1Decimal(num) {
+        return Math.trunc(num * 10) / 10;
+    }
+
     tokenDistance(token1, token2) {
         if (!token1 || !token2) return 0;
 
@@ -38,9 +42,9 @@ export class TargetedActionManager {
                         ? token2.document.elevation - token1.document.elevation
                         : token1.document.elevation - token2.document.elevation;
 
-                return Math.floor(Math.sqrt(Math.pow(h_diff, 2) + Math.pow(distance.distance, 2)));
+                return this.truncateTo1Decimal(Math.sqrt(Math.pow(h_diff, 2) + Math.pow(distance.distance, 2)));
             } else {
-                return Math.floor(distance.distance);
+                return this.truncateTo1Decimal(distance.distance);
             }
         } else {
             return 0;
