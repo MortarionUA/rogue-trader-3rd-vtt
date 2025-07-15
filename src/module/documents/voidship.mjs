@@ -35,6 +35,10 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         return this.system.threatLevel;
     }
 
+    hasTalent(talent) {
+        return !!this.items.filter((i) => i.type === 'talent').find((t) => t.name === talent);
+    }
+
     async rollCrew(crewActionName, operator) {
         const simpleSkillData = new SimpleSkillData();
         const rollData = simpleSkillData.rollData;
