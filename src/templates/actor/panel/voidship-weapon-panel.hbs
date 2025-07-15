@@ -45,7 +45,11 @@
                         <span class="display">{{item.system.damage}}</span>
                     </div>
                     <div class="table-cell--last">
-                        <button type="roll-header" class='combat-control' data-action='weapons' data-item-id="{{item.id}}">{{defaultVal icon 'casino'}}</button>
+                        <label class="rt-control-button item-roll" data-item-id="{{item.id}}">
+                            <button type="button" class="combat-control rt-control-button" data-action="weapons" data-item-id="{{item.id}}">
+                                <span class="rt-control-button__span material-icons">{{defaultVal icon 'casino'}}</span>
+                            </button>
+                        </label>
                         <label class="rt-control-button item-delete" data-item-id="{{item.id}}">
                             <span class="rt-control-button__span material-icons">{{defaultVal icon 'delete'}}</span>
                         </label>
