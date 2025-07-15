@@ -50,22 +50,29 @@ export class TargetedActionManager {
     getSourceToken(source) {
         game.rt.log('getSourceToken', source);
         let sourceToken;
+
         if (source) {
-            sourceToken = source.token ?? source.getActiveTokens()[0];
-        } else {
-            const controlledObjects = game.canvas.tokens.controlledObjects;
-            if (!controlledObjects || controlledObjects.size === 0) {
-                ui.notifications.warn('You need to control a token!');
-                return
+            if (source instanceof Token) {
+                sourceToken = source;
+            } else if (source.token instanceof TokenDocument) {
+                sourceToken = source.token.object; // get canvas Token
+            } else if (typeof source.getActiveTokens === 'function') {
+                sourceToken = source.getActiveTokens()[0]; // from Actor
             }
-            if (controlledObjects.size > 1) {
+        } else {
+            const controlledTokens = canvas.tokens.controlled;
+            if (!controlledTokens.length) {
+                ui.notifications.warn('You need to control a token!');
+                return;
+            }
+            if (controlledTokens.length > 1) {
                 ui.notifications.warn('You need to control a single token! Multi-token support is not yet added.');
                 return;
             }
-            sourceToken = [...controlledObjects.values()][0];
+            sourceToken = controlledTokens[0];
         }
 
-        if (sourceToken && !sourceToken.actor) {
+        if (!sourceToken?.actor) {
             ui.notifications.warn('Token must be associated with an actor!');
             return;
         }
@@ -76,19 +83,26 @@ export class TargetedActionManager {
     getTargetToken(target) {
         game.rt.log('getTargetToken', target);
         let targetToken;
+
         if (target) {
-            targetToken = target.token ?? target.getActiveTokens()[0];
+            if (target instanceof Token) {
+                targetToken = target;
+            } else if (target.token instanceof TokenDocument) {
+                targetToken = target.token.object; // Actor from token
+            } else if (typeof target.getActiveTokens === 'function') {
+                targetToken = target.getActiveTokens()[0]; // Actor
+            }
         } else {
-            const targetedObjects = game.user.targets;
-            if (!targetedObjects || targetedObjects.size === 0) return;
-            if (targetedObjects.size > 1) {
+            const targetedTokens = [...game.user.targets];
+            if (!targetedTokens.length) return;
+            if (targetedTokens.length > 1) {
                 ui.notifications.warn('You need to target a single token! Multi-token targeting is not yet added.');
                 return;
             }
-            targetToken = [...targetedObjects.values()][0];
+            targetToken = targetedTokens[0];
         }
 
-        if (targetToken && !targetToken.actor) {
+        if (!targetToken?.actor) {
             ui.notifications.warn('Target token must be associated with an actor!');
             return;
         }
