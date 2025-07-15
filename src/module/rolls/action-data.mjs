@@ -220,53 +220,8 @@ export class ActionData {
         }
     }
 
-    _calculateLocation(rollResult) {
-        let reversedRoll =  parseInt(rollResult.toString().padStart(2, '0').split('').reverse().join(''));
-        if (this.rollData.voidshipAttackSide === "Prow") {
-            if (reversedRoll <= 10) {
-                return "Bridge";
-            } else if (reversedRoll <= 50) {
-                return "Prow";
-            } else if (reversedRoll <= 90) {
-                return "Main";
-            } else return "Rear";
-        } else if (this.rollData.voidshipAttackSide === "Port" || this.rollData.voidshipAttackSide === "Starboard") {
-            if (reversedRoll <= 10) {
-                return "Bridge";
-            } else if (reversedRoll <= 25) {
-                return "Prow";
-            } else if (reversedRoll <= 85) {
-                return "Main";
-            } else return "Rear";
-        } else {
-            if (reversedRoll <= 10) {
-                return "Bridge";
-            } else if (reversedRoll <= 20) {
-                return "Prow";
-            } else if (reversedRoll <= 50) {
-                return "Main";
-            } else return "Rear";
-        }
-    }
-
     async _calculateVoidshipHits(type, amount) {
         if (type === "Turrets") {
-            for (let i = 0; i < amount; i++) {
-                this.rollData.roll = await roll1d100();
-                let rollTotal = this.rollData.roll.total;
-                this.rollData.voidshipResults.push(rollTotal);
-                const target = this.rollData.modifiedTarget;
-                if (rollTotal <= target / 10 && rollTotal !== 100) {
-                    this.rollData.turretsHit++;
-                    this.rollData.turretsHit++;
-                } else if (rollTotal <= target && rollTotal !== 100) {
-                    this.rollData.turretsHit++;
-                }
-            }
-            if (this.rollData.turretsHit > 0) {
-                this.rollData.success = true;
-            }
-        } else if (type === "Weapon") {
             for (let i = 0; i < amount; i++) {
                 this.rollData.roll = await roll1d100();
                 let rollTotal = this.rollData.roll.total;

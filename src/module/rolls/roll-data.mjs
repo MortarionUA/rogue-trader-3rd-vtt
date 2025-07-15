@@ -64,10 +64,6 @@ export class RollData {
     success = false;
     turretsShot = 0;
     turretsHit = 0;
-    voidshipAttackSide = "Prow";
-    voidshipShortRange = 0;
-    voidshipMediumRange = 0;
-    voidshipLongRange = 0;
     voidshipResults = [];
     voidshipTurrets = false;
     voidshipFlawless = false;

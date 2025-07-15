@@ -112,30 +112,6 @@ function calculateRangeNameAndBonus(rollData) {
 }
 
 /**
- * @param rollData {RollData}
- */
-function calculateVoidshipRangeNameAndBonus(rollData) {
-    const targetDistance = rollData.distance ?? 0;
-    const shortRange = rollData.voidshipShortRange ?? 0;
-    const mediumRange = rollData.voidshipMediumRange ?? 0;
-    const longRange = rollData.voidshipLongRange ?? 0;
-
-    if (targetDistance <= shortRange) {
-        rollData.rangeName = 'Short Range';
-        rollData.rangeBonus = 30;
-    } else if (targetDistance <= mediumRange) {
-        rollData.rangeName = 'Normal Range';
-        rollData.rangeBonus = 10;
-    } else if (targetDistance <= longRange) {
-        rollData.rangeName = 'Long Range';
-        rollData.rangeBonus = -20;
-    } else {
-        rollData.rangeName = 'Can`t Shoot';
-        rollData.rangeBonus = 0;
-    }
-}
-
-/**
  * @param rollData {WeaponRollData}
  */
 export async function calculateWeaponRange(rollData) {
