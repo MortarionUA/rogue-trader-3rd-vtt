@@ -1,8 +1,6 @@
 import { RogueTraderBaseActor } from './base-actor.mjs';
-import { DHTargetedActionManager } from '../actions/targeted-action-manager.mjs';
 import { SimpleSkillData } from '../rolls/action-data.mjs';
 import { prepareCrewRoll, prepareTurretsRoll} from '../prompts/crew-prompt.mjs';
-import { DHBasicActionManager } from '../actions/basic-action-manager.mjs';
 
 export class RogueTraderVoidship extends RogueTraderBaseActor {
 
@@ -70,30 +68,22 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         await prepareTurretsRoll(simpleSkillData);
     }
 
-    async rollItem(itemId) {
-        game.rt.log('RollItem', itemId);
-        const item = this.items.get(itemId);
-        switch (item.type) {
-            case 'shipWeapon':
-                if (!item.system.isDestroyed) {
-                    ui.notifications.warn('Weapon is Destroyed and cannot shoot!');
-                    return;
-                }
-                await DHTargetedActionManager.performWeaponAttack(this, null, item);
-                return;
-            default:
-                await DHBasicActionManager.sendItemVocalizeChat({
-                    actor: this.name,
-                    name: item.name,
-                    type: item.type?.toUpperCase(),
-                    description: await TextEditor.enrichHTML(item.system.benefit ?? item.system.description, {
-                        rollData: {
-                            actor: this,
-                            item: item,
-                            pr: this.psy.rating
-                        }
-                    }),
-                });
+    async rollWeapons(operator, weapon) {
+        if (!weapon) {
+            ui.notifications.warn("No weapon selected.");
+            return;
         }
+        const targetingData = this.createSourceAndTargetData(source, target);
+
+        const simpleSkillData = new SimpleSkillData();
+        const rollData = simpleSkillData.rollData;
+        rollData.actor = this;
+        rollData.nameOverride = "Turrets";
+        rollData.voidshipTurrets = true;
+        rollData.type = 'Check';
+        rollData.baseTarget = this.system.crewRating;
+        rollData.turretsShot = this.system.turrets;
+        rollData.modifiers.modifier = 0;
+        await prepareWeaponsRoll(simpleSkillData);
     }
 }

@@ -1,0 +1,25 @@
+{{#with rollData}}
+    <form class="rt-wrapper">
+        <div class="rt-panel spacer">
+            <h1 class="rt-panel__header">{{name}} Attack</h1>
+            <div class="rt-field__wrapper">
+                <span class="rt-field__span">Base</span>
+                <span class="rt-field__span">{{baseTarget}}</span>
+            </div>
+            <div class="rt-field__wrapper">
+                <span class="rt-field__span">Difficulty</span>
+                <select class="rt-field__input" data-dtype="Number" name="modifiers.difficulty" id='difficulty'>
+                    {{selectOptions difficulties selected=modifiers.difficulty}}
+                </select>
+            </div>
+            <div class="rt-field__wrapper">
+                <span class="rt-field__span">Shots Amount</span>
+                <input class="rt-field__input" type="number" data-dtype="Number" name="modifiers.turretsShot" id="turretsShot" value="{{turretsShot}}" />
+            </div>
+            <div class="rt-field__wrapper">
+                <span class="rt-field__span">Modifier</span>
+                <input class="rt-field__input" type="number" data-dtype="Number" name="modifiers.modifier" id="modifier" value="0" />
+            </div>
+        </div>
+    </form>
+{{/with}}

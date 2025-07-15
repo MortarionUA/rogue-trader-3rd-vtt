@@ -65,6 +65,12 @@ export class VoidshipSheet extends ActorContainerSheet {
     async _combatControls(event) {
         event.preventDefault();
         const target = event.currentTarget;
+        const itemId = target.dataset.itemId;
+
+        let weapon = null;
+        if (itemId) {
+            weapon = this.actor.items.get(itemId);
+        }
 
         switch(target.dataset.action) {
             case 'turrets':
@@ -82,6 +88,9 @@ export class VoidshipSheet extends ActorContainerSheet {
                 break;
             case 'crew':
                 await this.actor.rollCrew("Crew", 0);
+                break;
+            case 'weapons':
+                await this.actor.rollWeapons(this.actor.system.operator.weapons, weapon);
                 break;
         }
     }
