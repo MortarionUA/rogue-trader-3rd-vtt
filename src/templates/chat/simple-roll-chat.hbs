@@ -55,14 +55,15 @@
                                     {{#if voidshipTurrets}}
                                         {{#if success}}
                                             <div class="rt-roll__success">
-                                                <span>Turrets hit</span>
-                                                {{#each voidshipResults}}
-                                                    {{#unless @first}}, {{/unless}}{{this}}
-                                                {{/each}}
+                                                <span>Amount of Hits : {{turretsHit}}</span>
                                             </div>
                                             <div class="rt-roll__row rt-roll__row--number">
-                                                <div class="rt-roll__label">Amount of Hits</div>
-                                                <div class="rt-roll__value">{{turretsHit}}</div>
+                                                <div class="rt-roll__label">Rolls:</div>
+                                                <div class="rt-roll__value">
+                                                    {{#each voidshipResults}}
+                                                        {{#unless @first}}, {{/unless}}{{this}}
+                                                    {{/each}}
+                                                </div>
                                             </div>
                                         {{else}}
                                             <div class="rt-roll__fail">
