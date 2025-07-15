@@ -142,6 +142,12 @@ export class TargetedActionManager {
         const rollData = this.createSourceAndTargetData(source, target);
         if (!rollData) return;
 
+        const weapons = weapon ? [weapon] : rollData.actor.items.filter((item) => item.type === 'weapon').filter((item) => item.system.equipped);
+        if (!weapons || weapons.length === 0) {
+            ui.notifications.warn('Actor must have an equipped weapon!');
+            return;
+        }
+
         const weaponAttack = new WeaponActionData();
         const weaponRollData = weaponAttack.rollData;
         weaponRollData.weapons = weapons;
