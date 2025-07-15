@@ -40,12 +40,7 @@
                 </div>
                 <div class="rt-field__wrapper">
                     <span class="rt-field__span">Shots Amount</span>
-                    <span class="rt-field__span">{{crewRating}}</span>
-                </div>
-                <div class="rt-field__wrapper">
-                    <span class="rt-field__span">Operator Bonus</span>
-                    <input class="rt-field__input" type="number" data-dtype="Number" name="operator"
-                           value="{{operator}}" />
+                    <span class="rt-field__span">{{voidshipShotsAmount}}</span>
                 </div>
             </div>
             <div class="rt-panel spacer rt-grid-col-6">
@@ -62,6 +57,11 @@
                         <select class="rt-field__input" data-dtype="Number" name="modifiers.difficulty">
                             {{selectOptions @root.difficulties selected=difficulty}}
                         </select>
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Operator Bonus</span>
+                        <input class="rt-field__input" type="number" data-dtype="Number" name="modifiers.operator"
+                               value="{{operator}}" />
                     </div>
                     <div class="rt-field__wrapper">
                         <span class="rt-field__span">Modifier</span>
