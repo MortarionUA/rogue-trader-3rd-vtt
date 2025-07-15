@@ -55,4 +55,18 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         rollData.modifiers.operator = operator ? operator : 0;
         await prepareCrewRoll(simpleSkillData);
     }
+
+    async rollTurrets() {
+        const simpleSkillData = new SimpleSkillData();
+        const rollData = simpleSkillData.rollData;
+        rollData.actor = this;
+        rollData.nameOverride = "Turrets";
+        rollData.voidshipTurrets = true;
+        rollData.type = 'Check';
+        rollData.baseTarget = this.system.crewRating;
+        rollData.turretsShot = this.system.turrets;
+        rollData.modifiers.modifier = 0;
+        rollData.modifiers.operator = operator ? operator : 0;
+        await prepareTurretsRoll(simpleSkillData);
+    }
 }

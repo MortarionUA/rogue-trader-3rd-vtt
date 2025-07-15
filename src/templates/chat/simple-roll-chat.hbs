@@ -52,24 +52,44 @@
                                         <span>{{roll.total}}</span>
                                     </div>
                                 {{else}}
-                                    {{#if success}}
-                                        <div class="rt-roll__success">
-                                            <span>Success</span>
-                                            <span>{{roll.total}}</span>
-                                        </div>
-                                        <div class="rt-roll__row rt-roll__row--number">
-                                            <div class="rt-roll__label">Degrees of Success</div>
-                                            <div class="rt-roll__value">{{dos}}</div>
-                                        </div>
+                                    {{#if voidshipTurrets}}
+                                        {{#if success}}
+                                            <div class="rt-roll__success">
+                                                <span>Turrets hit</span>
+                                                {{#each voidshipResults}}
+                                                    {{#unless @first}}, {{/unless}}{{this}}
+                                                {{/each}}
+                                            </div>
+                                            <div class="rt-roll__row rt-roll__row--number">
+                                                <div class="rt-roll__label">Amount of Hits</div>
+                                                <div class="rt-roll__value">{{turretsHit}}</div>
+                                            </div>
+                                        {{else}}
+                                            <div class="rt-roll__fail">
+                                                <span>All Turrets Missed</span>
+                                                <span>{{roll.total}}</span>
+                                            </div>
+                                        {{/if}}
                                     {{else}}
-                                        <div class="rt-roll__fail">
-                                            <span>Fail</span>
-                                            <span>{{roll.total}}</span>
-                                        </div>
-                                        <div class="rt-roll__row rt-roll__row--number">
-                                            <div class="rt-roll__label">Degrees of Failure</div>
-                                            <div class="rt-roll__value">{{dof}}</div>
-                                        </div>
+                                        {{#if success}}
+                                            <div class="rt-roll__success">
+                                                <span>Success</span>
+                                                <span>{{roll.total}}</span>
+                                            </div>
+                                            <div class="rt-roll__row rt-roll__row--number">
+                                                <div class="rt-roll__label">Degrees of Success</div>
+                                                <div class="rt-roll__value">{{dos}}</div>
+                                            </div>
+                                        {{else}}
+                                            <div class="rt-roll__fail">
+                                                <span>Fail</span>
+                                                <span>{{roll.total}}</span>
+                                            </div>
+                                            <div class="rt-roll__row rt-roll__row--number">
+                                                <div class="rt-roll__label">Degrees of Failure</div>
+                                                <div class="rt-roll__value">{{dof}}</div>
+                                            </div>
+                                        {{/if}}
                                     {{/if}}
                                 {{/if}}
                             {{/if}}

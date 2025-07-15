@@ -5,6 +5,7 @@ import { refundAmmo, useAmmo } from '../rules/ammo.mjs';
 import { DHBasicActionManager } from '../actions/basic-action-manager.mjs';
 import { SYSTEM_ID } from '../hooks-manager.mjs';
 import { RogueTraderSettings } from '../rogue-trader-settings.mjs';
+import { forEach } from 'underscore';
 
 export class ActionData {
     id = uuid();
@@ -220,6 +221,26 @@ export class ActionData {
         }
     }
 
+    async _calculateVoidshipHits(type, amount) {
+        if (type === "Turrets") {
+            for (i = 0; i < amount; i++) {
+                this.rollData.roll = await roll1d100();
+                let rollTotal = this.rollData.roll.total;
+                this.rollData.voidshipResults += rollTotal;
+                const target = this.rollData.modifiedTarget;
+                if (rollTotal <= target / 10 && rollTotal !== 100) {
+                    this.rollData.turretsHit++;
+                    this.rollData.turretsHit++;
+                } else if (rollTotal <= target && rollTotal !== 100) {
+                    this.rollData.turretsHit++;
+                }
+            }
+            if (this.rollData.turretsHit > 0) {
+                this.rollData.success = true;
+            }
+        }
+    }
+
     async _calculateVoidshipHit() {
         this.rollData.roll = await roll1d100();
         let rollTotal = this.rollData.roll.total;
@@ -239,7 +260,11 @@ export class ActionData {
     }
 
     async calculateResultVoidship() {
-        await this._calculateVoidshipHit();
+        if (this.rollData.name === "Turrets") {
+            await this._calculateVoidshipHits(this.rollData.name, this.rollData.turretsShot);
+        } else {
+            await this._calculateVoidshipHit();
+        }
     }
 
     async calculateHits() {

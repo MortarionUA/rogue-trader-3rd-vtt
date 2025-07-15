@@ -68,7 +68,7 @@ export class VoidshipSheet extends ActorContainerSheet {
 
         switch(target.dataset.action) {
             case 'turrets':
-                await this.actor.prepareTurretFire(this.actor);
+                await this.actor.rollTurrets();
                 break;
             case 'movement':
                 console.log(this.actor);
