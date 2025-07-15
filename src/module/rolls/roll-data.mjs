@@ -62,6 +62,10 @@ export class RollData {
     previousRolls = [];
     automatic = false;
     success = false;
+    turretsShot = 0;
+    turretsHit = 0;
+    voidshipResults = [];
+    voidshipTurrets = false;
     voidshipFlawless = false;
     voidshipSuccess = false;
     voidshipFlawedSuccess = false;
