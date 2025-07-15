@@ -329,7 +329,7 @@ export class WeaponRollData extends RollData {
     }
 
     updateShotsAmount() {
-        this.voidshipShotsAmount = this.weapon.shipShots();
+        this.voidshipShotsAmount = this.weapon.strength;
     }
 
     async finalize() {
