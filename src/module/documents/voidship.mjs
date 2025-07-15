@@ -79,7 +79,7 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
                     ui.notifications.warn('Weapon is Destroyed and cannot shoot!');
                     return;
                 }
-                await DHTargetedActionManager.performWeaponAttack(this, null, item);
+                await DHTargetedActionManager.performShipWeaponAttack(this, null, item);
                 return;
             default:
                 await DHBasicActionManager.sendItemVocalizeChat({

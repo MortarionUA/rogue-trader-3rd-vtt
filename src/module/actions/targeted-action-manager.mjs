@@ -3,6 +3,7 @@ import { preparePsychicPowerRoll } from '../prompts/psychic-power-prompt.mjs';
 import { PsychicActionData, WeaponActionData } from '../rolls/action-data.mjs';
 import { RogueTraderSettings } from '../rogue-trader-settings.mjs';
 import { SYSTEM_ID } from '../hooks-manager.mjs';
+import { prepareShipWeaponRoll } from '../prompts/ship-weapon-prompt.mjs';
 
 export class TargetedActionManager {
 
@@ -134,6 +135,20 @@ export class TargetedActionManager {
             target: targetActorData,
             distance: targetDistance,
         };
+    }
+
+    async performShipWeaponAttack(source = null, target = null, weapon = null) {
+        game.rt.log('performShipWeaponAttack', { source, target, weapon });
+        const rollData = this.createSourceAndTargetData(source, target);
+        if (!rollData) return;
+
+        const weaponAttack = new WeaponActionData();
+        const weaponRollData = weaponAttack.rollData;
+        weaponRollData.weapons = weapons;
+        weaponRollData.sourceActor = rollData.actor;
+        weaponRollData.targetActor = rollData.target;
+        weaponRollData.distance = rollData.distance;
+        await prepareShipWeaponRoll(weaponAttack);
     }
 
     async performWeaponAttack(source = null, target = null, weapon = null) {
