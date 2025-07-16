@@ -225,6 +225,23 @@ export class ActionData {
     }
 
     async _calculateVoidshipHits(type, amount) {
+        if (type === "Boarding") {
+            for (let i = 0; i < amount; i++) {
+                this.rollData.roll = await roll1d100();
+                let rollTotal = this.rollData.roll.total;
+                this.rollData.voidshipResults.push(rollTotal);
+                const target = this.rollData.modifiedTarget;
+                if (rollTotal <= target / 10 && rollTotal !== 100) {
+                    this.rollData.boardingSuccess++;
+                    this.rollData.boardingSuccess++;
+                } else if (rollTotal <= target && rollTotal !== 100) {
+                    this.rollData.boardingSuccess++;
+                }
+            }
+            if (this.rollData.boardingSuccess > 0) {
+                this.rollData.success = true;
+            }
+        }
         if (type === "Turrets") {
             for (let i = 0; i < amount; i++) {
                 this.rollData.roll = await roll1d100();
@@ -241,7 +258,8 @@ export class ActionData {
             if (this.rollData.turretsHit > 0) {
                 this.rollData.success = true;
             }
-        } if (type === "Weapon") {
+        }
+        if (type === "Weapon") {
             for (let i = 0; i < amount; i++) {
                 let result = {
                     isCritical: false,
@@ -292,6 +310,8 @@ export class ActionData {
     async calculateResultVoidship() {
         if (this.rollData.name === "Turrets") {
             await this._calculateVoidshipHits(this.rollData.name, this.rollData.turretsShot);
+        } if (this.rollData.name === "Boarding") {
+            await this._calculateVoidshipHits(this.rollData.name, this.rollData.boardingAttacks);
         } else {
             await this._calculateVoidshipHit();
         }

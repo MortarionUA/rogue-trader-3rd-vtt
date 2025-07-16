@@ -1,7 +1,7 @@
 import { RogueTraderBaseActor } from './base-actor.mjs';
 import { DHTargetedActionManager } from '../actions/targeted-action-manager.mjs';
 import { SimpleSkillData } from '../rolls/action-data.mjs';
-import { prepareCrewRoll, prepareTurretsRoll} from '../prompts/crew-prompt.mjs';
+import { prepareCrewRoll, prepareTurretsRoll, prepareBoardingRoll} from '../prompts/crew-prompt.mjs';
 import { DHBasicActionManager } from '../actions/basic-action-manager.mjs';
 
 export class RogueTraderVoidship extends RogueTraderBaseActor {
@@ -85,6 +85,21 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         rollData.turretsShot = this.system.turrets;
         rollData.modifiers.modifier = 0;
         await prepareTurretsRoll(simpleSkillData);
+    }
+
+    async rollBoarding(operator) {
+        const simpleSkillData = new SimpleSkillData();
+        const rollData = simpleSkillData.rollData;
+        rollData.actor = this;
+        rollData.nameOverride = "Boarding";
+        rollData.voidshipBoarding = true;
+        rollData.type = 'Check';
+        rollData.baseTarget = this.system.crewRating;
+        rollData.boardingAttacks = this.system.boarding.actions;
+        rollData.boardingDamage = this.system.boarding.damage;
+        rollData.modifiers.modifier = 0;
+        rollData.modifiers.operator = operator ? operator : 0;
+        await prepareBoardingRoll(simpleSkillData);
     }
 
     async rollItem(itemId) {

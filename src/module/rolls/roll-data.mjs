@@ -66,12 +66,16 @@ export class RollData {
     success = false;
     turretsShot = 0;
     turretsHit = 0;
+    boardingAttacks = 0;
+    boardingDamage = 0;
+    boardingSuccess = 0;
     voidshipAttack = false;
     voidshipShotsAmount = 0;
     voidshipDamage = 0;
     voidshipFacing = 0;
     voidshipResults = [];
     voidshipTurrets = false;
+    voidshipBoarding = false;
     voidshipFlawless = false;
     voidshipSuccess = false;
     voidshipFlawedSuccess = false;

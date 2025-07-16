@@ -80,24 +80,57 @@
                                             </div>
                                         {{/if}}
                                     {{else}}
-                                        {{#if success}}
-                                            <div class="rt-roll__success">
-                                                <span>Success</span>
-                                                <span>{{roll.total}}</span>
-                                            </div>
-                                            <div class="rt-roll__row rt-roll__row--number">
-                                                <div class="rt-roll__label">Degrees of Success</div>
-                                                <div class="rt-roll__value">{{dos}}</div>
-                                            </div>
+                                        {{#if voidshipBoarding}}
+                                            {{#if success}}
+                                                <div class="rt-roll__success">
+                                                    <span>Successful Actions:</span>
+                                                    <span>{{boardingSuccess}}</span>
+                                                </div>
+                                                <div class="rt-roll__row rt-roll__row--number">
+                                                    <div class="rt-roll__label">Damage:</div>
+                                                    <div class="rt-roll__value">{{boardingDamage}}</div>
+                                                </div>
+                                                <div class="rt-roll__row rt-roll__row--number">
+                                                    <div class="rt-roll__label">Rolls:</div>
+                                                    <div class="rt-roll__value">
+                                                        {{#each voidshipResults}}
+                                                            {{#unless @first}}, {{/unless}}{{this}}
+                                                        {{/each}}
+                                                    </div>
+                                                </div>
+                                            {{else}}
+                                                <div class="rt-roll__fail">
+                                                    <span>All Actions Failed</span>
+                                                </div>
+                                                <div class="rt-roll__row rt-roll__row--number">
+                                                    <div class="rt-roll__label">Rolls:</div>
+                                                    <div class="rt-roll__value">
+                                                        {{#each voidshipResults}}
+                                                            {{#unless @first}}, {{/unless}}{{this}}
+                                                        {{/each}}
+                                                    </div>
+                                                </div>
+                                            {{/if}}
                                         {{else}}
-                                            <div class="rt-roll__fail">
-                                                <span>Fail</span>
-                                                <span>{{roll.total}}</span>
-                                            </div>
-                                            <div class="rt-roll__row rt-roll__row--number">
-                                                <div class="rt-roll__label">Degrees of Failure</div>
-                                                <div class="rt-roll__value">{{dof}}</div>
-                                            </div>
+                                            {{#if success}}
+                                                <div class="rt-roll__success">
+                                                    <span>Success</span>
+                                                    <span>{{roll.total}}</span>
+                                                </div>
+                                                <div class="rt-roll__row rt-roll__row--number">
+                                                    <div class="rt-roll__label">Degrees of Success</div>
+                                                    <div class="rt-roll__value">{{dos}}</div>
+                                                </div>
+                                            {{else}}
+                                                <div class="rt-roll__fail">
+                                                    <span>Fail</span>
+                                                    <span>{{roll.total}}</span>
+                                                </div>
+                                                <div class="rt-roll__row rt-roll__row--number">
+                                                    <div class="rt-roll__label">Degrees of Failure</div>
+                                                    <div class="rt-roll__value">{{dof}}</div>
+                                                </div>
+                                            {{/if}}
                                         {{/if}}
                                     {{/if}}
                                 {{/if}}
