@@ -1,15 +1,13 @@
 <div class="rt-wrapper">
     <div class="rt-chat">
-        {{#if label}}<h3>{{label}}</h3>{{/if}}
-        <div class="rt-roll">
-            {{#with rollData}}
-                <div>
-                    <h1>{{name}}</h1>
-                    {{#if action}}<h2>{{action}}</h2>{{/if}}
-                    <h3>{{effectString}}</h3>
-                    <div class="rt-roll__divider"></div>
-
-                    {{#unless ignoreModifiers}}
+        {{#if rollData.voidshipAttack}}
+            {{#if label}}<h3>{{label}}</h3>{{/if}}
+            <div class="rt-roll">
+                {{#with rollData}}
+                    <div>
+                        <h1>{{name}}</h1>
+                        <h2>Ship Weapon Attack</h2>
+                        <div class="rt-roll__divider"></div>
                         <div class="rt-roll__row rt-roll__row--number">
                             <div class="rt-roll__label">Base</div>
                             <div class="rt-roll__value">{{baseTarget}}</div>
@@ -24,164 +22,310 @@
                             <div class="rt-roll__label">Target</div>
                             <div class="rt-roll__value">{{modifiedTarget}}</div>
                         </div>
-                    {{/unless}}
-
-                    {{#if usesAmmo}}
-                        <div class="rt-roll__row rt-roll__row--number">
-                            <div class="rt-roll__label">Ammo Used</div>
-                            <div class="rt-roll__value">{{ammoUsed}}</div>
+                        <div class="rt-roll__target">
+                            <div class="rt-roll__label">Shots Amount</div>
+                            <div class="rt-roll__value">{{voidshipShotsAmount}}</div>
                         </div>
-                    {{/if}}
-
-                    {{#each @root.effectOutput as |effect|}}
-                        <div class="rt-roll__row--full">
-                            <span class='rt-roll__label'>{{effect.name}}</span> - {{effect.effect}}
+                        <div class="rt-roll__target">
+                            <div class="rt-roll__label">Calculated Damage</div>
+                            <div class="rt-roll__value">{{voidshipDamage}}</div>
                         </div>
-                    {{/each}}
-
-                    {{#if isOpposed}}
-                        <div class="rt-roll__row rt-roll__row--number">
-                            <div class="rt-roll__label">Opposed {{opposedChar}} roll</div>
-                            <div class="rt-roll__value">{{opposedRoll.total}} vs {{opposedTarget}} {{#if opposedSuccess}}({{opposedDos}}){{/if}}</div>
-                        </div>
-                    {{/if}}
-
-                    {{#unless ignoreDegrees}}
-                        {{#if success}}
-                            <div class="rt-roll__row rt-roll__row--number">
-                                <div class="rt-roll__label">Degrees of Success</div>
-                                <div class="rt-roll__value">{{dos}}</div>
-                            </div>
-                        {{else}}
-                            <div class="rt-roll__row rt-roll__row--number">
-                                <div class="rt-roll__label">Degrees of Failure</div>
-                                <div class="rt-roll__value">{{dof}}</div>
-                            </div>
-                        {{/if}}
-                    {{/unless}}
-
-                    {{#unless ignoreSuccess}}
-                        {{#if success}}
-                            <div class="rt-roll__success">
-                                <span>Success</span>
-                                <span>{{roll.total}}</span>
-                            </div>
-                        {{else}}
-                            <div class="rt-roll__fail">
-                                <span>Fail</span>
-                                <span>{{roll.total}}</span>
-                            </div>
-                        {{/if}}
-                    {{/unless}}
-
-                    {{#unless ignoreControls}}
-                        <div class='rt-roll__controls'>
-                            {{#if showDamage}}
-                                <button class="rt-control-button roll-control__hide-control" data-toggle="{{@root.id}}">
-                                    <span class="rt-control-button__span material-icons">bolt</span>
-                                    <span class="rt-control-button__label">Damage</span>
-                                </button>
-                            {{else}}
-                                <button class="rt-control-button__disabled">
-                                    <span class="rt-control-button__span material-icons">bolt</span>
-                                    <span class="rt-control-button__label">Damage</span>
-                                </button>
-                            {{/if}}
-                            <div class="rt-control-button roll-control__refund" data-roll-id="{{@root.id}}">
-                                <span class="rt-control-button__span material-icons">deblur</span>
-                                <span class="rt-control-button__label">Refund</span>
-                            </div>
-                            <div class="rt-control-button roll-control__fate-reroll" data-roll-id="{{@root.id}}">
-                                <span class="rt-control-button__span material-icons">casino</span>
-                                <span class="rt-control-button__label">Re-roll</span>
-                            </div>
-                        </div>
-                    {{/unless}}
-                </div>
-            {{/with}}
-            {{#unless rollData.ignoreDamage}}
-                {{#with damageData}}
-                    <div id="{{@root.id}}" style="display: none">
-                        {{#if @root.psychicEffect}}
-                            <div class="rt-roll__divider"></div>
-                            <div class="rt-roll__label">{{{@root.psychicEffect}}}</div>
-                        {{/if}}
-                        <div class="rt-roll__divider"></div>
-                        {{#each hits as |hit|}}
-                            <h2 style='margin-top: .5rem'>Hit {{inc @index}}</h2>
-                            <div class="rt-roll__row rt-roll__row--number">
-                                <div class="rt-roll__label">Base Formula:</div>
-                                <div class="rt-roll__value">{{hit.damageRoll.formula}}</div>
-                            </div>
-                            <div class="rt-roll__row rt-roll__row--number">
-                                <div class="rt-roll__label">Base Damage:</div>
-                                <div class="rt-roll__value">{{hit.damageRoll.result}}</div>
-                            </div>
-                            {{#each modifiers}}
-                                <div class="rt-roll__row rt-roll__row--number">
-                                    <div class="rt-roll__label">Modifier: {{@key}}</div>
-                                    <div class="rt-roll__value">{{this}}</div>
-                                </div>
-                            {{/each}}
-                            <div class="rt-roll__row rt-roll__row--number">
-                                <div class="rt-roll__label">Damage Type:</div>
-                                <div class="rt-roll__value">{{hit.damageType}}</div>
-                            </div>
-
-                            {{#each hit.effects as |effect|}}
-                                <div class="rt-roll__row--full">
-                                    <span class='rt-roll__label'>{{effect.name}}</span> - {{effect.effect}}
-                                </div>
-                            {{/each}}
-
-                            <div class="rt-roll__notice">
-                                <span>{{hit.totalDamage}} Damage to {{hit.location}}</span>
-                            </div>
-                            <div class="rt-roll__row rt-roll__row--number">
-                                <div class="rt-roll__label">Base Penetration:</div>
-                                <div class="rt-roll__value">
-                                    {{#if hit.hasPenetrationRoll}}
-                                        {{hit.penetrationRoll.result}}
-                                    {{else}}
-                                        {{hit.penetration}}
+                        {{#if voidshipTarget}}
+                            {{#each voidshipResults as |result|}}
+                                {{#if result.isCritical}}
+                                    {{#if result.overpenetration}}
+                                        <div class="rt-roll__flawless">
+                                            <span>Critical Overpenetration</span>
+                                            <span>{{result.roll}}</span>
+                                        </div>
+                                        <div class="rt-roll__flawless">
+                                            <span>{{result.location}} Hit</span>
+                                        </div>
                                     {{/if}}
-                                </div>
-                            </div>
-                            {{#each penetrationModifiers}}
-                                <div class="rt-roll__row rt-roll__row--number">
-                                    <div class="rt-roll__label">Modifier: {{@key}}</div>
-                                    <div class="rt-roll__value">{{this}}</div>
-                                </div>
-                            {{/each}}
-                            <div class="rt-roll__notice">
-                                <span>{{hit.totalPenetration}} Penetration</span>
-                            </div>
-                            {{#each righteousFury as |fury|}}
-                                <div class="rt-roll__success">
-                                    <span>Righteous fury hits for a level {{fury.roll.total}} critical effect!</span>
-                                </div>
-                                <div class="rt-roll__label">{{fury.effect}}</div>
-                            {{/each}}
-
-                            {{#if @root.rollData.targetActor}}
-                                <div class='rt-roll__controls-1'>
-                                    <div class="rt-control-button roll-control__assign-damage"
-                                         data-location="{{hit.location}}"
-                                         data-total-damage="{{hit.totalDamage}}"
-                                         data-total-penetration="{{hit.totalPenetration}}"
-                                         data-total-fatigue="{{hit.totalFatigue}}"
-                                         data-target-uuid="{{@root.rollData.targetActor.uuid}}"
-                                         data-damage-type="{{hit.damageType}}">
-                                        <span class="rt-control-button__span material-icons">api</span>
-                                        <span class="rt-control-button__label">Assign Damage</span>
+                                    {{#if result.penetration}}
+                                        <div class="rt-roll__flawless">
+                                            <span>Critical Penetration</span>
+                                            <span>{{result.roll}}</span>
+                                        </div>
+                                        <div class="rt-roll__flawless">
+                                            <span>{{result.location}} Hit</span>
+                                        </div>
+                                    {{else}}
+                                        <div class="rt-roll__flawed">
+                                            <span>Critical Exterior Hit</span>
+                                            <span>{{result.roll}}</span>
+                                        </div>
+                                        <div class="rt-roll__flawed">
+                                            <span>{{result.location}} Hit</span>
+                                        </div>
+                                    {{/if}}
+                                {{/if}}
+                                {{#if result.isHit}}
+                                    {{#if result.overpenetration}}
+                                        <div class="rt-roll__flawless">
+                                            <span>Overpenetration</span>
+                                            <span>{{result.roll}}</span>
+                                        </div>
+                                        <div class="rt-roll__flawless">
+                                            <span>{{result.location}} Hit</span>
+                                        </div>
+                                    {{/if}}
+                                    {{#if result.penetration}}
+                                        <div class="rt-roll__success">
+                                            <span>Penetration</span>
+                                            <span>{{result.roll}}</span>
+                                        </div>
+                                        <div class="rt-roll__success">
+                                            <span>{{result.location}} Hit</span>
+                                        </div>
+                                    {{else}}
+                                        <div class="rt-roll__fail">
+                                            <span>Armor not Penetrated</span>
+                                            <span>{{result.roll}}</span>
+                                        </div>
+                                        <div class="rt-roll__fail">
+                                            <span>{{result.location}} Hit</span>
+                                        </div>
+                                    {{/if}}
+                                {{/if}}
+                                {{#if result.isFailure}}
+                                    <div class="rt-roll__fail">
+                                        <span>Miss</span>
+                                        <span>{{roll.total}}</span>
                                     </div>
-                                </div>
-                            {{/if}}
-                            <div class="rt-roll__divider"></div>
-                        {{/each}}
+                                {{/if}}
+                                {{#if result.isFumble}}
+                                    <div class="rt-roll__fumble">
+                                        <span>FUMBLE!</span>
+                                        <span>{{roll.total}}</span>
+                                    </div>
+                                {{/if}}
+                            {{/each}}
+                        {{else}}
+                            {{#each voidshipResults as |result|}}
+                                {{#if result.isCritical}}
+                                    <div class="rt-roll__flawless">
+                                        <span>Critical Hit</span>
+                                        <span>{{result.roll}}</span>
+                                    </div>
+                                    <div class="rt-roll__flawless">
+                                        <span>{{result.location}} Hit</span>
+                                    </div>
+                                {{/if}}
+                                {{#if result.isHit}}
+                                    <div class="rt-roll__success">
+                                        <span>Hit</span>
+                                        <span>{{result.roll}}</span>
+                                    </div>
+                                    <div class="rt-roll__success">
+                                        <span>{{result.location}} Hit</span>
+                                    </div>
+                                {{/if}}
+                                {{#if result.isFailure}}
+                                    <div class="rt-roll__fail">
+                                        <span>Miss</span>
+                                        <span>{{roll.total}}</span>
+                                    </div>
+                                {{/if}}
+                                {{#if result.isFumble}}
+                                    <div class="rt-roll__fumble">
+                                        <span>FUMBLE!</span>
+                                        <span>{{roll.total}}</span>
+                                    </div>
+                                {{/if}}
+                            {{/each}}
+                        {{/if}}
                     </div>
                 {{/with}}
-            {{/unless}}
-        </div>
+            </div>
+        {{else}}
+            {{#if label}}<h3>{{label}}</h3>{{/if}}
+            <div class="rt-roll">
+                {{#with rollData}}
+                    <div>
+                        <h1>{{name}}</h1>
+                        {{#if action}}<h2>{{action}}</h2>{{/if}}
+                        <h3>{{effectString}}</h3>
+                        <div class="rt-roll__divider"></div>
+
+                        {{#unless ignoreModifiers}}
+                            <div class="rt-roll__row rt-roll__row--number">
+                                <div class="rt-roll__label">Base</div>
+                                <div class="rt-roll__value">{{baseTarget}}</div>
+                            </div>
+                            {{#each activeModifiers}}
+                                <div class="rt-roll__row rt-roll__row--number">
+                                    <div class="rt-roll__label">Modifier: {{@key}}</div>
+                                    <div class="rt-roll__value">{{this}}</div>
+                                </div>
+                            {{/each}}
+                            <div class="rt-roll__target">
+                                <div class="rt-roll__label">Target</div>
+                                <div class="rt-roll__value">{{modifiedTarget}}</div>
+                            </div>
+                        {{/unless}}
+
+                        {{#if usesAmmo}}
+                            <div class="rt-roll__row rt-roll__row--number">
+                                <div class="rt-roll__label">Ammo Used</div>
+                                <div class="rt-roll__value">{{ammoUsed}}</div>
+                            </div>
+                        {{/if}}
+
+                        {{#each @root.effectOutput as |effect|}}
+                            <div class="rt-roll__row--full">
+                                <span class='rt-roll__label'>{{effect.name}}</span> - {{effect.effect}}
+                            </div>
+                        {{/each}}
+
+                        {{#if isOpposed}}
+                            <div class="rt-roll__row rt-roll__row--number">
+                                <div class="rt-roll__label">Opposed {{opposedChar}} roll</div>
+                                <div class="rt-roll__value">{{opposedRoll.total}} vs {{opposedTarget}} {{#if
+                                    opposedSuccess}}({{opposedDos}}){{/if}}</div>
+                            </div>
+                        {{/if}}
+
+                        {{#unless ignoreDegrees}}
+                            {{#if success}}
+                                <div class="rt-roll__row rt-roll__row--number">
+                                    <div class="rt-roll__label">Degrees of Success</div>
+                                    <div class="rt-roll__value">{{dos}}</div>
+                                </div>
+                            {{else}}
+                                <div class="rt-roll__row rt-roll__row--number">
+                                    <div class="rt-roll__label">Degrees of Failure</div>
+                                    <div class="rt-roll__value">{{dof}}</div>
+                                </div>
+                            {{/if}}
+                        {{/unless}}
+
+                        {{#unless ignoreSuccess}}
+                            {{#if success}}
+                                <div class="rt-roll__success">
+                                    <span>Success</span>
+                                    <span>{{roll.total}}</span>
+                                </div>
+                            {{else}}
+                                <div class="rt-roll__fail">
+                                    <span>Fail</span>
+                                    <span>{{roll.total}}</span>
+                                </div>
+                            {{/if}}
+                        {{/unless}}
+
+                        {{#unless ignoreControls}}
+                            <div class='rt-roll__controls'>
+                                {{#if showDamage}}
+                                    <button class="rt-control-button roll-control__hide-control"
+                                            data-toggle="{{@root.id}}">
+                                        <span class="rt-control-button__span material-icons">bolt</span>
+                                        <span class="rt-control-button__label">Damage</span>
+                                    </button>
+                                {{else}}
+                                    <button class="rt-control-button__disabled">
+                                        <span class="rt-control-button__span material-icons">bolt</span>
+                                        <span class="rt-control-button__label">Damage</span>
+                                    </button>
+                                {{/if}}
+                                <div class="rt-control-button roll-control__refund" data-roll-id="{{@root.id}}">
+                                    <span class="rt-control-button__span material-icons">deblur</span>
+                                    <span class="rt-control-button__label">Refund</span>
+                                </div>
+                                <div class="rt-control-button roll-control__fate-reroll"
+                                     data-roll-id="{{@root.id}}">
+                                    <span class="rt-control-button__span material-icons">casino</span>
+                                    <span class="rt-control-button__label">Re-roll</span>
+                                </div>
+                            </div>
+                        {{/unless}}
+                    </div>
+                {{/with}}
+                {{#unless rollData.ignoreDamage}}
+                    {{#with damageData}}
+                        <div id="{{@root.id}}" style="display: none">
+                            {{#if @root.psychicEffect}}
+                                <div class="rt-roll__divider"></div>
+                                <div class="rt-roll__label">{{{@root.psychicEffect}}}</div>
+                            {{/if}}
+                            <div class="rt-roll__divider"></div>
+                            {{#each hits as |hit|}}
+                                <h2 style='margin-top: .5rem'>Hit {{inc @index}}</h2>
+                                <div class="rt-roll__row rt-roll__row--number">
+                                    <div class="rt-roll__label">Base Formula:</div>
+                                    <div class="rt-roll__value">{{hit.damageRoll.formula}}</div>
+                                </div>
+                                <div class="rt-roll__row rt-roll__row--number">
+                                    <div class="rt-roll__label">Base Damage:</div>
+                                    <div class="rt-roll__value">{{hit.damageRoll.result}}</div>
+                                </div>
+                                {{#each modifiers}}
+                                    <div class="rt-roll__row rt-roll__row--number">
+                                        <div class="rt-roll__label">Modifier: {{@key}}</div>
+                                        <div class="rt-roll__value">{{this}}</div>
+                                    </div>
+                                {{/each}}
+                                <div class="rt-roll__row rt-roll__row--number">
+                                    <div class="rt-roll__label">Damage Type:</div>
+                                    <div class="rt-roll__value">{{hit.damageType}}</div>
+                                </div>
+
+                                {{#each hit.effects as |effect|}}
+                                    <div class="rt-roll__row--full">
+                                        <span class='rt-roll__label'>{{effect.name}}</span> - {{effect.effect}}
+                                    </div>
+                                {{/each}}
+
+                                <div class="rt-roll__notice">
+                                    <span>{{hit.totalDamage}} Damage to {{hit.location}}</span>
+                                </div>
+                                <div class="rt-roll__row rt-roll__row--number">
+                                    <div class="rt-roll__label">Base Penetration:</div>
+                                    <div class="rt-roll__value">
+                                        {{#if hit.hasPenetrationRoll}}
+                                            {{hit.penetrationRoll.result}}
+                                        {{else}}
+                                            {{hit.penetration}}
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                {{#each penetrationModifiers}}
+                                    <div class="rt-roll__row rt-roll__row--number">
+                                        <div class="rt-roll__label">Modifier: {{@key}}</div>
+                                        <div class="rt-roll__value">{{this}}</div>
+                                    </div>
+                                {{/each}}
+                                <div class="rt-roll__notice">
+                                    <span>{{hit.totalPenetration}} Penetration</span>
+                                </div>
+                                {{#each righteousFury as |fury|}}
+                                    <div class="rt-roll__success">
+                                        <span>Righteous fury hits for a level {{fury.roll.total}}
+                                            critical effect!</span>
+                                    </div>
+                                    <div class="rt-roll__label">{{fury.effect}}</div>
+                                {{/each}}
+
+                                {{#if @root.rollData.targetActor}}
+                                    <div class='rt-roll__controls-1'>
+                                        <div class="rt-control-button roll-control__assign-damage"
+                                             data-location="{{hit.location}}"
+                                             data-total-damage="{{hit.totalDamage}}"
+                                             data-total-penetration="{{hit.totalPenetration}}"
+                                             data-total-fatigue="{{hit.totalFatigue}}"
+                                             data-target-uuid="{{@root.rollData.targetActor.uuid}}"
+                                             data-damage-type="{{hit.damageType}}">
+                                            <span class="rt-control-button__span material-icons">api</span>
+                                            <span class="rt-control-button__label">Assign Damage</span>
+                                        </div>
+                                    </div>
+                                {{/if}}
+                                <div class="rt-roll__divider"></div>
+                            {{/each}}
+                        </div>
+                    {{/with}}
+                {{/unless}}
+            </div>
+        {{/if}}
     </div>
 </div>

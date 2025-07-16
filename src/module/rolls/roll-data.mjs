@@ -67,6 +67,7 @@ export class RollData {
     turretsShot = 0;
     turretsHit = 0;
     voidshipShotsAmount = 0;
+    voidshipDamage = 0;
     voidshipFacing = 0;
     voidshipResults = [];
     voidshipTurrets = false;

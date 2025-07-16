@@ -244,8 +244,12 @@ export class ActionData {
         } if (type === "Weapon") {
             for (let i = 0; i < amount; i++) {
                 let result = {
-                    result: "",
+                    isCritical: false,
+                    isHit: false,
+                    isMiss: false,
+                    isFumble: false,
                     penetration: false,
+                    overpenetration: false,
                     roll: 0,
                     location: ""
                 };
@@ -253,13 +257,13 @@ export class ActionData {
                 let rollTotal = this.rollData.roll.total;
                 const target = this.rollData.modifiedTarget;
                 if (rollTotal <= target / 10 && rollTotal !== 100) {
-                    result.result = "Critical";
+                    result.isCritical = true;
                 } else if (rollTotal <= target && rollTotal !== 100) {
-                    result.result = "Hit";
+                    result.isHit = true;
                 } else if (rollTotal <= (100 - (10 - target/10)) && rollTotal !== 100) {
-                    result.result = "Failure";
+                    result.isMiss = true;
                 } else {
-                    result.result = "Fumble";
+                    result.isFumble = true;
                 }
                 result.roll = rollTotal;
                 this.rollData.voidshipResults.push(result);
@@ -299,7 +303,7 @@ export class ActionData {
 
     async calculateHitLocations() {
         this.rollData.voidshipResults.forEach((result) => {
-            if (result.result === "Critical" || result.result === "Hit" ) {
+            if (result.isCritical || result.isHit ) {
                 let hitRoll = this.reverseD100(result.roll);
                 switch (this.rollData.voidshipFacing) {
                     case 0: if (hitRoll <= 10) {
@@ -351,29 +355,38 @@ export class ActionData {
                 case "Long Range" : damage--; break;
             }
         }
+        this.rollData.voidshipDamage = damage;
         if (this.rollData.targetActor && this.rollData.targetActor.type === "voidship") {
             this.rollData.voidshipTarget = true;
             let armour = this.rollData.targetActor.system.armour;
             this.rollData.voidshipResults.forEach((result) => {
-                if (result.result === "Critical" || result.result === "Hit" ) {
+                if (result.isCritical || result.isHit ) {
                     switch (result.location) {
                         case "Bridge":
-                            if (damage >= armour.side) {
+                            if (damage >= armour.side*2){
+                                result.overpenetration = true;
+                            } else if (damage >= armour.side) {
                                 result.penetration = true;
                             }
                             break;
                         case "Prow":
-                            if (damage >= armour.prow) {
+                            if (damage >= armour.prow*2){
+                                result.overpenetration = true;
+                            } else if (damage >= armour.prow) {
                                 result.penetration = true;
                             }
                             break;
                         case "Main":
-                            if (damage >= armour.side) {
+                            if (damage >= armour.side*2){
+                                result.overpenetration = true;
+                            } else if (damage >= armour.side) {
                                 result.penetration = true;
                             }
                             break;
                         case "Rear":
-                            if (damage >= armour.rear) {
+                            if (damage >= armour.rear*2){
+                                result.overpenetration = true;
+                            } else if (damage >= armour.rear) {
                                 result.penetration = true;
                             }
                             break;
