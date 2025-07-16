@@ -251,7 +251,6 @@ export class ActionData {
             for (let i = 0; i < amount; i++) {
                 this.rollData.roll = await roll1d100();
                 let rollTotal = this.rollData.roll.total;
-                this.rollData.voidshipResults.push(rollTotal);
                 const target = this.rollData.modifiedTarget;
                 if (rollTotal <= target / 10 && rollTotal !== 100) {
                     result.result = "Critical";
