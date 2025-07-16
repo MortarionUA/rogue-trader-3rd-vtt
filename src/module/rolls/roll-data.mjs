@@ -270,6 +270,7 @@ export class WeaponRollData extends RollData {
         if (this.weapon.isShipWeapon) {
             this.updateOperatorBonus();
             this.updateShotsAmount();
+            this.modifiers['attack'] = 0;
         }
     }
 
