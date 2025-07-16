@@ -88,7 +88,7 @@
                                         </div>
                                     {{/if}}
                                 {{/if}}
-                                {{#if result.isFailure}}
+                                {{#if result.isMiss}}
                                     <div class="rt-roll__fail">
                                         <span>Miss</span>
                                         <span>{{roll.total}}</span>
@@ -121,7 +121,7 @@
                                         <span>{{result.location}} Hit</span>
                                     </div>
                                 {{/if}}
-                                {{#if result.isFailure}}
+                                {{#if result.isMiss}}
                                     <div class="rt-roll__fail">
                                         <span>Miss</span>
                                         <span>{{roll.total}}</span>
