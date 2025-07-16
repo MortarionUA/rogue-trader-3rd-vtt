@@ -94,10 +94,10 @@ function calculateRangeNameAndBonus(rollData) {
         let ranges = rollData.weapon.shipWeaponRanges;
         if (targetDistance <= ranges.short) {
             rollData.rangeName = 'Short Range';
-            rollData.rangeBonus = 30;
+            rollData.rangeBonus = 20;
         } else if (targetDistance <= ranges.medium) {
             rollData.rangeName = 'Medium Range';
-            rollData.rangeBonus = 10;
+            rollData.rangeBonus = 0;
         } else if (targetDistance <= ranges.long) {
             rollData.rangeName = 'Long Range';
             rollData.rangeBonus = -20;
