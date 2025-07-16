@@ -108,7 +108,10 @@
 .rt-wrapper button[type=roll-header] {
   font-family: "Lusitana", serif;
   font-size: 12pt;
+  font-style: bold;
   text-transform: uppercase;
+  border-radius: 5px;
+  background: rgba(0 0 0 / 10%);
 }
 .rt-wrapper h1,
 .rt-wrapper h2,
