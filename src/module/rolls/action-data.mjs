@@ -472,6 +472,7 @@ export class ActionData {
         // Determine Success/Hits
         await this.calculateSuccessOrFailure();
         if (this.rollData.weapon && this.rollData.weapon.isShipWeapon) {
+            this.rollData.voidshipAttack = true;
             await this.calculateHitLocations();
             await this.calculatePenetration();
         }
