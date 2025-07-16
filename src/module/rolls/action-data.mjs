@@ -294,6 +294,94 @@ export class ActionData {
         }
     }
 
+    reverseD100(roll) {
+        return parseInt(roll.toString().padStart(2, '0').split('').reverse().join(''));
+    }
+
+    async calculateHitLocations() {
+        this.rollData.voidshipResults.forEach((result) => {
+            if (result.result === "Critical" || result.result === "Hit" ) {
+                let hitRoll = this.reverseD100(result.roll);
+                switch (this.rollData.voidshipFacing) {
+                    case 0: if (hitRoll <= 10) {
+                        result.location = "Bridge";
+                    } else if (hitRoll <= 50) {
+                        result.location = "Prow";
+                    } else if (hitRoll <= 90) {
+                        result.location = "Main";
+                    } else {
+                        result.location = "Rear";
+                    } break;
+                    case 1: if (hitRoll <= 10) {
+                        result.location = "Bridge";
+                    } else if (hitRoll <= 25) {
+                        result.location = "Prow";
+                    } else if (hitRoll <= 85) {
+                        result.location = "Main";
+                    } else {
+                        result.location = "Rear";
+                    } break;
+                    case 2: if (hitRoll <= 10) {
+                        result.location = "Bridge";
+                    } else if (hitRoll <= 25) {
+                        result.location = "Prow";
+                    } else if (hitRoll <= 85) {
+                        result.location = "Main";
+                    } else {
+                        result.location = "Rear";
+                    } break;
+                    case 3: if (hitRoll <= 10) {
+                        result.location = "Bridge";
+                    } else if (hitRoll <= 20) {
+                        result.location = "Prow";
+                    } else if (hitRoll <= 50) {
+                        result.location = "Main";
+                    } else {
+                        result.location = "Rear";
+                    } break;
+                }
+            }
+        })
+    }
+
+    async calculatePenetration() {
+        let damage = this.rollData.weapon.damage;
+        if (this.rollData.weapon.type === "Macrocannon") {
+            switch (this.rollData.rangeName) {
+                case "Short Range" : damage++; break;
+                case "Long Range" : damage--; break;
+            }
+        }
+        if (this.rollData.targetActor && this.rollData.targetActor.type === "voidship") {
+            this.rollData.voidshipTarget = true;
+            let armour = this.rollData.targetActor.system.armour;
+            this.rollData.voidshipResults.forEach((result) => {
+                switch (result.location) {
+                    case "Bridge":
+                        if (damage >= armour.side) {
+                            result.penetration = true;
+                        }
+                        break;
+                    case "Prow":
+                        if (damage >= armour.prow) {
+                            result.penetration = true;
+                        }
+                        break;
+                    case "Main":
+                        if (damage >= armour.side) {
+                            result.penetration = true;
+                        }
+                        break;
+                    case "Rear":
+                        if (damage >= armour.rear) {
+                            result.penetration = true;
+                        }
+                        break;
+                }
+            })
+        }
+    }
+
     async calculateHits() {
         if (this.rollData.success || this.rollData.isThrown) {
             let hit = await Hit.createHit(this, 0);
@@ -369,6 +457,10 @@ export class ActionData {
 
         // Determine Success/Hits
         await this.calculateSuccessOrFailure();
+        if (this.rollData.weapon && this.rollData.weapon.isShipWeapon) {
+            await this.calculateHitLocations();
+            await this.calculatePenetration();
+        }
 
         if (this.rollData.action !== 'Stun') {
             await this.checkForOpposed();

@@ -75,6 +75,7 @@ export class RollData {
     voidshipFlawedSuccess = false;
     voidshipFailure = false;
     voidshipFumble = false;
+    voidshipTarget = false;
     dos = 0;
     dof = 0;
 
