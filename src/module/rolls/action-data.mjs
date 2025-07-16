@@ -344,8 +344,8 @@ export class ActionData {
     }
 
     async calculatePenetration() {
-        let damage = this.rollData.weapon.damage;
-        if (this.rollData.weapon.type === "Macrocannon") {
+        let damage = this.rollData.weapon.system.damage;
+        if (this.rollData.weapon.system.type === "Macrocannon") {
             switch (this.rollData.rangeName) {
                 case "Short Range" : damage++; break;
                 case "Long Range" : damage--; break;
@@ -355,27 +355,29 @@ export class ActionData {
             this.rollData.voidshipTarget = true;
             let armour = this.rollData.targetActor.system.armour;
             this.rollData.voidshipResults.forEach((result) => {
-                switch (result.location) {
-                    case "Bridge":
-                        if (damage >= armour.side) {
-                            result.penetration = true;
-                        }
-                        break;
-                    case "Prow":
-                        if (damage >= armour.prow) {
-                            result.penetration = true;
-                        }
-                        break;
-                    case "Main":
-                        if (damage >= armour.side) {
-                            result.penetration = true;
-                        }
-                        break;
-                    case "Rear":
-                        if (damage >= armour.rear) {
-                            result.penetration = true;
-                        }
-                        break;
+                if (result.result === "Critical" || result.result === "Hit" ) {
+                    switch (result.location) {
+                        case "Bridge":
+                            if (damage >= armour.side) {
+                                result.penetration = true;
+                            }
+                            break;
+                        case "Prow":
+                            if (damage >= armour.prow) {
+                                result.penetration = true;
+                            }
+                            break;
+                        case "Main":
+                            if (damage >= armour.side) {
+                                result.penetration = true;
+                            }
+                            break;
+                        case "Rear":
+                            if (damage >= armour.rear) {
+                                result.penetration = true;
+                            }
+                            break;
+                    }
                 }
             })
         }
