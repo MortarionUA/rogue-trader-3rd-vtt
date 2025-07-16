@@ -92,7 +92,7 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         const item = this.items.get(itemId);
         switch (item.type) {
             case 'shipWeapon':
-                if (!item.system.isDestroyed) {
+                if (item.system.isDestroyed) {
                     ui.notifications.warn('Weapon is Destroyed and cannot shoot!');
                     return;
                 }

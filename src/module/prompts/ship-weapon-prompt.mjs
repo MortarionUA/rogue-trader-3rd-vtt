@@ -61,7 +61,6 @@ export class ShipWeaponAttackDialog extends FormApplication {
     }
 
     async _rollAttack(event) {
-
         await this.data.finalize();
         await this.weaponAttackData.performActionAndSendToChat();
         await this.close();
