@@ -242,13 +242,13 @@ export class ActionData {
                 this.rollData.success = true;
             }
         } if (type === "Weapon") {
-            let result = {
-                result: "",
-                penetration: false,
-                roll: 0,
-                location: ""
-            };
             for (let i = 0; i < amount; i++) {
+                let result = {
+                    result: "",
+                    penetration: false,
+                    roll: 0,
+                    location: ""
+                };
                 this.rollData.roll = await roll1d100();
                 let rollTotal = this.rollData.roll.total;
                 const target = this.rollData.modifiedTarget;
