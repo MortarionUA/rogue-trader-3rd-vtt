@@ -869,7 +869,8 @@
                                 "advance": 0,
                                 "cost": 0,
                                 "taken": false
-                            },
+                            }
+                        },
                         "characteristic": "Int"
                     }
                 }
