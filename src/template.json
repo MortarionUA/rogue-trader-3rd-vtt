@@ -640,8 +640,8 @@
                         "characteristic": "WS"
                     },
                     "performance": {
-                        "label": "Parry",
-                        "characteristics": ["Fel, Int, Ag"],
+                        "label": "Performance",
+                        "characteristics": ["Fel", "Int", "Ag"],
                         "advance": 0,
                         "isSpecialist": true,
                         "specialities": {},
