@@ -333,6 +333,15 @@
                         "cost": 0,
                         "characteristic": "Fel"
                     },
+                    "demolitions": {
+                        "label": "Demolitions",
+                        "characteristics": ["Int", "Ag"],
+                        "advance": 0,
+                        "isSpecialist": false,
+                        "specialities": {},
+                        "cost": 0,
+                        "characteristic": "Int"
+                    },
                     "dodge": {
                         "label": "Dodge",
                         "characteristics": ["Ag"],
@@ -600,6 +609,12 @@
                                 "cost": 0,
                                 "taken": false
                             },
+                            "walkers": {
+                                "label": "Walkers",
+                                "advance": 0,
+                                "cost": 0,
+                                "taken": false
+                            },
                             "aeronautica": {
                                 "label": "Aeronautica",
                                 "advance": 0,
@@ -623,6 +638,15 @@
                         "specialities": {},
                         "cost": 0,
                         "characteristic": "WS"
+                    },
+                    "performance": {
+                        "label": "Parry",
+                        "characteristics": ["Fel, Int, Ag"],
+                        "advance": 0,
+                        "isSpecialist": true,
+                        "specialities": {},
+                        "cost": 0,
+                        "characteristic": "Fel"
                     },
                     "psyniscience": {
                         "label": "Psyniscience",
@@ -780,50 +804,32 @@
                         "advance": 0,
                         "isSpecialist": true,
                         "specialities": {
-                            "agri": {
-                                "label": "Agri",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            },
-                            "archaeologist": {
-                                "label": "Archaeologist",
+                            "archaeologist ": {
+                                "label": "Archaeologist ",
                                 "advance": 0,
                                 "cost": 0,
                                 "taken": false
                             },
                             "armourer": {
-                                "label": "Armourer",
+                                "label": "armourer",
                                 "advance": 0,
                                 "cost": 0,
                                 "taken": false
                             },
-                            "astrographer": {
-                                "label": "Astrographer",
+                            "biology": {
+                                "label": "biology",
                                 "advance": 0,
                                 "cost": 0,
                                 "taken": false
                             },
-                            "chymist": {
-                                "label": "Chymist",
+                            "cartographer": {
+                                "label": "cartographer",
                                 "advance": 0,
                                 "cost": 0,
                                 "taken": false
                             },
-                            "cryptographer": {
-                                "label": "Cryptographer",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            },
-                            "cook": {
-                                "label": "Cook",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            },
-                            "explorator": {
-                                "label": "Explorator",
+                            "chemistry": {
+                                "label": "chemistry",
                                 "advance": 0,
                                 "cost": 0,
                                 "taken": false
@@ -834,20 +840,8 @@
                                 "cost": 0,
                                 "taken": false
                             },
-                            "loremancer": {
-                                "label": "Loremancer",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            },
-                            "morticator": {
-                                "label": "Morticator",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            },
-                            "performancer": {
-                                "label": "Performancer",
+                            "merchant": {
+                                "label": "Merchant",
                                 "advance": 0,
                                 "cost": 0,
                                 "taken": false
@@ -858,43 +852,24 @@
                                 "cost": 0,
                                 "taken": false
                             },
-                            "scrimshawer": {
-                                "label": "Scrimshawer",
+                            "vehiculum": {
+                                "label": "Vehiculum",
                                 "advance": 0,
                                 "cost": 0,
                                 "taken": false
                             },
-                            "sculptor": {
-                                "label": "Sculptor",
+                            "voidwright": {
+                                "label": "Voidwright",
                                 "advance": 0,
                                 "cost": 0,
                                 "taken": false
                             },
-                            "shipwright": {
-                                "label": "Shipwright",
+                            "weaponsmith": {
+                                "label": "Weaponsmith",
                                 "advance": 0,
                                 "cost": 0,
                                 "taken": false
                             },
-                            "soothsayer": {
-                                "label": "Soothsayer",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            },
-                            "technomat": {
-                                "label": "Technomat",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            },
-                            "voidfarer": {
-                                "label": "Voidfarer",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            }
-                        },
                         "characteristic": "Int"
                     }
                 }
