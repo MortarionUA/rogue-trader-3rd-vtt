@@ -206,7 +206,7 @@ export class ActionData {
                 }
 
                 if (this.rollData.dos > 1 && this.rollData.hasAttackSpecial('Twin-Linked')) {
-                    if ((this.rollData.action === 'Standard Attack' || attackData.rollData.action === 'Called Shot') && this.rollData.dos > 2)
+                    if ((this.rollData.action === 'Standard Attack' || this.rollData.action === 'Called Shot') && this.rollData.dos > 2)
                     {
                         this.damageData.additionalHits++;
                     }
