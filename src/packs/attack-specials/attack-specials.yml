@@ -4,9 +4,10 @@ data:
         \ the firer's Ballistic Skill when used with an Aim action, in addition to\
         \ the normal bonus granted from Aiming. When a character fires a single shot from\
         \ a single Basic weapon with the Accurate quality while benefitting from the Aim\
-        \ action, the attack inflicts an additional 1d10 damage for every two degrees\
-        \ of success beyond the first (to a maximum of an extra 2d10). These extra d10s\
-        \ cannot generate Righteous Fury."
+        \ action, the attack inflicts an additional damage depending on the Aim Action.\
+        \ If you make a Full Action Aim before shooting, you get +2 damage per 1 DoS\
+        \ after the first. If you make a Half Action Aim before shooting, you get +1 damage\
+        \ per 1 DoS after the first. Both are limited to +20 to damage."
     hasLevel: false
     level: 0
 img: systems/rogue-trader-3rd/icons/talents/red/r_01.png
@@ -408,13 +409,21 @@ type: attackSpecial
 data:
     description: "These ensnaring devices use masses of fibrous webbing, adhesive fluids,\
         \ and other entangling materials to bring an enemy down. When a target is struck\
-        \ by a weapon with this quality, it must make an Agility test with a penalty equal\
-        \ ten times the number in parentheses (X) or be Immobilised. For example, a weapon\
-        \ with Snare (1) would impose a -10 penalty on this test. An Immobilised\
-        \ target can attempt no actions other than trying to escape the bonds. As a Full\
-        \ Action, he can make a Challenging (+0) Strength or Agility test, with a penalty\
-        \ equal to ten times the number in parentheses (X). If he succeeds, he bursts\
-        \ free or wriggles out. The target is considered Helpless until he escapes."
+        \ by a weapon with this quality, they must make a Challenging (+0) Strength or Agility\
+        \ test, with a penalty equal to the number listed in parentheses multiplied by ten. For\
+        \ example, a weapon with Snare (2) would cause a -20 penalty to the test. Also, gains +5\
+        \ per Unnatural Strength or Unnatural Agility to this test. Also, -/+10 per Size difference\
+        \ between the attacker and target. It’s harder to snare something bigger than something\
+        \ smaller. On a failed test, the target is Snared. While Snared, the target takes a penalty\
+        \ to any actions that require a roll equal to the penalty to escape from the bonds, can only\
+        \ perform a single Half Action per Round (or a Half or Full Action to attempt to escape), and\
+        \ cannot take any actions with the Movement Subtype. The character must spend a Half or Full\
+        \ Action to attempt to escape their bonds with a Challenging (+0) Strength or Agility\
+        \ test, with the same penalty as when they were initially Snared. If the test is made at Half\
+        \ Action, the snared character doesn't gain bonuses for Unnatural Strength or Unnatural\
+        \ Agility. If the test is made at Full Action, the snared character gains +10 per Unnatural\
+        \ Strength or Unnatural Agility to the test. Both Half Action and Full Action gain -/+10 per\
+        \ Size difference between the attacker and snared."
     hasLevel: true
     level: 0
 img: systems/rogue-trader-3rd/icons/talents/red/r_01.png
@@ -483,10 +492,13 @@ type: attackSpecial
 data:
     description: "A Twin-Linked weapon represents two identical weapons connected together\
         \ and set to fire at the same time, increasing the chances of scoring a hit by\
-        \ blasting more shots at the target. A weapon with this quality gains a +20 to\
-        \ hit when fired and uses twice as much ammunition. In addition, the weapon scores\
-        \ one additional hit if the attack roll succeeds by two or more degrees of success.\
-        \ When emptied, the weapon's reload time is doubled."
+        \ blasting more shots at the target. A weapon with this quality uses twice as much\
+        \ ammunition. When emptied, the weapon's reload time is doubled.\
+        \ When shooting single shot, gain additional hit on 2 DoS on attack. When shooting\
+        \ Semi-Auto, gain additional hit per 3 DoS (3,6,9) on attack. When shooting Full-Auto,\
+        \ gain additional hit per 2 DoS (2,4,6,8) on attack. Additional hits are limited by\
+        \ weapon’s Rate of Fire. Evasion tests are also changed - Evasion tests to evade\
+        \ Twin-Linked additional shots are 1 per 2 DoS."
     hasLevel: false
     level: 0
 img: systems/rogue-trader-3rd/icons/talents/red/r_01.png

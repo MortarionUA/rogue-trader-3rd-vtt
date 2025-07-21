@@ -471,12 +471,6 @@
                         "advance": 0,
                         "isSpecialist": true,
                         "specialities": {
-                            "chapterRunes": {
-                                "label": "Chapter Runes",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            },
                             "chaosMarks": {
                                 "label": "Chaos Marks",
                                 "advance": 0,
@@ -495,26 +489,8 @@
                                 "cost": 0,
                                 "taken": false
                             },
-                            "imperialCodes": {
-                                "label": "Imperial Codes",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            },
                             "lowGothic": {
                                 "label": "Low Gothic",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            },
-                            "mercenary": {
-                                "label": "Mercenary",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            },
-                            "necrontyr": {
-                                "label": "Necrontyr",
                                 "advance": 0,
                                 "cost": 0,
                                 "taken": false
@@ -539,12 +515,6 @@
                             },
                             "underworld": {
                                 "label": "Underworld",
-                                "advance": 0,
-                                "cost": 0,
-                                "taken": false
-                            },
-                            "xenosMarkings": {
-                                "label": "Xenos Markings",
                                 "advance": 0,
                                 "cost": 0,
                                 "taken": false

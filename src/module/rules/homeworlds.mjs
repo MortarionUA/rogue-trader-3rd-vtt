@@ -3,7 +3,7 @@ export function homeworlds() {
         {
             name: 'Feral World',
             bonus_characteristics: ['Strength', 'Toughness'],
-            negative_characteristic: 'Influence',
+            negative_characteristic: 'Intelligence',
             fate_threshold: 2,
             emperors_blessing: 3,
             home_world_bonus: {
@@ -30,13 +30,13 @@ export function homeworlds() {
         },
         {
             name: 'Highborn',
-            bonus_characteristics: ['Fellowship', 'Influence'],
+            bonus_characteristics: ['Fellowship', 'Intelligence'],
             negative_characteristic: 'Toughness',
             fate_threshold: 4,
             emperors_blessing: 10,
             home_world_bonus: {
-                name: 'Breeding Counts',
-                benefit: 'A Highborn character reduces Influence losses by 1, to a minimum loss of 1.',
+                name: 'Only the Highest Quality',
+                benefit: 'Once per session during Acquisition the Highborn can reduce the penalty for Good/Best quality by 10.',
             },
             aptitude: 'Fellowship',
             wounds: '9+1d5',
@@ -205,7 +205,7 @@ export function homeworlds() {
         {
             name: 'Penal Colony',
             bonus_characteristics: ['Toughness', 'Perception'],
-            negative_characteristic: 'Influence',
+            negative_characteristic: 'Fellowship',
             fate_threshold: 3,
             emperors_blessing: 8,
             home_world_bonus: {
@@ -226,7 +226,7 @@ export function homeworlds() {
             home_world_bonus: {
                 name: 'Secretive by Nature',
                 benefit:
-                    'Those who manage to leave a quarantine world learn how to keep secrets. Whenever the warband’s Subtlety would decrease, it decreases by 2 less (to a minimum reduction of 1).',
+                    'Those who manage to leave a quarantine world learn how to keep secrets. Whenever the explorer’s Reputation inside a specific group would decrease, it decreases by 2 less (to a minimum reduction of 1).',
             },
             aptitude: 'Fieldcraft',
             wounds: '8+1d5',

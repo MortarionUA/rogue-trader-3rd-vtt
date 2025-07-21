@@ -67,9 +67,6 @@ export async function calculateAttackSpecialAttackBonuses(rollData) {
             case 'Indirect':
                 rollData.specialModifiers['Indirect'] = 10;
                 break;
-            case 'Twin-Linked':
-                rollData.specialModifiers['Twin-Linked'] = 20;
-                break;
             case 'Defensive':
                 rollData.specialModifiers['Defensive'] = -10;
                 break;

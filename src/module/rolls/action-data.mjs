@@ -206,7 +206,18 @@ export class ActionData {
                 }
 
                 if (this.rollData.dos > 1 && this.rollData.hasAttackSpecial('Twin-Linked')) {
-                    this.damageData.additionalHits++;
+                    if ((this.rollData.action === 'Standard Attack' || attackData.rollData.action === 'Called Shot') && this.rollData.dos > 2)
+                    {
+                        this.damageData.additionalHits++;
+                    }
+                    if (this.rollData.action === 'Semi-Auto Burst')
+                    {
+                        this.damageData.additionalHits = Math.floor(this.rollData.dos / 3);
+                    }
+                    if (this.rollData.action === 'Full Auto Burst')
+                    {
+                        this.damageData.additionalHits = Math.floor(this.rollData.dos / 2);
+                    }
                 }
 
             } else {

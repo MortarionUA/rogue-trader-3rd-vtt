@@ -1,10 +1,7 @@
 import { additionalHitLocations, getHitLocationForRoll } from '../rules/hit-locations.mjs';
 import { calculateAmmoDamageBonuses, calculateAmmoPenetrationBonuses, calculateAmmoSpecials } from '../rules/ammo.mjs';
 import { getCriticalDamage } from '../rules/critical-damage.mjs';
-import {
-    calculateWeaponModifiersDamageBonuses,
-    calculateWeaponModifiersPenetrationBonuses,
-} from '../rules/weapon-modifiers.mjs';
+import { calculateWeaponModifiersDamageBonuses, calculateWeaponModifiersPenetrationBonuses } from '../rules/weapon-modifiers.mjs';
 
 export class DamageData {
     template = '';
@@ -182,15 +179,11 @@ export class Hit {
             // Add Accurate
             if (attackData.rollData.action === 'Standard Attack' || attackData.rollData.action === 'Called Shot') {
                 if (attackData.rollData.hasAttackSpecial('Accurate')) {
-                    if (attackData.rollData.dos >= 3) {
-                        const accurateRoll = new Roll('1d10', {});
-                        await accurateRoll.evaluate();
-                        this.modifiers['accurate'] = accurateRoll.total;
+                    if (attackData.rollData.modifiers.aim === 10) {
+                        this.modifiers['accurate'] = attackData.rollData.dos - 1;
                     }
-                    if (attackData.rollData.dos >= 5) {
-                        const accurateRoll = new Roll('1d10', {});
-                        await accurateRoll.evaluate();
-                        this.modifiers['accurate x 2'] = accurateRoll.total;
+                    if (attackData.rollData.modifiers.aim === 20) {
+                        this.modifiers['accurate'] = (attackData.rollData.dos - 1) * 2;
                     }
                 }
             }
@@ -352,7 +345,13 @@ export class Hit {
                     this.addEffect(special.name, `Target must pass a Challenging (+0) Toughness test. If he fails, he suffers 1 level of Fatigue and is Stunned for a number of rounds equal to half of his degrees of failure (rounding up).`);
                     break;
                 case 'snare':
-                    this.addEffect(special.name, `Target must pass Agility test with ${special.level * -10} or become immobilised. An immobilised target can attempt no actions other than trying to escape. As a Full Action, they can make a Strength or Agility test with ${special.level * -10} to burst free or wriggle out.`);
+                    this.addEffect(special.name, `Target must pass Agility test with ${special.level * -10} or become immobilised.  Also, gains +5 per Unnatural 
+                    Strength or Unnatural Agility to this test. Also, -/+10 per Size difference between the attacker and target. On a failed test, the target is Snared. 
+                    While Snared, the target takes a penalty to any actions that require a roll equal to the penalty to escape from the bonds, can only perform a single 
+                    Half Action per Round (or a Half or Full Action to attempt to escape), and cannot take any actions with the Movement Subtype. The character must 
+                    spend a Half or Full Action to attempt to escape their bonds with a ${special.level * -10} Strength or Agility test. If the test is made at Half 
+                    Action, the snared character doesn't gain bonuses for Unnatural Strength or Unnatural Agility. If the test is made at Full Action, the snared character 
+                    gains +10 per Unnatural Strength or Unnatural Agility to the test. Both Half Action and Full Action gain -/+10 per Size difference between the attacker and snared.`);
                     break;
                 case 'toxic':
                     this.addEffect(special.name, `Target must pass Toughness test with ${special.level * -10} or suffer [[1d10]] ${actionItem.system.damageType} damage.`);

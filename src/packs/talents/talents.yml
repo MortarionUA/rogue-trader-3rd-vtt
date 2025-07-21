@@ -51,7 +51,7 @@ type: talent
 data:
     aptitudes: General, Social
     benefit: Once per day, he can re-roll a test made to gather information from a group
-        of people.
+        of people. Can be used to re-roll Inquiry tests for Acquisition (not Commerce tests).
     cost: 0
     prerequisites: ''
     source: PG 124 CB
@@ -173,7 +173,13 @@ type: talent
 ---
 data:
     aptitudes: Willpower, Defence
-    benefit: Ignore mundane horrors.
+    benefit: The Explorer’s wide travels have shown him both wonders and horrors beyond the ken 
+        of most. The galaxy has thrown its worst at him and he has yet to flinch. Mundane events, from 
+        gruesome mass killings to torture without compare, do not force him to gain Insanity points or 
+        make Fear tests. He ignores the Fear Rating of Xenosbeasts, however, “normal” Xenos are treated 
+        as one rating lower (on a Fear (0), the Explorer ignores the Fear Trait). Exposure to certain 
+        scenarios may even allow for the Explorer to avoid such trials in future, as his psychological 
+        barriers are now prepared for what lies ahead. What qualifies as Mundane is at the GM's discretion.
     cost: 0
     prerequisites: ''
     source: PG 128 CB
@@ -243,7 +249,7 @@ data:
     aptitudes: Fellowship, Social
     benefit: Character has good reputation amongst chosen group with bonus to Fellowship
         tests increases to +10 times X. Additionally, when the character acquires his
-        talent, also increases his Influence by 1.
+        talent, changes Explorers reputation in this organization by 10 and Profit Factor by 1.
     cost: 0
     prerequisites: ''
     source: PG 130 CB
@@ -466,7 +472,7 @@ type: talent
 ---
 data:
     aptitudes: Fellowship, Leadership
-    benefit: Use Fellowship instead of Influence for Requisition tests.
+    benefit: The character gains a bonus to Inquiry tests equal to Commerce ranks.
     cost: 0
     prerequisites: ''
     source: PG 124 CB
@@ -496,17 +502,6 @@ data:
     tier: '2'
 img: systems/rogue-trader-3rd/icons/talents/blue/b_18.png
 name: Counter Attack
-type: talent
----
-data:
-    aptitudes: Intelligence, Knowledge
-    benefit: Can reduce Influence by 1 to gain 1d5 Subtlety.
-    cost: 0
-    prerequisites: ''
-    source: PG 125 CB
-    tier: '2'
-img: systems/rogue-trader-3rd/icons/talents/blue/b_18.png
-name: Cover-Up
 type: talent
 ---
 data:
@@ -691,8 +686,16 @@ type: talent
 ---
 data:
     aptitudes: Weapon Skill /Ballistic Skill, Finesse
-    benefit: Attacker imposes penalty on all evasion attempts made against this attack
-        equal to 10 times the total degrees of success scored on the attack test.
+    benefit: This talent applies to Melee or Ranged attacks, depending on the Speciality
+        chosen. After making a successful attack test of the appropriate type as part of
+        an All Out Attack, Called Shot, Charge, Standard Attack, or Stun action, the character
+        imposes a penalty on all evasion attempts (Dodge or Parry tests) made against this
+        attack. The target subtracts Degrees of Success from a successful test equal to the
+        total degrees of success scored on the attack test to a maximum of the character's
+        Weapon Skill Bonus for Melee or Ballistic Skill Bonus for Ranged. If the target will
+        have a 0 or less Degrees of Success, he fails the test with 1 Degree of Failure. This
+        talent works only once per Round, so it can’t be used with Whirlwind Attack,
+        Two-Weapon Wielder or attacking as a Reaction.
     cost: 0
     prerequisites: ''
     source: PG 128 CB
@@ -729,7 +732,11 @@ type: talent
 ---
 data:
     aptitudes: Weapon Skill, Offence
-    benefit: Spend Fate point to make melee attacks unavoidable.
+    benefit: At the beginning of each of his turns, the character may spend a Fate point 
+        to make one of his melee Standard attacks unavoidable with the Dodge and Parry 
+        skills. The attack must be chosen before the roll. If Two Weapon Fighter is used, 
+        the weapon must as well be chosen before the roll. Other means of avoiding or 
+        stopping attacks (such as displacer fields or alien protective devices) are unaffected.
     cost: 0
     prerequisites: ''
     source: PG 129 CB
@@ -1091,15 +1098,16 @@ name: Deathdealer
 type: talent
 ---
 data:
-    aptitudes: Intelligence, Finesse
-    benefit: Reduce Subtlety loss by 1d5 when conducting an Interrogation. If this results
-        in a negative number increase the warbands Subtlety by 1.
+    aptitudes: Intelligence, Social
+    benefit: Whenever the Explorer’s dealings would decrease the group’s Reputation, 
+        at GM’s discretion, the amount of Reputation lost is reduced by d4. If this results in 
+        a negative number, the Explorer’s skilled efforts increase the group’s Reputation by 1.
     cost: 0
-    prerequisites: ''
+    prerequisites: 'Deceive, Fellowship 50'
     source: PG 125 CB
     tier: '3'
 img: systems/rogue-trader-3rd/icons/talents/blue/b_18.png
-name: Delicate Interrogation
+name: Delicate Dealings
 type: talent
 ---
 data:
