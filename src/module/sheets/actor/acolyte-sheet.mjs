@@ -23,7 +23,9 @@ export class AcolyteSheet extends ActorContainerSheet {
     getData() {
         const context = super.getData();
 
-        const isLimited = !this.actor.testUserPermission(game.user, "OWNER");
+        const isLimited = this.actor.testUserPermission(game.user, "LIMITED");
+        const isObserver = this.actor.testUserPermission(game.user, "OBSERVER");
+        const isOwner = this.actor.testUserPermission(game.user, "OWNER");
 
         context.rt = CONFIG.rt;
         context.effects = this.actor.getEmbeddedCollection('ActiveEffect').contents;
