@@ -92,7 +92,7 @@ export class ActionData {
 
     async calculateSuccessOrFailure() {
         let actionItem = this.rollData.weapon ?? this.rollData.power;
-        if (actionItem.isShipWeapon) {
+        if (actionItem.isShipWeapon && actionItem) {
             await this._calculateVoidshipHits("Weapon", this.rollData.voidshipShotsAmount);
         } else {
             await this._calculateHit();
