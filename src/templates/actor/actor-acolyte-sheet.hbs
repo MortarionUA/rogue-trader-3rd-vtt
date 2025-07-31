@@ -1,3 +1,20 @@
+{{#if limited}}
+    <div class="rt-wrapper">
+    <form class="rt-actor" autocomplete="off">
+    <div class="rt-header rt-grid-col-6 rt-panel">
+    <div class="rt-header__info">
+        <div class="rt-header__logo rt-header__item-wrapper--span-4">
+            <img class="rt-header__logo-image" src="{{actor.img}}" data-edit="img" alt="{{actor.name}}" title="{{actor.name}}" />
+        </div>
+        <div class="rt-header__item-wrapper--span-2">
+            <span class="rt-header__title">Name</span>
+            <span class="rt-header__title">{{actor.name}}</span>
+        </div>
+    </div>
+    </div>
+    </form>
+    </div>
+{{else}}
 {{rtlog this}}
 <div class="rt-wrapper">
     <form class="rt-actor" autocomplete="off">
@@ -103,5 +120,5 @@
         </section>
     </form>
 </div>
-
+{{/if}}
 
