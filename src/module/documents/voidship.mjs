@@ -62,7 +62,7 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         let spaceValue = 0;
         this.items.forEach(item => {
             if (item.type === 'shipWeapon' || item.type === 'shipComponent') {
-                spaceValue = spaceValue + item.space;
+                spaceValue = spaceValue + item.system.space;
             }
         })
         this.system.spaceValue = spaceValue;
@@ -72,7 +72,7 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         let powerValue = 0;
         this.items.forEach(item => {
             if (item.type === 'shipWeapon' || item.type === 'shipComponent') {
-                powerValue = powerValue + item.power;
+                powerValue = powerValue + item.system.power;
             }
         })
         this.system.powerValue = powerValue;
