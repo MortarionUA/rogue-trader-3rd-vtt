@@ -41,23 +41,24 @@
                                         <div class="rt-roll__flawless">
                                             <span>{{result.location}} Hit</span>
                                         </div>
-                                    {{/if}}
-                                    {{#if result.penetration}}
-                                        <div class="rt-roll__flawless">
-                                            <span>Critical Penetration</span>
-                                            <span>{{result.roll}}</span>
-                                        </div>
-                                        <div class="rt-roll__flawless">
-                                            <span>{{result.location}} Hit</span>
-                                        </div>
                                     {{else}}
-                                        <div class="rt-roll__flawed">
-                                            <span>Critical Exterior Hit</span>
-                                            <span>{{result.roll}}</span>
-                                        </div>
-                                        <div class="rt-roll__flawed">
-                                            <span>{{result.location}} Hit</span>
-                                        </div>
+                                        {{#if result.penetration}}
+                                            <div class="rt-roll__flawless">
+                                                <span>Critical Penetration</span>
+                                                <span>{{result.roll}}</span>
+                                            </div>
+                                            <div class="rt-roll__flawless">
+                                                <span>{{result.location}} Hit</span>
+                                            </div>
+                                        {{else}}
+                                            <div class="rt-roll__flawed">
+                                                <span>Critical Exterior Hit</span>
+                                                <span>{{result.roll}}</span>
+                                            </div>
+                                            <div class="rt-roll__flawed">
+                                                <span>{{result.location}} Hit</span>
+                                            </div>
+                                        {{/if}}
                                     {{/if}}
                                 {{/if}}
                                 {{#if result.isHit}}
@@ -69,23 +70,24 @@
                                         <div class="rt-roll__flawless">
                                             <span>{{result.location}} Hit</span>
                                         </div>
-                                    {{/if}}
-                                    {{#if result.penetration}}
-                                        <div class="rt-roll__success">
-                                            <span>Penetration</span>
-                                            <span>{{result.roll}}</span>
-                                        </div>
-                                        <div class="rt-roll__success">
-                                            <span>{{result.location}} Hit</span>
-                                        </div>
                                     {{else}}
-                                        <div class="rt-roll__fail">
-                                            <span>Armor not Penetrated</span>
-                                            <span>{{result.roll}}</span>
-                                        </div>
-                                        <div class="rt-roll__fail">
-                                            <span>{{result.location}} Hit</span>
-                                        </div>
+                                        {{#if result.penetration}}
+                                            <div class="rt-roll__success">
+                                                <span>Penetration</span>
+                                                <span>{{result.roll}}</span>
+                                            </div>
+                                            <div class="rt-roll__success">
+                                                <span>{{result.location}} Hit</span>
+                                            </div>
+                                        {{else}}
+                                            <div class="rt-roll__fail">
+                                                <span>Armor not Penetrated</span>
+                                                <span>{{result.roll}}</span>
+                                            </div>
+                                            <div class="rt-roll__fail">
+                                                <span>{{result.location}} Hit</span>
+                                            </div>
+                                        {{/if}}
                                     {{/if}}
                                 {{/if}}
                                 {{#if result.isMiss}}
