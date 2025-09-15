@@ -65,7 +65,7 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
                 spaceValue = spaceValue + item.space;
             }
         })
-        this.spaceValue = spaceValue;
+        this.system.spaceValue = spaceValue;
     }
 
     _computePower() {
@@ -75,7 +75,7 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
                 powerValue = powerValue + item.power;
             }
         })
-        this.powerValue = powerValue;
+        this.system.powerValue = powerValue;
     }
 
     hasTalent(talent) {
