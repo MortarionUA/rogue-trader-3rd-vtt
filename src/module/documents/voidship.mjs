@@ -20,6 +20,8 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
 
     async prepareData() {
         await super.prepareData();
+        this._computeSpace();
+        this._computePower();
     }
 
     get faction() {
@@ -39,6 +41,14 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
         return this.system.crewRating;
     }
 
+    get spaceValue() {
+        return this.system.spaceValue;
+    }
+
+    get powerValue() {
+        return this.system.powerValue;
+    }
+
     get operators() {
         return {
             weapons: this.system.operator.weapons,
@@ -46,6 +56,26 @@ export class RogueTraderVoidship extends RogueTraderBaseActor {
             boarding: this.system.operator.boarding,
             augurs: this.system.operator.augurs
         }
+    }
+
+    _computeSpace() {
+        let spaceValue = 0;
+        this.items.forEach(item => {
+            if (item.type === 'shipWeapon' || item.type === 'shipComponent') {
+                spaceValue = spaceValue + item.space;
+            }
+        })
+        this.spaceValue = spaceValue;
+    }
+
+    _computePower() {
+        let powerValue = 0;
+        this.items.forEach(item => {
+            if (item.type === 'shipWeapon' || item.type === 'shipComponent') {
+                powerValue = powerValue + item.power;
+            }
+        })
+        this.powerValue = powerValue;
     }
 
     hasTalent(talent) {
