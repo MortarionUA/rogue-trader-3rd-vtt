@@ -114,9 +114,9 @@ export class BasicActionManager {
         const totalFatigue = div.data('totalFatigue');
         const damageType = div.data('damageType');
 
-        const isHit = div.data('isHit');
-        const penetration = div.data('penetration');
-        const overpenetration = div.data('overpenetration');
+        const isHit = div.data('voidshipHitType');
+        const penetration = div.data('voidshipPenetration');
+        const overpenetration = div.data('voidshipOverpenetration');
 
         const hitData = new Hit();
         hitData.location = location;
@@ -125,15 +125,7 @@ export class BasicActionManager {
         hitData.totalFatigue = totalFatigue;
         hitData.damageType = damageType;
 
-        if (isHit) {
-            if (overpenetration) {
-                hitData.voidshipHitType = "Overpenetrating Hit"
-            } else if (penetration) {
-                hitData.voidshipHitType = "Penetrating Hit"
-            }
-            hitData.voidshipHit = true;
-            hitData.voidshipHitLocation = div.data('location');
-        } else if (isCrit) {
+        if (isCrit) {
             if (overpenetration) {
                 hitData.voidshipHitType = "Overpenetrating Critical Hit"
             } else if (penetration) {
@@ -143,6 +135,14 @@ export class BasicActionManager {
             }
             hitData.voidshipHit = true;
             hitData.voidshipHitLocation = div.data('location');
+        } else if (isHit) {
+            if (overpenetration) {
+                hitData.voidshipHitType = "Overpenetrating Hit"
+            } else if (penetration) {
+                hitData.voidshipHitType = "Penetrating Hit"
+            }
+            hitData.voidshipHit = true;
+            hitData.voidshipHitLocation = div.data('voidshipLocation');
         }
 
         const targetUuid = div.data('targetUuid');
