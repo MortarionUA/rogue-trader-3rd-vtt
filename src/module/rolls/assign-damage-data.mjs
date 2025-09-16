@@ -59,7 +59,7 @@ export class AssignDamageData {
                     targetedComponents.push(item);
                 }
             })
-            switch (this.voidshipHitType) {
+            switch (this.hit.voidshipHitType) {
                 case 'Overpenetrating Hit': {
                     this.voidshipHullDamage = 2;
                     let component = targetedComponents[Math.floor(Math.random() * targetedComponents.length)];
