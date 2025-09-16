@@ -51,7 +51,7 @@ export class AssignDamageData {
     async finalize() {
         if(this.hit.voidshipHit) {
             this.voidshipHit = true;
-            const voidshipHitLocation = this.voidshipHitLocation;
+            const voidshipHitLocation = this.hit.voidshipHitLocation;
 
             const targetedComponents = [];
             this.actor.items.forEach ((item) => {
