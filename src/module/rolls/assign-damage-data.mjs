@@ -51,10 +51,11 @@ export class AssignDamageData {
     async finalize() {
         if(this.hit.voidshipHit) {
             this.voidshipHit = true;
+            const voidshipHitLocation = this.voidshipHitLocation;
 
             const targetedComponents = [];
             this.actor.items.forEach ((item) => {
-                if ((item.type === 'shipWeapon' || item.type === 'shipComponent') && (item.system.location === this.voidshipHitLocation)) {
+                if ((item.type === 'shipWeapon' || item.type === 'shipComponent') && (item.system.location === voidshipHitLocation)) {
                     targetedComponents.push(item);
                 }
             })
