@@ -59,6 +59,13 @@ export class AssignDamageData {
                     targetedComponents.push(item);
                 }
             })
+            if (targetedComponents.length < 1) {
+                this.actor.items.forEach ((item) => {
+                    if ((item.type === 'shipWeapon' || item.type === 'shipComponent') && (item.system.location === "Main")) {
+                        targetedComponents.push(item);
+                    }
+                })
+            }
             switch (this.hit.voidshipHitType) {
                 case 'Overpenetrating Hit': {
                     this.voidshipHullDamage = 2;
