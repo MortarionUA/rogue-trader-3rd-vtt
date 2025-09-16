@@ -31,19 +31,6 @@ export class ActorContainerSheet extends ActorSheet {
                 item.addEventListener('dragstart', this._onActorDragStart.bind(this), false);
             }
         });
-
-        const stopDragFrom = (selector) => {
-            html.find(selector).each((_, el) => {
-                el.setAttribute('draggable', 'false');
-                el.style.webkitUserDrag = 'none';
-                ['mousedown', 'pointerdown', 'dragstart', 'touchstart'].forEach((evt) => {
-                    el.addEventListener(evt, (e) => e.stopPropagation(), { capture: true });
-                });
-            });
-        };
-        stopDragFrom('.item-drag input, .item-drag textarea, .item-drag select, .item-drag [contenteditable="true"]');
-        stopDragFrom('.actor-drag input, .actor-drag textarea, .actor-drag select, .actor-drag [contenteditable="true"]');
-
         html.find('.effect-delete').click(async (ev) => await this._effectDelete(ev));
         html.find('.effect-edit').click(async (ev) => await this._effectEdit(ev));
         html.find('.effect-create').click(async (ev) => await this._effectCreate(ev));
@@ -69,8 +56,8 @@ export class ActorContainerSheet extends ActorSheet {
 
                 const items = Array.from(this.actor.items).sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0));
 
-                const sourceIndex = items.findIndex((i) => i.id === sourceId);
-                const targetIndex = items.findIndex((i) => i.id === targetId);
+                const sourceIndex = items.findIndex(i => i.id === sourceId);
+                const targetIndex = items.findIndex(i => i.id === targetId);
                 if (sourceIndex === -1 || targetIndex === -1) return false;
 
                 // Move item
@@ -81,10 +68,10 @@ export class ActorContainerSheet extends ActorSheet {
                 // Reassign sort order
                 const updates = items.map((item, i) => ({
                     _id: item.id,
-                    sort: i * 10,
+                    sort: i * 10
                 }));
 
-                await this.actor.updateEmbeddedDocuments('Item', updates);
+                await this.actor.updateEmbeddedDocuments("Item", updates);
                 return true;
             }
 
@@ -109,14 +96,14 @@ export class ActorContainerSheet extends ActorSheet {
         const div = $(event.currentTarget);
         const specialistSkill = div.data('skill');
         const skill = this.actor.system.skills[specialistSkill];
-        if (!skill) {
+        if(!skill) {
             ui.notifications.warn(`Skill not specified -- unexpected error.`);
             return;
         }
         await prepareCreateSpecialistSkillPrompt({
             actor: this.actor,
             skill: skill,
-            skillName: specialistSkill,
+            skillName: specialistSkill
         });
     }
 
@@ -172,13 +159,7 @@ export class ActorContainerSheet extends ActorSheet {
             actor: this.actor.name,
             name: item.name,
             type: item.type?.toUpperCase(),
-            description: await TextEditor.enrichHTML(item.system.benefit ?? item.system.description, {
-                rollData: {
-                    actor: this.actor,
-                    item: this,
-                    pr: this.actor.psy.rating,
-                },
-            }),
+            description: await TextEditor.enrichHTML(item.system.benefit ?? item.system.description, {rollData: {actor: this.actor, item: this, pr: this.actor.psy.rating}}),
         });
     }
 
@@ -236,6 +217,7 @@ export class ActorContainerSheet extends ActorSheet {
         toggleUIExpanded(target);
     }
 
+
     async _onActorDragStart(event) {
         event.stopPropagation();
         game.rt.log('_onActorDragStart', event);
@@ -291,14 +273,14 @@ export class ActorContainerSheet extends ActorSheet {
         event.preventDefault();
         const div = $(event.currentTarget);
         const effect = this.actor.effects.get(div.data('effectId'));
-        effect.update({ disabled: true });
+        effect.update({disabled: true});
     }
 
     async _effectEnable(event) {
         event.preventDefault();
         const div = $(event.currentTarget);
         const effect = this.actor.effects.get(div.data('effectId'));
-        effect.update({ disabled: false });
+        effect.update({disabled: false});
     }
 
     async _effectDelete(event) {
@@ -317,17 +299,12 @@ export class ActorContainerSheet extends ActorSheet {
 
     async _effectCreate(event) {
         event.preventDefault();
-        return this.actor.createEmbeddedDocuments(
-            'ActiveEffect',
-            [
-                {
-                    label: 'New Effect',
-                    icon: 'icons/svg/aura.svg',
-                    origin: this.actor.uuid,
-                    disabled: true,
-                },
-            ],
-            { renderSheet: true },
-        );
+        return this.actor.createEmbeddedDocuments('ActiveEffect', [{
+            label: 'New Effect',
+            icon: 'icons/svg/aura.svg',
+            origin: this.actor.uuid,
+            disabled: true
+        }], { renderSheet: true })
     }
+
 }
