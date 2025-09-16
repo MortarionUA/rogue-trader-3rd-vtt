@@ -102,62 +102,63 @@ export class AssignDamageData {
                     break;
                 }
             }
-        }
+        } else {
 
-        let totalDamage = Number.parseInt(this.hit.totalDamage);
-        let totalPenetration = Number.parseInt(this.hit.totalPenetration);
+            let totalDamage = Number.parseInt(this.hit.totalDamage);
+            let totalPenetration = Number.parseInt(this.hit.totalPenetration);
 
-        // Reduce Armour by Penetration
-        let usableArmour = this.armour;
-        usableArmour = usableArmour - totalPenetration;
-        if (usableArmour < 0) {
-            usableArmour = 0;
-        }
-        if (this.ignoreArmour) {
-            usableArmour = 0;
-        }
+            // Reduce Armour by Penetration
+            let usableArmour = this.armour;
+            usableArmour = usableArmour - totalPenetration;
+            if (usableArmour < 0) {
+                usableArmour = 0;
+            }
+            if (this.ignoreArmour) {
+                usableArmour = 0;
+            }
 
-        const reduction = usableArmour + this.tb;
-        const reducedDamage = totalDamage - reduction;
-        // We have damage to process
-        if(reducedDamage > 0) {
-            // No Wounds Available
-            if(this.actor.system.wounds.value <= 0) {
-                // All applied as critical
-                this.hasCriticalDamage = true;
-                this.criticalDamageTaken = reducedDamage;
-            } else {
-                //Reduce Wounds First
-                if(this.actor.system.wounds.value >= reducedDamage) {
-                    // Only Wound Damage
-                    this.damageTaken = reducedDamage;
-                } else {
-                    // Wound and Critical
-                    this.damageTaken = this.actor.system.wounds.value;
+            const reduction = usableArmour + this.tb;
+            const reducedDamage = totalDamage - reduction;
+            // We have damage to process
+            if (reducedDamage > 0) {
+                // No Wounds Available
+                if (this.actor.system.wounds.value <= 0) {
+                    // All applied as critical
                     this.hasCriticalDamage = true;
-                    this.criticalDamageTaken = reducedDamage - this.damageTaken;
+                    this.criticalDamageTaken = reducedDamage;
+                } else {
+                    //Reduce Wounds First
+                    if (this.actor.system.wounds.value >= reducedDamage) {
+                        // Only Wound Damage
+                        this.damageTaken = reducedDamage;
+                    } else {
+                        // Wound and Critical
+                        this.damageTaken = this.actor.system.wounds.value;
+                        this.hasCriticalDamage = true;
+                        this.criticalDamageTaken = reducedDamage - this.damageTaken;
+                    }
                 }
             }
-        }
 
-        if(this.criticalDamageTaken > 0) {
+            if (this.criticalDamageTaken > 0) {
 
-            // Handle True Grit Talent
-            if(this.actor.hasTalent('True Grit')) {
-                // Reduces by Toughness Bonus to minimum of 1
-                this.criticalDamageTaken = this.criticalDamageTaken - this.tb < 1 ? 1 : this.criticalDamageTaken - this.tb;
+                // Handle True Grit Talent
+                if (this.actor.hasTalent('True Grit')) {
+                    // Reduces by Toughness Bonus to minimum of 1
+                    this.criticalDamageTaken = this.criticalDamageTaken - this.tb < 1 ? 1 : this.criticalDamageTaken - this.tb;
+                }
+
+                this.criticalEffect = getCriticalDamage(this.hit.damageType, this.hit.location, this.actor.system.wounds.critical + this.criticalDamageTaken);
             }
 
-            this.criticalEffect = getCriticalDamage(this.hit.damageType, this.hit.location, this.actor.system.wounds.critical + this.criticalDamageTaken);
-        }
+            if (this.hit.totalFatigue > 0) {
+                this.hasFatigueDamage = true;
+                this.fatigueTaken = this.hit.totalFatigue;
+            }
 
-        if(this.hit.totalFatigue > 0) {
-            this.hasFatigueDamage = true;
-            this.fatigueTaken = this.hit.totalFatigue;
-        }
-
-        if(this.damageTaken > 0){
-            this.hasDamage = true;
+            if (this.damageTaken > 0) {
+                this.hasDamage = true;
+            }
         }
     }
 
