@@ -1,6 +1,10 @@
 import { hitDropdown } from '../rules/hit-locations.mjs';
 import { getCriticalDamage } from '../rules/critical-damage.mjs';
 import { damageTypeDropdown } from '../rules/damage-type.mjs';
+import { voidshipHitTypeDropdown } from '../rules/hit-type.mjs';
+import { voidshipHitLocationDropdown } from '../rules/voidship-hit-locations.mjs';
+import { forEach } from 'underscore';
+import { getVoidshipCriticalDamage } from '../rules/voidship-critical-damage.mjs';
 
 export class AssignDamageData {
     locations = hitDropdown();
@@ -20,6 +24,11 @@ export class AssignDamageData {
     hasCriticalDamage = false;
     criticalDamageTaken = 0;
     criticalEffect = '';
+
+    voidshipHitType = voidshipHitTypeDropdown();
+    voidshipHitLocation = voidshipHitLocationDropdown();
+    voidshipHit = false;
+    voidshipHullDamage = 0;
 
     constructor(actor, hit) {
         this.actor = actor;
@@ -41,6 +50,53 @@ export class AssignDamageData {
     }
 
     async finalize() {
+        if(this.hit.voidshipHit) {
+            this.voidshipHit = true;
+
+            const targetedComponents = [];
+            forEach (this.actor.items, (item) => {
+                if ((item.type === 'shipWeapon' || item.type === 'shipComponent') && (item.system.location === this.voidshipHitLocation)) {
+                    targetedComponents.push(item);
+                }
+            })
+            switch (voidshipHitType) {
+                case 'Overpenetrating Hit': {
+                    this.voidshipHullDamage = 2;
+                    let component = targetedComponents[Math.floor(Math.random() * targetedComponents.length)];
+                    this.executeCritical("Penetrating", component);
+                    component = targetedComponents[Math.floor(Math.random() * targetedComponents.length)];
+                    this.executeCritical("Penetrating", component);
+                    break;
+                }
+                case 'Penetrating Hit': {
+                    this.voidshipHullDamage = 1;
+                    let component = targetedComponents[Math.floor(Math.random() * targetedComponents.length)];
+                    this.executeCritical("Penetrating", component);
+                    break;
+                }
+                case 'Overpenetrating Critical Hit': {
+                    this.voidshipHullDamage = 4;
+                    let component = targetedComponents[Math.floor(Math.random() * targetedComponents.length)];
+                    this.executeCritical("Critical", component);
+                    component = targetedComponents[Math.floor(Math.random() * targetedComponents.length)];
+                    this.executeCritical("Critical", component);
+                    break;
+                }
+                case 'Penetrating Critical Hit': {
+                    this.voidshipHullDamage = 2;
+                    let component = targetedComponents[Math.floor(Math.random() * targetedComponents.length)];
+                    this.executeCritical("Critical", component);
+                    break;
+                }
+                case 'Nonpenetrating Critical Hit': {
+                    this.voidshipHullDamage = 1;
+                    let component = targetedComponents[Math.floor(Math.random() * targetedComponents.length)];
+                    this.executeCritical("Nonpenetrating", component);
+                    break;
+                }
+            }
+        }
+
         let totalDamage = Number.parseInt(this.hit.totalDamage);
         let totalPenetration = Number.parseInt(this.hit.totalPenetration);
 
@@ -98,19 +154,47 @@ export class AssignDamageData {
         }
     }
 
+    executeCritical(type, component) {
+        if(component.type === 'shipWeapon') {
+            if (this.criticalEffect === '') {
+                this.criticalEffect = component.name + ': ' + getVoidshipCriticalDamage(type, "Weapon");
+            }
+            else {
+                this.criticalEffect = this.criticalEffect + '\n' + component.name + ': ' + getVoidshipCriticalDamage(type, "Weapon");
+            }
+        } else {
+            if (this.criticalEffect === '') {
+                this.criticalEffect = component.name + ': ' + getVoidshipCriticalDamage(type, component.system.componentType);
+            }
+            else {
+                this.criticalEffect = this.criticalEffect + '\n' + component.name + ': ' + getVoidshipCriticalDamage(type, component.system.componentType);
+            }
+        }
+    }
+
     async performActionAndSendToChat() {
         // Assign Damage
-        this.actor = await this.actor.update({
-            system: {
-                wounds: {
-                    value: this.actor.system.wounds.value - this.damageTaken,
-                    critical: this.actor.system.wounds.critical + this.criticalDamageTaken,
-                },
-                fatigue: {
-                    value: this.actor.system.fatigue.value + this.fatigueTaken
+        if (this.voidshipHit) {
+            this.actor = await this.actor.update({
+                system: {
+                    hull: {
+                        value: this.actor.system.hull.value - this.voidshipHullDamage
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            this.actor = await this.actor.update({
+                system: {
+                    wounds: {
+                        value: this.actor.system.wounds.value - this.damageTaken,
+                        critical: this.actor.system.wounds.critical + this.criticalDamageTaken,
+                    },
+                    fatigue: {
+                        value: this.actor.system.fatigue.value + this.fatigueTaken
+                    }
+                }
+            });
+        }
         game.rt.log('performActionAndSendToChat', this)
 
         const html = await renderTemplate('systems/rogue-trader-3rd/templates/chat/assign-damage-chat.hbs', this);

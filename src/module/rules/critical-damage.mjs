@@ -207,13 +207,6 @@ export function criticalDamage() {
 }
 
 export function getFuzzy(obj, term) {
-    if(term.toUpperCase() === 'LEFT LEG' || term.toUpperCase() === 'RIGHT LEG') {
-        term = 'Leg'
-    }
-
-    if(term.toUpperCase() === 'LEFT ARM' || term.toUpperCase() === 'RIGHT ARM') {
-        term = 'Arm'
-    }
 
     if(obj[term]) return obj[term];
     for(const [name, entry] of Object.entries(obj)) {

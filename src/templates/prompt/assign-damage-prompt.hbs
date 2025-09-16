@@ -7,73 +7,115 @@
                 <div class="rt-header">
                     <div class="rt-header__prompt rt-header__logo">
                         <div class="rt-header__item-wrapper--span-4 rt-header__borderless">
-                            <img class="rt-header__logo-image-small" alt="{{this.actor.name}}" src="{{this.actor.img}}" />
+                            <img class="rt-header__logo-image-small" alt="{{this.actor.name}}"
+                                 src="{{this.actor.img}}" />
                             <span class="rt-header__title">Assign Damage</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="rt-panel rt-grid-col-6">
-                <div class="rt-field__wrapper">
-                    <span class="rt-field__span">Character</span>
-                    <span class="rt-field__span">{{this.actor.name}}</span>
-                </div>
-                <div class="rt-field__wrapper">
-                    <span class="rt-field__span">Wounds</span>
-                    <span class="rt-field__span">{{this.actor.system.wounds.value}} / {{this.actor.system.wounds.max}}</span>
-                </div>
-                <div class="rt-field__wrapper">
-                    <span class="rt-field__span">Critical</span>
-                    <span class="rt-field__span">{{this.actor.system.wounds.critical}}</span>
-                </div>
-                <div class="rt-field__wrapper">
-                    <span class="rt-field__span">Fatigue</span>
-                    <span class="rt-field__span">{{this.actor.system.fatigue.value}} / {{this.actor.system.fatigue.max}}</span>
-                </div>
-            </div>
-
-            <div class="rt-panel rt-grid-col-6">
-                <div class="rt-header">
-                    <div class="rt-header__info">
-                        <div class="rt-header__item-wrapper--span-4 rt-header__borderless">
-                            <span class="rt-header__subtitle">Damage</span>
-                        </div>
+            {{#if this.hit.voidshipHit}}
+                <div class="rt-panel rt-grid-col-6">
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Character</span>
+                        <span class="rt-field__span">{{this.actor.name}}</span>
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Hull Integrity</span>
+                        <span class="rt-field__span">{{actor.system.hull.value}} / {{actor.system.hull.max}}</span>
                     </div>
                 </div>
-                <div class="rt-field__wrapper">
-                    <span class="rt-field__span">Damage Type</span>
-                    <select class="rt-field__input" name="hit.damageType" id="damageType">
-                        {{selectOptions damageType selected=this.hit.damageType}}
-                    </select>
+
+                <div class="rt-panel rt-grid-col-6">
+                    <div class="rt-header">
+                        <div class="rt-header__info">
+                            <div class="rt-header__item-wrapper--span-4 rt-header__borderless">
+                                <span class="rt-header__subtitle">Hit</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Hit Type</span>
+                        <select class="rt-field__input" name="hit.voidshipHitType" id="voidshipHitType">
+                            {{selectOptions voidshipHitType selected=this.hit.voidshipHitType}}
+                        </select>
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Hit Location</span>
+                        <select class="rt-field__input" name="hit.voidshipHitLocation" id="voidshipHitLocation">
+                            {{selectOptions voidshipHitLocation selected=this.hit.voidshipHitLocation}}
+                        </select>
+                    </div>
                 </div>
-                <div class="rt-field__wrapper">
-                    <span class="rt-field__span">Damage</span>
-                    <input class="rt-field__input" type="number" data-dtype="Number" name="hit.totalDamage" value="{{this.hit.totalDamage}}" />
+            {{else}}
+                <div class="rt-panel rt-grid-col-6">
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Character</span>
+                        <span class="rt-field__span">{{this.actor.name}}</span>
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Wounds</span>
+                        <span class="rt-field__span">{{this.actor.system.wounds.value}}
+                            / {{this.actor.system.wounds.max}}</span>
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Critical</span>
+                        <span class="rt-field__span">{{this.actor.system.wounds.critical}}</span>
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Fatigue</span>
+                        <span class="rt-field__span">{{this.actor.system.fatigue.value}}
+                            / {{this.actor.system.fatigue.max}}</span>
+                    </div>
                 </div>
-                <div class="rt-field__wrapper">
-                    <span class="rt-field__span">Penetration</span>
-                    <input class="rt-field__input" type="number" data-dtype="Number" name="hit.totalPenetration" value="{{this.hit.totalPenetration}}" />
+
+                <div class="rt-panel rt-grid-col-6">
+                    <div class="rt-header">
+                        <div class="rt-header__info">
+                            <div class="rt-header__item-wrapper--span-4 rt-header__borderless">
+                                <span class="rt-header__subtitle">Damage</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Damage Type</span>
+                        <select class="rt-field__input" name="hit.damageType" id="damageType">
+                            {{selectOptions damageType selected=this.hit.damageType}}
+                        </select>
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Damage</span>
+                        <input class="rt-field__input" type="number" data-dtype="Number" name="hit.totalDamage"
+                               value="{{this.hit.totalDamage}}" />
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Penetration</span>
+                        <input class="rt-field__input" type="number" data-dtype="Number" name="hit.totalPenetration"
+                               value="{{this.hit.totalPenetration}}" />
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Fatigue</span>
+                        <input class="rt-field__input" type="number" data-dtype="Number" name="hit.totalFatigue"
+                               value="{{this.hit.totalFatigue}}" />
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Hit Location</span>
+                        <select class="rt-field__input" name="hit.location" id="location">
+                            {{selectOptions locations selected=this.hit.location}}
+                        </select>
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Location Armour</span>
+                        <input class="rt-field__input" type="number" data-dtype="Number" name="armour"
+                               value="{{this.armour}}" />
+                    </div>
+                    <div class="rt-field__wrapper">
+                        <span class="rt-field__span">Toughness Bonus</span>
+                        <input class="rt-field__input" type="number" data-dtype="Number" name="tb"
+                               value="{{this.tb}}" />
+                    </div>
                 </div>
-                <div class="rt-field__wrapper">
-                    <span class="rt-field__span">Fatigue</span>
-                    <input class="rt-field__input" type="number" data-dtype="Number" name="hit.totalFatigue" value="{{this.hit.totalFatigue}}" />
-                </div>
-                <div class="rt-field__wrapper">
-                    <span class="rt-field__span">Hit Location</span>
-                    <select class="rt-field__input" name="hit.location" id="location">
-                        {{selectOptions locations selected=this.hit.location}}
-                    </select>
-                </div>
-                <div class="rt-field__wrapper">
-                    <span class="rt-field__span">Location Armour</span>
-                    <input class="rt-field__input" type="number" data-dtype="Number" name="armour" value="{{this.armour}}" />
-                </div>
-                <div class="rt-field__wrapper">
-                    <span class="rt-field__span">Toughness Bonus</span>
-                    <input class="rt-field__input" type="number" data-dtype="Number" name="tb" value="{{this.tb}}" />
-                </div>
-            </div>
+            {{/if}}
         </div>
     </form>
 </div>

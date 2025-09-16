@@ -36,6 +36,10 @@ export class Hit {
     penetrationModifiers = {};
     totalPenetration = 0;
 
+    voidshipHitType = "Penetrating Hit";
+    voidshipHitLocation = "Main";
+    voidshipHit = false;
+
     specials = [];
     effects = [];
     righteousFury = [];
