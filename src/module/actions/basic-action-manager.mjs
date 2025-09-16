@@ -114,7 +114,8 @@ export class BasicActionManager {
         const totalFatigue = div.data('totalFatigue');
         const damageType = div.data('damageType');
 
-        const isHit = div.data('voidshipHitType');
+        const isHit = div.data('voidshipHitType') ? div.data('voidshipHitType') : false;
+        const isCrit = div.data('voidshipCritType') ? div.data('voidshipCritType') : false;
         const penetration = div.data('voidshipPenetration');
         const overpenetration = div.data('voidshipOverpenetration');
 
