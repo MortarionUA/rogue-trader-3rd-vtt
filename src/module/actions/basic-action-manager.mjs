@@ -135,7 +135,7 @@ export class BasicActionManager {
                 hitData.voidshipHitType = "Nonpenetrating Critical Hit"
             }
             hitData.voidshipHit = true;
-            hitData.voidshipHitLocation = div.data('location');
+            hitData.voidshipHitLocation = div.data('voidshipLocation');
         } else if (isHit) {
             if (overpenetration) {
                 hitData.voidshipHitType = "Overpenetrating Hit"
