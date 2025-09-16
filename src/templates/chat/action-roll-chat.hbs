@@ -81,6 +81,17 @@
                                         <div class="rt-roll__flawless">
                                             <span>{{result.location}} Hit</span>
                                         </div>
+                                        <div class='rt-roll__controls-1'>
+                                            <div class="rt-control-button roll-control__assign-damage"
+                                                 data-voidship-location="{{result.location}}"
+                                                 data-voidship-hit-type="{{result.isHit}}"
+                                                 data-voidship-penetration="{{result.penetration}}"
+                                                 data-voidship-overpenetration="{{result.overpenetration}}"
+                                                 data-target-uuid="{{@root.rollData.targetActor.uuid}}">
+                                                <span class="rt-control-button__span material-icons">api</span>
+                                                <span class="rt-control-button__label">Assign Damage</span>
+                                            </div>
+                                        </div>
                                     {{else}}
                                         {{#if result.penetration}}
                                             <div class="rt-roll__success">
@@ -89,6 +100,17 @@
                                             </div>
                                             <div class="rt-roll__success">
                                                 <span>{{result.location}} Hit</span>
+                                            </div>
+                                            <div class='rt-roll__controls-1'>
+                                                <div class="rt-control-button roll-control__assign-damage"
+                                                     data-voidship-location="{{result.location}}"
+                                                     data-voidship-hit-type="{{result.isHit}}"
+                                                     data-voidship-penetration="{{result.penetration}}"
+                                                     data-voidship-overpenetration="{{result.overpenetration}}"
+                                                     data-target-uuid="{{@root.rollData.targetActor.uuid}}">
+                                                    <span class="rt-control-button__span material-icons">api</span>
+                                                    <span class="rt-control-button__label">Assign Damage</span>
+                                                </div>
                                             </div>
                                         {{else}}
                                             <div class="rt-roll__fail">
@@ -100,17 +122,6 @@
                                             </div>
                                         {{/if}}
                                     {{/if}}
-                                    <div class='rt-roll__controls-1'>
-                                        <div class="rt-control-button roll-control__assign-damage"
-                                             data-voidship-location="{{result.location}}"
-                                             data-voidship-hit-type="{{result.isHit}}"
-                                             data-voidship-penetration="{{result.penetration}}"
-                                             data-voidship-overpenetration="{{result.overpenetration}}"
-                                             data-target-uuid="{{@root.rollData.targetActor.uuid}}">
-                                            <span class="rt-control-button__span material-icons">api</span>
-                                            <span class="rt-control-button__label">Assign Damage</span>
-                                        </div>
-                                    </div>
                                 {{/if}}
                                 {{#if result.isMiss}}
                                     <div class="rt-roll__fail">
