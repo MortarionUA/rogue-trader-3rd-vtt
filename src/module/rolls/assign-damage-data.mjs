@@ -3,7 +3,6 @@ import { getCriticalDamage } from '../rules/critical-damage.mjs';
 import { damageTypeDropdown } from '../rules/damage-type.mjs';
 import { voidshipHitTypeDropdown } from '../rules/hit-type.mjs';
 import { voidshipHitLocationDropdown } from '../rules/voidship-hit-locations.mjs';
-import { forEach } from 'underscore';
 import { getVoidshipCriticalDamage } from '../rules/voidship-critical-damage.mjs';
 
 export class AssignDamageData {
@@ -54,12 +53,12 @@ export class AssignDamageData {
             this.voidshipHit = true;
 
             const targetedComponents = [];
-            forEach (this.actor.items, (item) => {
+            this.actor.items.forEach ((item) => {
                 if ((item.type === 'shipWeapon' || item.type === 'shipComponent') && (item.system.location === this.voidshipHitLocation)) {
                     targetedComponents.push(item);
                 }
             })
-            switch (voidshipHitType) {
+            switch (this.voidshipHitType) {
                 case 'Overpenetrating Hit': {
                     this.voidshipHullDamage = 2;
                     let component = targetedComponents[Math.floor(Math.random() * targetedComponents.length)];
