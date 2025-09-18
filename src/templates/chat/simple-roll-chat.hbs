@@ -22,95 +22,95 @@
                     <div class="rt-roll__label">Target</div>
                     <div class="rt-roll__value">{{modifiedTarget}}</div>
                 </div>
-                {{#if voidshipFlawless}}
-                    <div class="rt-roll__flawless">
-                        <span>Flawless</span>
-                        <span>{{roll.total}}</span>
-                    </div>
-                {{else}}
-                    {{#if voidshipSuccess}}
+                {{#if voidshipTurrets}}
+                    {{#if success}}
                         <div class="rt-roll__success">
-                            <span>Success</span>
-                            <span>{{roll.total}}</span>
+                            <span>Amount of Hits:</span>
+                            <span>{{turretsHit}}</span>
+                        </div>
+                        <div class="rt-roll__row rt-roll__row--number">
+                            <div class="rt-roll__label">Rolls:</div>
+                            <div class="rt-roll__value">
+                                {{#each voidshipResults}}
+                                    {{#unless @first}}, {{/unless}}{{this}}
+                                {{/each}}
+                            </div>
                         </div>
                     {{else}}
-                        {{#if voidshipFlawedSuccess}}
-                            <div class="rt-roll__flawed">
-                                <span>Flawed Success</span>
+                        <div class="rt-roll__fail">
+                            <span>All Turrets Missed</span>
+                        </div>
+                        <div class="rt-roll__row rt-roll__row--number">
+                            <div class="rt-roll__label">Rolls:</div>
+                            <div class="rt-roll__value">
+                                {{#each voidshipResults}}
+                                    {{#unless @first}}, {{/unless}}{{this}}
+                                {{/each}}
+                            </div>
+                        </div>
+                    {{/if}}
+                {{else}}
+                    {{#if voidshipBoarding}}
+                        {{#if success}}
+                            <div class="rt-roll__success">
+                                <span>Successful Actions:</span>
+                                <span>{{boardingSuccess}}</span>
+                            </div>
+                            <div class="rt-roll__row rt-roll__row--number">
+                                <div class="rt-roll__label">Damage:</div>
+                                <div class="rt-roll__value">{{boardingDamage}}</div>
+                            </div>
+                            <div class="rt-roll__row rt-roll__row--number">
+                                <div class="rt-roll__label">Rolls:</div>
+                                <div class="rt-roll__value">
+                                    {{#each voidshipResults}}
+                                        {{#unless @first}}, {{/unless}}{{this}}
+                                    {{/each}}
+                                </div>
+                            </div>
+                        {{else}}
+                            <div class="rt-roll__fail">
+                                <span>All Actions Failed</span>
+                            </div>
+                            <div class="rt-roll__row rt-roll__row--number">
+                                <div class="rt-roll__label">Rolls:</div>
+                                <div class="rt-roll__value">
+                                    {{#each voidshipResults}}
+                                        {{#unless @first}}, {{/unless}}{{this}}
+                                    {{/each}}
+                                </div>
+                            </div>
+                        {{/if}}
+                    {{else}}
+                        {{#if voidshipFlawless}}
+                            <div class="rt-roll__flawless">
+                                <span>Flawless</span>
                                 <span>{{roll.total}}</span>
                             </div>
                         {{else}}
-                            {{#if voidshipFailure}}
-                                <div class="rt-roll__fail">
-                                    <span>Failure</span>
+                            {{#if voidshipSuccess}}
+                                <div class="rt-roll__success">
+                                    <span>Success</span>
                                     <span>{{roll.total}}</span>
                                 </div>
                             {{else}}
-                                {{#if voidshipFumble}}
-                                    <div class="rt-roll__fumble">
-                                        <span>FUMBLE!</span>
+                                {{#if voidshipFlawedSuccess}}
+                                    <div class="rt-roll__flawed">
+                                        <span>Flawed Success</span>
                                         <span>{{roll.total}}</span>
                                     </div>
                                 {{else}}
-                                    {{#if voidshipTurrets}}
-                                        {{#if success}}
-                                            <div class="rt-roll__success">
-                                                <span>Amount of Hits:</span>
-                                                <span>{{turretsHit}}</span>
-                                            </div>
-                                            <div class="rt-roll__row rt-roll__row--number">
-                                                <div class="rt-roll__label">Rolls:</div>
-                                                <div class="rt-roll__value">
-                                                    {{#each voidshipResults}}
-                                                        {{#unless @first}}, {{/unless}}{{this}}
-                                                    {{/each}}
-                                                </div>
-                                            </div>
-                                        {{else}}
-                                            <div class="rt-roll__fail">
-                                                <span>All Turrets Missed</span>
-                                            </div>
-                                            <div class="rt-roll__row rt-roll__row--number">
-                                                <div class="rt-roll__label">Rolls:</div>
-                                                <div class="rt-roll__value">
-                                                    {{#each voidshipResults}}
-                                                        {{#unless @first}}, {{/unless}}{{this}}
-                                                    {{/each}}
-                                                </div>
-                                            </div>
-                                        {{/if}}
+                                    {{#if voidshipFailure}}
+                                        <div class="rt-roll__fail">
+                                            <span>Failure</span>
+                                            <span>{{roll.total}}</span>
+                                        </div>
                                     {{else}}
-                                        {{#if voidshipBoarding}}
-                                            {{#if success}}
-                                                <div class="rt-roll__success">
-                                                    <span>Successful Actions:</span>
-                                                    <span>{{boardingSuccess}}</span>
-                                                </div>
-                                                <div class="rt-roll__row rt-roll__row--number">
-                                                    <div class="rt-roll__label">Damage:</div>
-                                                    <div class="rt-roll__value">{{boardingDamage}}</div>
-                                                </div>
-                                                <div class="rt-roll__row rt-roll__row--number">
-                                                    <div class="rt-roll__label">Rolls:</div>
-                                                    <div class="rt-roll__value">
-                                                        {{#each voidshipResults}}
-                                                            {{#unless @first}}, {{/unless}}{{this}}
-                                                        {{/each}}
-                                                    </div>
-                                                </div>
-                                            {{else}}
-                                                <div class="rt-roll__fail">
-                                                    <span>All Actions Failed</span>
-                                                </div>
-                                                <div class="rt-roll__row rt-roll__row--number">
-                                                    <div class="rt-roll__label">Rolls:</div>
-                                                    <div class="rt-roll__value">
-                                                        {{#each voidshipResults}}
-                                                            {{#unless @first}}, {{/unless}}{{this}}
-                                                        {{/each}}
-                                                    </div>
-                                                </div>
-                                            {{/if}}
+                                        {{#if voidshipFumble}}
+                                            <div class="rt-roll__fumble">
+                                                <span>FUMBLE!</span>
+                                                <span>{{roll.total}}</span>
+                                            </div>
                                         {{else}}
                                             {{#if success}}
                                                 <div class="rt-roll__success">
