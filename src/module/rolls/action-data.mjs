@@ -296,6 +296,7 @@ export class ActionData {
                 }
                 if (this.rollData.hasAttackSpecial('Destructive') && result.isHit) {
                     result.isCritical = true;
+                    result.isHit = false;
                 }
                 result.roll = rollTotal;
                 this.rollData.voidshipResults.push(result);
