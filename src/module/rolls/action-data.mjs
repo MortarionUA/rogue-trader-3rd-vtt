@@ -294,6 +294,9 @@ export class ActionData {
                 } else {
                     result.isFumble = true;
                 }
+                if (attackData.rollData.hasAttackSpecial('Destructive') && result.isHit) {
+                    result.isCritical = true;
+                }
                 result.roll = rollTotal;
                 this.rollData.voidshipResults.push(result);
             }
@@ -381,9 +384,30 @@ export class ActionData {
     async calculatePenetration() {
         let damage = this.rollData.weapon.system.damage;
         if (this.rollData.weapon.system.type === "Macrocannon") {
-            switch (this.rollData.rangeName) {
-                case "Short Range" : damage++; break;
-                case "Long Range" : damage--; break;
+            if (attackData.rollData.hasAttackSpecial('Scattershot')) {
+                switch (this.rollData.rangeName) {
+                    case "Short Range" :
+                        damage = damage + 3;
+                        break;
+                    case "Long Range" :
+                        damage = damage - 3;
+                        break;
+                }
+            } else if (attackData.rollData.hasAttackSpecial('Self Propelled Warhead')) {
+                switch (this.rollData.rangeName) {
+                    case "Short Range" :
+                        damage = damage + 2;
+                        break;
+                }
+            } else {
+                switch (this.rollData.rangeName) {
+                    case "Short Range" :
+                        damage = damage + 2;
+                        break;
+                    case "Long Range" :
+                        damage = damage - 2;
+                        break;
+                }
             }
         }
         this.rollData.voidshipDamage = damage;
@@ -392,30 +416,30 @@ export class ActionData {
             let armour = this.rollData.targetActor.system.armour;
             this.rollData.voidshipResults.forEach((result) => {
                 if (result.isCritical || result.isHit ) {
-                    switch (result.location) {
-                        case "Bridge":
-                            if (damage >= armour.side*2){
-                                result.overpenetration = true;
-                            } else if (damage >= armour.side) {
-                                result.penetration = true;
-                            }
-                            break;
-                        case "Prow":
-                            if (damage >= armour.prow*2){
+                    switch (this.rollData.voidshipFacing) {
+                        case 0:
+                            if (damage >= (armour.prow+3)){
                                 result.overpenetration = true;
                             } else if (damage >= armour.prow) {
                                 result.penetration = true;
                             }
                             break;
-                        case "Main":
-                            if (damage >= armour.side*2){
+                        case 1:
+                            if (damage >= (armour.side+3)){
                                 result.overpenetration = true;
                             } else if (damage >= armour.side) {
                                 result.penetration = true;
                             }
                             break;
-                        case "Rear":
-                            if (damage >= armour.rear*2){
+                        case 2:
+                            if (damage >= (armour.side+3)){
+                                result.overpenetration = true;
+                            } else if (damage >= armour.side) {
+                                result.penetration = true;
+                            }
+                            break;
+                        case 3:
+                            if (damage >= (armour.rear+3)){
                                 result.overpenetration = true;
                             } else if (damage >= armour.rear) {
                                 result.penetration = true;
