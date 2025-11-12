@@ -294,7 +294,7 @@ export class ActionData {
                 } else {
                     result.isFumble = true;
                 }
-                if (attackData.rollData.hasAttackSpecial('Destructive') && result.isHit) {
+                if (this.rollData.hasAttackSpecial('Destructive') && result.isHit) {
                     result.isCritical = true;
                 }
                 result.roll = rollTotal;
@@ -384,7 +384,7 @@ export class ActionData {
     async calculatePenetration() {
         let damage = this.rollData.weapon.system.damage;
         if (this.rollData.weapon.system.type === "Macrocannon") {
-            if (attackData.rollData.hasAttackSpecial('Scattershot')) {
+            if (this.rollData.hasAttackSpecial('Scattershot')) {
                 switch (this.rollData.rangeName) {
                     case "Short Range" :
                         damage = damage + 3;
@@ -393,7 +393,7 @@ export class ActionData {
                         damage = damage - 3;
                         break;
                 }
-            } else if (attackData.rollData.hasAttackSpecial('Self Propelled Warhead')) {
+            } else if (this.rollData.hasAttackSpecial('Self Propelled Warhead')) {
                 switch (this.rollData.rangeName) {
                     case "Short Range" :
                         damage = damage + 2;
